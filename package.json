@@ -1,8 +1,8 @@
 {
-  "name": "vue-template",
+  "name": "my-book-manage-page",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "zhuliang <937154020@qq.com>",
+  "author": "zhuliang <zl937154020@163.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

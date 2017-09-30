@@ -4,7 +4,7 @@
 import  './global'
 import Vue from 'vue'
 import axios from 'axios'
-/*global.setNoticConfig= function(title,desc,duration,key,onClose){
+global.setNoticConfig= function(title,desc,duration,key,onClose){
   let cof = {};
   if(title!=null)cof.title=title;
   if(desc!=null)cof.desc=desc;
@@ -13,7 +13,7 @@ import axios from 'axios'
   if(onClose!=null)cof.onClose=onClose;
   return cof;
 }
-axios.interceptors.request.use(
+/*axios.interceptors.request.use(
   config => {
     if(config.url.indexOf("/api")>-1){
       if (TOKEN) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
@@ -46,8 +46,8 @@ axios.interceptors.response.use(
       }
     }
     return Promise.reject(error.response.data)   // 返回接口返回的错误信息
-  });*/
-/*global.refushToken=function(){
+  });
+global.refushToken=function(){
     if(new Date().getTime()-TOKENTIME.getTime()>30*60*1000){
       console.log("超过半小时，重新获取")
       Vue.axios.post(tokenUrl).then(function(response){

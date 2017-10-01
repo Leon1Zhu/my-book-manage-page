@@ -1,12 +1,13 @@
 /**
  * Created by zhuliang on 2017/9/30.
  */
-const mainPage = resolve => require(['@/components/mainPage/mainPage'], resolve);
+const index = resolve => require(['@/components/mainPage/mainPage'], resolve);
+const mainPage = resolve => require(['@/components/mainPage/swiperintroduce/swiperintroduce'], resolve);
 const mainPageRouter= {
     path: '/index',
-    component:mainPage,
+    component:index,
     children: [
-
+      {path:'/',component:mainPage}
     ]
 }
 

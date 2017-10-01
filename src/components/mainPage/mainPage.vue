@@ -1,27 +1,25 @@
 <template>
     <div id="library-mainpage">
-      <div class="top-content">
-        <div class="top-topcontent"></div>
-        <div class="top-centercontent"></div>
-        <div class="top-bottomcontent"></div>
-      </div>
-      <!--<div class="layout-breadcrumb">
-        <Breadcrumb>
-          <BreadcrumbItem href="/index">首页</BreadcrumbItem>
-          <BreadcrumbItem href="#">应用中心</BreadcrumbItem>
-          <BreadcrumbItem>某应用</BreadcrumbItem>
-        </Breadcrumb>
-      </div>-->
+      <topContent></topContent>
+      <router-view></router-view>
+      <footer>
+        <div class="container_12">
+          <p class="company-info ">美源少儿英文图书馆&nbsp;&nbsp;@2017&nbsp;ALL&nbsp;Right&nbsp;Reserved&nbsp;备案/许可证编号：苏ICP备18001818</p>
+        </div>
+      </footer>
     </div>
 </template>
 
 <script>
 import './mainPage.scss'
+import topContent from './topContent/topContent.vue'
     export default{
         data(){
             return {}
         },
-        components: {},
+        components: {
+            'topContent':topContent,
+        },
         created(){
         },
         mounted(){

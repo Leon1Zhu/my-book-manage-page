@@ -1,0 +1,138 @@
+
+@mixin my-border-radius($radius){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;;
+}
+.top-content{
+  .header-bar{
+    height:22px;
+    background: #299d99;
+    padding:6px 0;
+    font-size:14px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    color: #fff;
+    span{
+      font-weight: 700;
+    }
+    .headRight{
+      font-size:100%;
+      text-align: right;
+      .basketCount{
+        margin-left:5px;
+      }
+    }
+  }
+  .top-topcontent{
+    height:85px;
+    .container_12{
+      .book-info{
+        position: relative;
+      .img-logo{
+        margin-top:8px;
+        background: url("../../../assets/logo.png");
+        width:330px;
+        height:65px;
+        -webkit-background-size:cover;
+        background-size:cover;
+      }
+      .all-book-content{
+        position: absolute;
+        right:3%;
+        top:0;
+        margin-top:.8em;
+        .all-book-count{
+          font-size: 2.3em;
+          color: #8e79ad;
+          font-weight:700;
+        }
+        .all-book-item{
+          font-size:1.5em;
+          color: #aaa;
+          font-weight:700;
+        }
+      }
+      }
+      .select-info{
+        .select-input{
+          margin-top:20px;
+          .ivu-input-group-prepend{
+            background: white;
+          }
+          .ivu-icon-arrow-down-b:before{
+            color: #aaa;
+          }
+          .ivu-input-group-append{
+            background: #62247f;
+          }
+          .ivu-btn.ivu-btn-icon-only{
+            background: #62247f;
+            border-radius: 0px;
+            padding:4.5px 15px;
+          }
+          .ivu-icon{
+            color: white;
+          }
+        .ivu-icon-ios-search:before {
+          font-weight: 700;
+          font-size: 20px;
+        }
+        }
+      }
+    }
+  }
+  .top-centercontent{
+    margin-top:10px;
+    .nav{
+      background: #755B99;
+      height:40px;
+      .nav-inner{
+        position: relative;
+        table-layout: fixed;
+        border-right:1px solid #fff;
+        display: table;
+        ul{
+          display: table-row;
+          li{
+            font-weight:700;
+            font-size:15px;
+            color: white;
+            display: table-cell;
+            border-left:1px solid #fff;
+            text-align: center;
+            list-style-type: none;
+            width: 60px;
+            height:40px;
+            line-height:40px;
+          }
+        }
+      }
+    }
+  }
+
+
+  .top-bottomcontent{
+    height:44px;
+     .contact-content{
+       border: 1px solid #ccc;
+       min-height:30px;
+       position: relative;
+       padding:6px 10px;
+       @include my-border-radius(3px);
+       margin-top:8px;
+       .nav-info{
+
+       }
+       .contact-info{
+         text-align: right;
+         position: absolute;
+         right:1%;
+         top:0;
+         margin-top:5px;
+       }
+     }
+   }
+
+}

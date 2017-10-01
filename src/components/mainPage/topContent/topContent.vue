@@ -86,8 +86,8 @@ import './topContent.scss'
     export default{
         data(){
             return {
-                searchBookSelect:null,
-              searchBookInput:null,
+                searchBookSelect:'all',
+                searchBookInput:null,
             }
         },
         components: {},

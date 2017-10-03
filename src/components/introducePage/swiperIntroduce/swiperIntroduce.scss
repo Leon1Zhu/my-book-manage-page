@@ -1,8 +1,26 @@
 .introduce-page{
   .swiper-container{
+    margin-top:10px;
+    margin-left: 10px;
     width:100%;
+    .mypagination{
+      width: 26px;
+      height: 18px;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      color: #000;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.2);
+      -webkit-border-radius:0px;
+      -moz-border-radius:0px;
+      border-radius:0px;
+    }
+    .swiper-pagination-bullet-active {
+      color: #fff;
+      background: #007aff;
+    }
     .swiper-slide {
-      height:150px;
     }
   }
 }

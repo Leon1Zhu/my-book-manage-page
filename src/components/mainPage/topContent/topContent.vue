@@ -22,7 +22,7 @@
              <div class="grid_6 book-info">
                <div class="img-logo"></div>
                <div class="all-book-content">
-                 <div class="all-book-count">6,791,092</div>
+                 <animatedInteger class="" :value="value"></animatedInteger>
                  <div class="all-book-item">书籍总库存数</div>
                </div>
              </div>
@@ -37,6 +37,7 @@
                    <Button slot="append" icon="ios-search"></Button>
                    </Input>
                </div>
+               <router-link :to="{ path: '/index/advancedsearch' }" > <div class="advanced-search animateClass" >高级搜索</div></router-link>
              </div>
            </div>
       </div>
@@ -45,15 +46,15 @@
           <div class="container_12">
               <div class="grid_12 nav-inner">
                   <ul>
-                    <li>主页</li>
-                    <li>活动中心</li>
-                    <li>加速阅读</li>
-                    <li>蓝思阅读</li>
-                    <li>知识分享</li>
-                    <li>加入我们</li>
-                    <li>常见问题</li>
-                    <li>合作伙伴</li>
-                    <li>关于我们</li>
+                    <li  :class="{'active': liActive[0]}"   @click="chooseLi(0,'/index')">主页</li>
+                    <li :class="{'active': liActive[1]}" @click="chooseLi(1)">活动中心</li>
+                    <li :class="{'active': liActive[2]}" @click="chooseLi(2)">加速阅读</li>
+                    <li :class="{'active': liActive[3]}" @click="chooseLi(3)">蓝思阅读</li>
+                    <li :class="{'active': liActive[4]}" @click="chooseLi(4)">知识分享</li>
+                    <li :class="{'active': liActive[5]}" @click="chooseLi(5)">加入我们</li>
+                    <li :class="{'active': liActive[6]}" @click="chooseLi(6)">常见问题</li>
+                    <li :class="{'active': liActive[7]}" @click="chooseLi(7)">合作伙伴</li>
+                    <li :class="{'active': liActive[8]}" @click="chooseLi(8)">关于我们</li>
                   </ul>
               </div>
           </div>
@@ -65,9 +66,7 @@
             <div class="nav-info">
               <div class="layout-breadcrumb">
                <Breadcrumb separator="->" >
-                 <BreadcrumbItem  href="/index">首页</BreadcrumbItem>
-                 <BreadcrumbItem   href="#">应用中心</BreadcrumbItem>
-                 <BreadcrumbItem >某应用</BreadcrumbItem>
+                 <BreadcrumbItem  v-for=" (bread,index) in  mainBreadcrumb"  :key="index" :href="bread.url">{{bread.name}}</BreadcrumbItem>
                </Breadcrumb>
              </div>
             </div>
@@ -83,18 +82,38 @@
 
 <script>
 import './topContent.scss'
+import  animatedInteger from '../../../common/animated-integer/animated-integer.vue'
     export default{
         data(){
             return {
                 searchBookSelect:'all',
                 searchBookInput:null,
+                value:6791002,
+              mainBreadcrumb:MAINBREADCRUMB,
+              liActive:[true,false,false,false,false,false,false,false,false],
             }
         },
-        components: {},
+        components: {
+            'animatedInteger':animatedInteger,
+        },
         created(){
         },
         mounted(){
         },
-        methods: {}
+        methods: {
+          chooseLi(val,path){
+              for(let i=0;i<this.liActive.length;i++){
+                  this.$set(this.liActive,i,false)
+              }
+            this.liActive[val]=true;
+            this.$router.push({ path: path })
+
+          }
+        },
+        computed:{
+        },
+        watch:{
+
+        }
     }
 </script>

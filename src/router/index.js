@@ -10,6 +10,6 @@ export default new Router({
   base: __dirname,
   routes: [
     mainPageRouter,
-    {path: '*', name: '404', component: notFound},
+    {path: '*', component: notFound},
   ]
 })

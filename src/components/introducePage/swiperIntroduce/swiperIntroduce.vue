@@ -4,15 +4,13 @@
       <swiper class="swiper-content animateClass" :options="swiperOption" ref="mySwiper">
         <!-- slides -->
         <swiper-slide>
-          <img src="../../../assets/logo.png">
+          <img src="../../../assets/1.png">
         </swiper-slide>
         <swiper-slide>
-          <img src="../../../assets/logo.png">
+          <img src="../../../assets/2.png">
         </swiper-slide>
         <!-- Optional controls -->
         <div class="swiper-pagination"  slot="pagination"></div>
-        <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
       </div>
     </div>
@@ -38,8 +36,10 @@ import './swiperIntroduce.scss'
                 setWrapperSize :true,
                 autoHeight: true,
                 pagination : '.swiper-pagination',
-                prevButton:'.swiper-button-prev',
-                nextButton:'.swiper-button-next',
+                paginationBulletRender: function (swiper, index, className) {
+                  return '<span class="' + className + '  mypagination">' + (index + 1) + '</span>';
+                },
+
                 paginationClickable :true,
               },
             }

@@ -49,7 +49,7 @@
           font-weight:700;
         }
         .all-book-item{
-          font-size:1.5em;
+          font-size:1.2em;
           color: #aaa;
           font-weight:700;
         }
@@ -81,6 +81,17 @@
         }
         }
       }
+      .advanced-search{
+        margin-top:4px;
+        font-size: 16px;
+        font-weight:700;
+        text-align: right;
+        color: rgba(0,0,0,0.4);
+      }
+      .advanced-search:hover{
+        cursor: pointer;
+        color: #62247f;
+      }
     }
   }
   .top-centercontent{
@@ -96,6 +107,7 @@
         ul{
           display: table-row;
           li{
+            transition: all 0.1s ease-in-out 0s;
             font-weight:700;
             font-size:15px;
             color: white;
@@ -106,6 +118,16 @@
             width: 60px;
             height:40px;
             line-height:40px;
+            cursor: pointer;
+            a{
+              color: white;
+            }
+          }
+          li.active{
+            background: #5c4280;
+          }
+          li:hover{
+            background: #5c4280;
           }
         }
       }

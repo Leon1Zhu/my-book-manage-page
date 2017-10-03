@@ -37,6 +37,17 @@ html,body,#app{
   font-size: 16px;
   font-weight:700;
 }
+.animateClass{
+  -webkit-transition: all .3s ease-in-out 0s;
+  -moz-transition: all .3s ease-in-out 0s;
+  -ms-transition: all .3s ease-in-out 0s;
+  -o-transition: all .3s ease-in-out 0s;
+  transition: all .3s ease-in-out 0s;
+}
+
+.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab-active,.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab:hover{
+  color: #62247f;
+}
 
 @media (min-width: 1146px) {
   .container_12 {

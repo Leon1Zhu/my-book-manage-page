@@ -1,6 +1,54 @@
 #advanced-search{
+  .ivu-tabs-tabpane{
+    margin-left:-2%;
+  }
     .search-content{
       position: relative;
       margin-top:10px;
     }
+    .search-input{
+      width:60%;
+      margin:0 auto;
+      margin-top:15px;
+      .search-input-sec{
+        display: flex;
+        width:50%;
+        .ivu-input-wrapper{
+          width:89%;
+          width:calc(100% - 95px);
+        }
+      }
+
+      .word{
+        font-size:14px;
+        line-height: 200%;
+        text-align: right;
+        width:180px;
+        margin-right:10px;
+      }
+    }
+    .search-input:last-child{
+      margin-bottom:10px;
+    }
+  .basics-search-button-group,.AR-search-button-group,.LL-search-button-group{
+    width:60%;
+    display: table;
+    table-layout: fixed;
+    margin:0 auto;
+    margin-top:1em;
+    .search-btn,.empty-btn{
+      display: table-cell;
+      button{
+        margin-left:58%;
+      }
+    }
+  }
+  .AR-search-button-group{
+    margin-bottom:80px;
+  }
+  .ivu-btn-info {
+    color: #fff;
+    background-color: #6a4f90;
+    border-color: #6a4f90;
+  }
 }

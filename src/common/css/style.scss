@@ -22,17 +22,34 @@ html,body,#app{
     width:976px
   }
 }
+.ivu-select-item-selected, .ivu-select-item-selected:hover {
+  background: #6a4f90;
+}
+.ivu-input:focus,.ivu-select-visible .ivu-select-selection:focus,.ivu-select-visible .ivu-select-selection{
+  box-shadow: 0px 0px 0px #bdbdbd;
+  border-color: #6a4190;
+}
+.ivu-input:hover,.ivu-select-visible .ivu-select-selection:hover,.ivu-select-selection:hover{
+  box-shadow: 0px 0px 0px #bdbdbd;
+  border-color: #6a4190;
+}
+.search-input{
+  display: flex;
+}
 .container_12:before, .container_12:after{
    content: " ";
   display: table;
 }
-.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12{
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11{
   display: inline;
   float:left;
   margin-left:10px;
   margin-right:10px;
 }
-
+.icon-wenhao{
+  color: dodgerblue;
+  line-height:160%;
+}
 .title-font{
   font-size: 16px;
   font-weight:700;

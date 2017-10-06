@@ -13,6 +13,27 @@ global.setNoticConfig= function(title,desc,duration,key,onClose){
   if(onClose!=null)cof.onClose=onClose;
   return cof;
 }
+
+global.setSearchResult=function(val){
+  if(isNull(val)){
+    SEARCHRESULT ="";
+  }else{
+    SEARCHRESULT =val;
+  }
+}
+
+global.isNull =function (val){
+  if(val===null || val === undefined || val ==="")return true;
+  else return false;
+}
+global.setLoginStatus = function(loginVaule){
+  if(typeof loginVaule == "boolean"){
+    global.ISLOGIN = loginVaule;
+  }
+}
+global.getLoginStatus=function(){
+  return ISLOGIN;
+}
 /*axios.interceptors.request.use(
   config => {
     if(config.url.indexOf("/api")>-1){

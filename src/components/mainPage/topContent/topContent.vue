@@ -2,12 +2,23 @@
     <div class="top-content">
       <div class="header-bar">
           <div class="container_12">
-              <div class="grid_6">
-                <i class="iconfont icon-yaochi"></i>
-                <span class="">&nbsp;登&nbsp;陆&nbsp;</span>
-                <i  style="margin-left: 4px;" class="iconfont icon-Ankerwebicon-"></i>
-                <span class="">&nbsp;注&nbsp;册&nbsp;</span>
+              <div class="grid_6" v-if="!loginStatus">
+                <div class="login-content">
+                  <i class="iconfont icon-yaochi"></i>
+                  <span class="book-login login-in">&nbsp;登&nbsp;陆&nbsp;</span>
+                </div>
+                <div class="login-content">
+                  <i  style="margin-left: 4px;" class="iconfont icon-Ankerwebicon-"></i>
+                 <span class="book-login login-up">&nbsp;注&nbsp;册&nbsp;</span>
+                </div>
               </div>
+            <div class="grid_6" v-if="loginStatus" >
+              <div class="login-content" :class="{ 'roateIcon':isActive}" @click="showNav">
+                <i class="iconfont icon-denglutouxiangmoren"></i>
+                <span class="book-login login-in">&nbsp;个人中心&nbsp;</span>
+                <i class="ivu-icon ivu-icon-arrow-down-b "></i>
+              </div>
+            </div>
               <div class="grid_6">
                 <div class="headRight">
                   <i class="iconfont icon-gouwuche"></i>
@@ -16,6 +27,11 @@
                 </div>
               </div>
           </div>
+      </div>
+      <div   :class="{ 'globalnav-hidden':!isActive}" class="globalnav">
+        <div class="globalnav-menu container_12">
+        </div>
+
       </div>
       <div class="top-topcontent">
            <div class="container_12">
@@ -42,21 +58,23 @@
            </div>
       </div>
       <div class="top-centercontent">
-        <div class="nav">
-          <div class="container_12">
-              <div class="grid_12 nav-inner">
-                  <ul>
-                    <li  :class="{'active': liActive[0]}"   @click="chooseLi(0,'/index')">主页</li>
-                    <li :class="{'active': liActive[1]}" @click="chooseLi(1)">活动中心</li>
-                    <li :class="{'active': liActive[2]}" @click="chooseLi(2)">加速阅读</li>
-                    <li :class="{'active': liActive[3]}" @click="chooseLi(3)">蓝思阅读</li>
-                    <li :class="{'active': liActive[4]}" @click="chooseLi(4)">知识分享</li>
-                    <li :class="{'active': liActive[5]}" @click="chooseLi(5)">加入我们</li>
-                    <li :class="{'active': liActive[6]}" @click="chooseLi(6)">常见问题</li>
-                    <li :class="{'active': liActive[7]}" @click="chooseLi(7)">合作伙伴</li>
-                    <li :class="{'active': liActive[8]}" @click="chooseLi(8)">关于我们</li>
-                  </ul>
-              </div>
+        <div id="container_12" style="width: 100%;">
+          <div class="nav">
+            <div class="container_12">
+                <div class="grid_12 nav-inner">
+                    <ul>
+                      <li  :class="{'active': liActive[0]}"   @click="chooseLi(0,'/index')">主页</li>
+                      <li :class="{'active': liActive[1]}" @click="chooseLi(1)">活动中心</li>
+                      <li :class="{'active': liActive[2]}" @click="chooseLi(2)">加速阅读</li>
+                      <li :class="{'active': liActive[3]}" @click="chooseLi(3)">蓝思阅读</li>
+                      <li :class="{'active': liActive[4]}" @click="chooseLi(4)">知识分享</li>
+                      <li :class="{'active': liActive[5]}" @click="chooseLi(5)">加入我们</li>
+                      <li :class="{'active': liActive[6]}" @click="chooseLi(6)">常见问题</li>
+                      <li :class="{'active': liActive[7]}" @click="chooseLi(7)">合作伙伴</li>
+                      <li :class="{'active': liActive[8]}" @click="chooseLi(8)">关于我们</li>
+                    </ul>
+                </div>
+            </div>
           </div>
         </div>
       </div>
@@ -89,8 +107,10 @@ import  animatedInteger from '../../../common/animated-integer/animated-integer.
                 searchBookSelect:'all',
                 searchBookInput:null,
                 value:6791002,
-              mainBreadcrumb:MAINBREADCRUMB,
-              liActive:[true,false,false,false,false,false,false,false,false],
+                mainBreadcrumb:MAINBREADCRUMB,
+                liActive:[true,false,false,false,false,false,false,false,false],
+                loginStatus:getLoginStatus(),
+                isActive:false,
             }
         },
         components: {
@@ -108,6 +128,9 @@ import  animatedInteger from '../../../common/animated-integer/animated-integer.
             this.liActive[val]=true;
             this.$router.push({ path: path })
 
+          },
+          showNav(){
+              this.isActive = !this.isActive
           }
         },
         computed:{

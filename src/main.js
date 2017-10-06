@@ -26,19 +26,14 @@ new Vue({
 
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
-  console.log(from)
   if(to.name == '' )next();
   let toArr = to.name.split('#');
   let fromArr = from.name.split('#');
   let toLeavl = toArr[1],fromLeavl = fromArr[1],toName = toArr[0],fromName = fromArr[0];
   let level = toLeavl-fromLeavl;
-  console.log(level)
     if(level<=0){
       let i=0;
       for(i;i<MAINBREADCRUMB.length;i++){
-        console.log(MAINBREADCRUMB[i].level)
-        console.log(toLeavl)
         if(MAINBREADCRUMB[i].level >= toLeavl){
           MAINBREADCRUMB.splice(i,1);
           i--;

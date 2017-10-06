@@ -4,13 +4,13 @@
 import Vue from 'vue'
 import api from './index'
 
-/*var getCollectsByUserId = "/api/alinews-collects";*/
+var getCollectsByUserId = "/api/alinews-collects";
 
 export default {
- /* getCollectsByUserId : function(userid){
+  advancedSearch : function(userid){
     var params = {
       userid:userid
     }
     return api.get(getCollectsByUserId,params)
-  }*/
+  }
 }

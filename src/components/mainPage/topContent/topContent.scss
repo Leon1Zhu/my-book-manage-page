@@ -5,15 +5,64 @@
   border-radius: $radius;;
 }
 .top-content{
+  .globalnav{
+    z-index:9;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    position: fixed;
+    top:34px;
+    width:100%;
+    background: #f1f1f1;
+    height:calc(100vh - 34px);
+    -webkit-transition: -webkit-transform .7s cubic-bezier(.19, 1, .22, 1) 0ms;
+    transition: -webkit-transform .7s cubic-bezier(.19, 1, .22, 1) 0ms;
+    transition: transform .7s cubic-bezier(.19, 1, .22, 1) 0ms;
+    transition: transform .7s cubic-bezier(.19, 1, .22, 1) 0ms, -webkit-transform .7s cubic-bezier(.19, 1, .22, 1) 0ms;
+    .globalnav-menu{
+      border:1px solid #ececec;
+      padding: 15px;
+      background: #fff;
+    }
+  }
+  .globalnav-hidden{
+    transform: translate3d(0,-100%,0);
+    -webkit-transition: -webkit-transform .7s cubic-bezier(.19, 1, .22, 1) 0ms;
+    transition: -webkit-transform .7s cubic-bezier(.19, 1, .22, 1) 0ms;
+    transition: transform .7s cubic-bezier(.19, 1, .22, 1) 0ms;
+    transition: transform .7s cubic-bezier(.19, 1, .22, 1) 0ms, -webkit-transform .7s cubic-bezier(.19, 1, .22, 1) 0ms;
+  }
   .header-bar{
+    position: relative;
+    z-index:10;
     height:22px;
-    background: #299d99;
+    background: rgba(29,147,143,.8);
     padding:6px 0;
     font-size:14px;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     color: #fff;
+    .grid_6:first-child{
+      display: flex;
+      .login-content{
+        padding:5px;
+       @include my-border-radius(5px);
+        .ivu-icon-arrow-down-b{
+          transition: all .2s ease-in-out;
+          transform: rotate(90deg);
+        }
+
+      }
+      .login-content:hover{
+        cursor: pointer;
+        background: rgba(29,147,143,.9);
+      }
+      .roateIcon{
+        .ivu-icon-arrow-down-b{
+          transform: rotate(0deg);
+        }
+      }
+    }
     span{
       font-weight: 700;
     }
@@ -96,6 +145,7 @@
   }
   .top-centercontent{
     margin-top:10px;
+    position: relative;
     .nav{
       background: #755B99;
       height:40px;

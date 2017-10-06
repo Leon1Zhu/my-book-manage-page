@@ -1,0 +1,79 @@
+.book-list{
+  margin-top:5px;
+  @mixin my-border-radius($radius){
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;;
+  }
+  .book-list-content{
+    @include my-border-radius(3px);
+    border:1px solid #ccc;
+    padding:6px 10px;
+    .result-size{
+      font-size:15px;
+      margin-bottom:5px;
+    }
+    .book-item{
+      position: relative;
+      border:1px solid #ccc;
+      border-bottom:0px;
+      padding:5px 10px;
+      width:100%;
+      display: flex;
+      .book-img{
+        width:140px;
+        height:215px;
+        display: table;
+        .bottom-content{
+          display: table-cell;
+          vertical-align: middle;
+          img{
+            max-width:140px;
+            max-height:215px;
+
+          }
+        }
+
+      }
+
+      .book-introduce-content{
+        position: relative;
+        display: table;
+        table-layout: fixed;
+        padding:5px 10px;
+         .book-name{
+           font-size:15px;
+           font-weight: 500;
+           margin-bottom:5px;
+         }
+         .book-item-info{
+           display: table-row;
+           margin-top:5px;
+           line-height:20px;
+           .left-info,.right-info{
+             font-weight:500;
+             display: table-cell;
+           }
+         }
+      }
+      .book-sign-img{
+        position: absolute;
+        right:10px;
+        margin-top:3%;
+         .sign-img-content{
+           img{
+             width:80px;
+             height:80px;
+             @include  my-border-radius(10px)
+           }
+         }
+         .sign-img-content:last-child{
+           margin-top:5px;
+         }
+      }
+    }
+    .book-item:last-child{
+      border-bottom:1px solid #ccc;
+    }
+  }
+}

@@ -5,8 +5,10 @@ global.MAINBREADCRUMB= JSON.parse(sessionStorage.getItem("MAINBREADCRUMB")) ?  J
 global.tokenUrl="http://localhost:8011/getToken"
 global.TOKENTIME=new Date();
 global.TOKEN="";
-global.ISLOGIN=false;
+global.ISLOGIN=true;
 global.IMGURL='http://106.15.90.228:8090/dummyPath/'
+//搜索看结果
+global.SEARCHRESULT=[{},{},{},{}];
 
 
 if(process.env.NODE_ENV=="production"){

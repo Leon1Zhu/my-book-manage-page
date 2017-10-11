@@ -26,11 +26,14 @@ html,body,#app{
 .ivu-select-item-selected, .ivu-select-item-selected:hover {
   background: #6a4f90;
 }
-.ivu-input:focus,.ivu-select-visible .ivu-select-selection:focus,.ivu-select-visible .ivu-select-selection{
+.ivu-input:focus, .ivu-select-selection:focus{
   box-shadow: 0px 0px 0px #bdbdbd;
   border-color: #6a4190;
 }
-.ivu-input:hover,.ivu-select-visible .ivu-select-selection:hover,.ivu-select-selection:hover{
+.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab-active{
+  color: #6a4190;
+}
+.ivu-input:hover{
   box-shadow: 0px 0px 0px #bdbdbd;
   border-color: #6a4190;
 }
@@ -62,8 +65,14 @@ html,body,#app{
   -o-transition: all .3s ease-in-out 0s;
   transition: all .3s ease-in-out 0s;
 }
-
-.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab-active,.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab:hover{
+.ivu-tabs-nav .ivu-tabs-tab-active, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item:hover, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu-active, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu:hover{
+  color: #6a4f90;
+  border-bottom: 2px solid #6a4f90;
+}
+.ivu-tabs-ink-bar{
+  background: #62247f;
+}
+.ivu-tabs-nav .ivu-tabs-tab:hover{
   color: #62247f;
 }
 

@@ -30,8 +30,8 @@
       </div>
       <div   :class="{ 'globalnav-hidden':!isActive}" class="globalnav">
         <div class="globalnav-menu container_12">
+          <personCenter></personCenter>
         </div>
-
       </div>
       <div class="top-topcontent">
            <div class="container_12">
@@ -101,6 +101,7 @@
 <script>
 import './topContent.scss'
 import  animatedInteger from '../../../common/animated-integer/animated-integer.vue'
+import personCenter from '../personalCenter/personalCenter.vue'
     export default{
         data(){
             return {
@@ -115,6 +116,7 @@ import  animatedInteger from '../../../common/animated-integer/animated-integer.
         },
         components: {
             'animatedInteger':animatedInteger,
+            'personCenter':personCenter,
         },
         created(){
         },
@@ -131,6 +133,8 @@ import  animatedInteger from '../../../common/animated-integer/animated-integer.
           },
           showNav(){
               this.isActive = !this.isActive
+              let statu = this.isActive ? "hidden":"auto";
+            document.getElementById("app").style.overflow=statu;
           }
         },
         computed:{

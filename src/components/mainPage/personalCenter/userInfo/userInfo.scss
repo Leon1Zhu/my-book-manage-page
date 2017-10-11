@@ -1,0 +1,17 @@
+.user-info{
+  .search-input{
+    width:70%;
+    margin:0 auto;
+    margin-top:15px;
+    margin-left:24%;
+    .search-input-sec{
+      display: flex;
+      width:50%;
+    }
+    .word{
+      line-height:200%;
+      font-size:14px;
+      width:190px;
+    }
+  }
+}

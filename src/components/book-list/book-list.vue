@@ -1,9 +1,26 @@
 <template>
     <div class="book-list">
-        <div class="container_12">
-          <div class="grid_12 book-list-content">
+        <div class="">
+          <div class=" book-list-content">
             <div class="result-size">
-               {{resultData.length}}条匹配结果
+              <span  v-if="list_type!='search'">
+                {{resultData.length}}条匹配结果
+              </span>
+              <span  v-if="list_type!='collect'">
+                {{resultData.length}}条收藏记录
+              </span>
+              <span  v-if="list_type!='reserve'">
+                 {{resultData.length}}条预定记录
+              </span>
+              <span  v-if="list_type!='history'">
+                 {{resultData.length}}条借阅历史记录
+              </span>
+
+              <span  v-if="list_type!='reading'">
+                 {{resultData.length}}条借阅历史记录
+              </span>
+
+              <Page :total="40" size="small" show-total page-size="5" @on-change="changepage"></Page>
             </div>
             <div class="book-item" v-for="data in resultData">
               <div class="book-img"><div class="bottom-content"><img :src="imgUrl+'9780001821743.jpg'"></div></div>
@@ -42,11 +59,14 @@
                     <div class="right-info">价格:￥13.5</div>
                   </div>
                 <div class="book-item-info">
-                  <div class="left-info">
+                  <div class="left-info" v-if="list_type!='reserve' && list_type!='reading'">
                     <Button type="info" >预定</Button>
                   </div>
-                  <div class="right-info">
+                  <div class="right-info" v-if="list_type=='search' || list_type=='reserve' || list_type=='reading'">
                     <Button type="success" >收藏</Button>
+                  </div>
+                  <div class="right-info" v-if="list_type=='collect'">
+                    <Button type="error" >删除</Button>
                   </div>
                 </div>
               </div>
@@ -67,6 +87,11 @@
 <script>
 import './book-list.scss'
     export default{
+        props: {
+          list_type: {
+            default: ''
+          },
+        },
         data(){
             return {
                 resultData:SEARCHRESULT,
@@ -80,6 +105,9 @@ import './book-list.scss'
         },
         mounted(){
         },
-        methods: {}
+        methods: {
+          changepage(val){
+          }
+        }
     }
 </script>

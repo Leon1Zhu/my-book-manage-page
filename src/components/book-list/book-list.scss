@@ -41,6 +41,7 @@
         display: table;
         table-layout: fixed;
         padding:5px 10px;
+        border-spacing: 4px;
          .book-name{
            font-size:15px;
            font-weight: 500;
@@ -76,4 +77,14 @@
       border-bottom:1px solid #ccc;
     }
   }
+  .ivu-page.mini{
+    float: right;
+  }
+  .ivu-page-item,.ivu-page-next, .ivu-page-prev{
+    background: #f1f1f1;
+  }
+  .ivu-page-item-active a, .ivu-page-item-active:hover a{
+    color: #2d8cf0;
+  }
+
 }

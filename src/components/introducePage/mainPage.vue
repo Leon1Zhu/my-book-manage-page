@@ -13,23 +13,13 @@
 <script>
 import swiperIntroduce from './swiperIntroduce/swiperIntroduce.vue'
 import recommendCommon from '../../common/recommendCommon/recommendCommon.vue'
+import bookMangeApi from '../../api/bookManage'
     export default{
         data(){
             return {
                 title1:"本馆推荐",
                 title2:"借阅排行",
                 bookData:[
-                  {imgUrl:IMGURL+'9780001821743.jpg',bookName:'这是第一本书',publish:"朱亮"},
-                  {imgUrl:IMGURL+'0015012837889.jpg',bookName:'这是第二本书',publish:"朱亮"},
-                  {imgUrl:IMGURL+'9780001953796.jpg',bookName:'这是第三本书',publish:"朱亮"},
-                  {imgUrl:IMGURL+'9780002251785.jpg',bookName:'这是第四本书',publish:"朱亮"},
-                  {imgUrl:IMGURL+'9780020418207.jpg',bookName:'这是第五本书',publish:"朱亮"},
-                  {imgUrl:IMGURL+'9780020418306.jpg',bookName:'这是第六本书',publish:"朱亮"},
-                  {imgUrl:IMGURL+'9780020420309.jpg',bookName:'这是第七本书',publish:"朱亮"},
-                  {imgUrl:IMGURL+'9780020419204.jpg',bookName:'这是第八本书',publish:"朱亮"},
-                  {imgUrl:IMGURL+'9780020421207.jpg',bookName:'这是第九本书',publish:"朱亮"},
-                  {imgUrl:IMGURL+'9780020421504.jpg',bookName:'这是第十本书',publish:"朱亮"},
-
                 ]
             }
         },
@@ -38,9 +28,20 @@ import recommendCommon from '../../common/recommendCommon/recommendCommon.vue'
              'recommendCommon':recommendCommon,
         },
         created(){
+            var vm= this;
+            vm.getRecommendBook();
         },
         mounted(){
         },
-        methods: {}
+        methods: {
+            getRecommendBook(){
+                var that =this;
+                 bookMangeApi.getRecommendBook().then((response)=>{
+                    that.bookData = response.data.content;
+                }).catch((response)=>{
+                   this.$Notice.error(setNoticConfig(response.message,null,null,"error"));
+                })
+            },
+        }
     }
 </script>

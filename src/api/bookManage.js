@@ -7,10 +7,12 @@ let loginBook = '/api';
 
 let getRecommendBook =  bookIndex+'/getRecommendBook'
 export default {
-  advancedSearch : function(userid){
-    var params = {
-      userid:userid
+  getRecommendBook : function(){
+    return api.get(getRecommendBook,{})
+  },
+  collectBook : function(){
+    if(ISLOGIN){
+      return Promise.reject({message:"请先登录再进行收藏操作！"})
     }
-    return api.get(getCollectsByUserId,params)
   }
 }

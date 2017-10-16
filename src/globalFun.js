@@ -34,11 +34,13 @@ global.setLoginStatus = function(loginVaule){
 global.getLoginStatus=function(){
   return ISLOGIN;
 }
-/*axios.interceptors.request.use(
+axios.interceptors.request.use(
   config => {
+    if(config.url.indexOf("/api")>-1 || config.url.indexOf("/book")>-1){
+      config.url = SERVICEURL+config.url;
+    }
     if(config.url.indexOf("/api")>-1){
       if (TOKEN) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
-        config.url = SERVICEURL+config.url;
         config.headers.Authorization = TOKEN;
         console.log("发送请求!")
         console.log(config)
@@ -80,7 +82,7 @@ global.refushToken=function(){
       console.log("尚未过时，尚能使用")
     }
 }
-global.setLoginInfo=function(logininfo,rememberMe){
+/*global.setLoginInfo=function(logininfo,rememberMe){
     USERINFO = logininfo
     ISLOGIN=true;
     if(rememberMe){

@@ -19,16 +19,16 @@
                 <i class="ivu-icon ivu-icon-arrow-down-b "></i>
               </div>
             </div>
-              <div class="grid_6">
+              <!--<div class="grid_6">
                 <div class="headRight">
                   <i class="iconfont icon-gouwuche"></i>
                   <span>购物车：<span class="basketCount">0</span></span>
                   <span>金额：<span class="book-money">¥&nbsp;0</span></span>
                 </div>
-              </div>
+              </div>-->
           </div>
       </div>
-      <div   :class="{ 'globalnav-hidden':!isActive}" class="globalnav">
+      <div  v-if="loginStatus"  :class="{ 'globalnav-hidden':!isActive}" class="globalnav">
         <div class="globalnav-menu container_12">
           <personCenter></personCenter>
         </div>

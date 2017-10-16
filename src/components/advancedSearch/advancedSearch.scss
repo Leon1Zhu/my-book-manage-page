@@ -1,5 +1,6 @@
 #advanced-search{
   .ivu-tabs-tabpane{
+    overflow: auto;
     margin-left:-2%;
   }
     .search-content{
@@ -18,12 +19,18 @@
           width:calc(100% - 95px);
         }
       }
+      .tilde{
+          line-height: 200%;
+      }
       .word{
         font-size:14px;
         line-height: 200%;
         text-align: right;
         width:180px;
         margin-right:10px;
+      }
+      .word.double{
+        width:363px;
       }
     }
     .search-input:last-child{

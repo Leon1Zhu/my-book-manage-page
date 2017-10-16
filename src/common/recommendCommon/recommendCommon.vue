@@ -6,10 +6,10 @@
               <div class="bookContent">
                 <div v-for="book in bookinfo" class="book-info-content">
                   <div class="botton-content">
-                    <img :src="book.imgUrl">
-                    <div class="book-info book-name">{{book.bookName}}</div>
-                    <div class="book-info book-publish">{{book.publish}}</div>
-                    <div class="book-info"><Button type="info" size="small">预定</Button> <Button type="success" size="small">收藏</Button></div>
+                    <img :src="imgurl+'9780002251785.jpg'">
+                    <div class="book-info book-name">{{book.name}}</div>
+                    <div class="book-info book-publish">{{book.author}}</div>
+                    <div class="book-info"><Button type="info" size="small" >预定</Button> <Button type="success" size="small" @click="collectBook(book.id)">收藏</Button></div>
                   </div>
                 </div>
               </div>
@@ -21,16 +21,27 @@
 
 <script>
 import './recommendCommon.scss'
+import bookManageApi from '../../api/bookManage'
     export default{
         props:['recommendTilele','bookinfo'],
         data(){
-            return {}
+            return {
+                imgurl:IMGURL,
+            }
         },
         components: {},
         created(){
         },
         mounted(){
         },
-        methods: {}
+        methods: {
+          collectBook(bookId){
+              bookManageApi.collectBook(bookId).then((response)=>{
+
+              }).catch((response)=>{
+
+              })
+          }
+        }
     }
 </script>

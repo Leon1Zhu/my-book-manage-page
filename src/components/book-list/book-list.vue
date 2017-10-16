@@ -3,24 +3,24 @@
         <div class="">
           <div class=" book-list-content">
             <div class="result-size">
-              <span  v-if="list_type!='search'">
+              <span  v-if="list_type=='search' || list_type=='advanceSearch'">
                 {{resultData.length}}条匹配结果
               </span>
-              <span  v-if="list_type!='collect'">
+              <span  v-if="list_type=='collect'">
                 {{resultData.length}}条收藏记录
               </span>
-              <span  v-if="list_type!='reserve'">
+              <span  v-if="list_type=='reserve'">
                  {{resultData.length}}条预定记录
               </span>
-              <span  v-if="list_type!='history'">
+              <span  v-if="list_type=='history'">
                  {{resultData.length}}条借阅历史记录
               </span>
 
-              <span  v-if="list_type!='reading'">
-                 {{resultData.length}}条借阅历史记录
+              <span  v-if="list_type=='reading'">
+                 {{resultData.length}}条已借书籍记录
               </span>
 
-              <Page :total="40" size="small" show-total page-size="5" @on-change="changepage"></Page>
+              <Page :total="40" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
             </div>
             <div class="book-item" v-for="data in resultData">
               <div class="book-img"><div class="bottom-content"><img :src="imgUrl+'9780001821743.jpg'"></div></div>
@@ -62,7 +62,7 @@
                   <div class="left-info" v-if="list_type!='reserve' && list_type!='reading'">
                     <Button type="info" >预定</Button>
                   </div>
-                  <div class="right-info" v-if="list_type=='search' || list_type=='reserve' || list_type=='reading'">
+                  <div class="right-info" v-if="list_type=='search' || list_type=='advanceSearch' || list_type=='reserve' || list_type=='reading'">
                     <Button type="success" >收藏</Button>
                   </div>
                   <div class="right-info" v-if="list_type=='collect'">
@@ -89,19 +89,24 @@ import './book-list.scss'
     export default{
         props: {
           list_type: {
-            default: ''
+            default: '',
           },
         },
         data(){
             return {
                 resultData:SEARCHRESULT,
                 imgUrl:IMGURL,
+                pageSize:5,
             }
         },
         components: {},
         created(){
-            var vm = this;
+          var vm = this;
+          console.log(vm.list_type)
+          /*switch(list_type){
+            case '':
 
+          }*/
         },
         mounted(){
         },

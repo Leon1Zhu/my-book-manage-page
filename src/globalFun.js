@@ -18,14 +18,6 @@ global.isNull =function (val){
   if(val===null || val === undefined || val ==="")return true;
   else return false;
 }
-global.setLoginStatus = function(loginVaule){
-  if(typeof loginVaule == "boolean"){
-    global.ISLOGIN = loginVaule;
-  }
-}
-global.getLoginStatus=function(){
-  return ISLOGIN;
-}
 axios.interceptors.request.use(
   config => {
     if(config.url.indexOf("/api")>-1 || config.url.indexOf("/book")>-1){

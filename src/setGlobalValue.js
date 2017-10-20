@@ -57,3 +57,29 @@ global.unSetSearchInfo = function(){
   sessionStorage.setItem("SEARCHINFO",null);
   sessionStorage.setItem("LISTTYPE",null);
 }
+
+global.setLoginStatus = function(loginVaule){
+  if(typeof loginVaule == "boolean"){
+    global.ISLOGIN = loginVaule;
+    sessionStorage.setItem("LOGINSTATUS",loginVaule);
+  }
+}
+global.getLoginStatus=function(){
+  return ISLOGIN;
+}
+
+
+global.setUserInfo = function(userinfo){
+  global.USERINFO = userinfo
+  sessionStorage.setItem("USERINFO",JSON.stringify(userinfo));
+}
+
+
+global.LoginOut = function(){
+  global.USERINFO = null;
+  global.LOGINSTATUS = false;
+  sessionStorage.setItem("USERINFO",null);
+  sessionStorage.setItem("LOGINSTATUS", false);
+}
+
+

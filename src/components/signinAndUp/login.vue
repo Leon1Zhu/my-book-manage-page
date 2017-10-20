@@ -2,7 +2,7 @@
   <div id="main" class="main">
     <div class="top">
       <div class="icon">
-        <h1 class='stroke'>美原图书馆</h1>
+       <img style="width:250px;height: 50px;" src="../../assets/logo.png">
       </div>
     </div>
     <div class="center">
@@ -14,7 +14,7 @@
         <div id="inputvalue">
           <div class="inputgroup">
             <Icon class="ivu-icon ivu-icon-person" style="margin-left: 18%;margin-top: 8%;" size="25"></Icon>
-            <Input type="text" class="inputtext" v-model="username" id="username" placeholder="邮箱/手机号"/>
+            <Input type="text" class="inputtext" v-model="username" id="username" placeholder="手机号"/>
             <br>
             <Icon class="ivu-icon ivu-icon-locked" style="margin-left: 18%;margin-top: 8%;" size="25"></Icon>
             <Input type="password" style="margin-bottom:5%;" class="inputtext" v-model="password" id="password"
@@ -24,7 +24,7 @@
           <div class="wjmm">
             <router-link to="/xgpassword/first"  style="margin-left: 62%;">忘记密码</router-link>
           </div>
-          <Button v-on:click="login" class="btn1" id="dl" style="width:180px; background: #BADCDB; color: white; font-size:15px;">登录
+          <Button @click="login" class="btn1" id="dl" style="width:180px; background: #BADCDB; color: white; font-size:15px;">登录
           </Button>
           <div class="registmdl">
             <img class="jt" src="../../assets/img/redarrow.jpg"/>
@@ -154,7 +154,7 @@
   }
 
   .jt {
-    margin-left: 35%;
+    margin-left: 33%;
     float: left;
     width: 25px;
     height: 25px;
@@ -169,6 +169,7 @@
 </style>
 
 <script>
+  import userApi from '../../api/userService'
   export default {
     name: 'login',
     data () {
@@ -179,11 +180,19 @@
     },
     methods: {
       login: function () {
-        if (this.password === '111' && this.username === '222') {
-          alert('登录成功')
-        } else {
-          alert('登录失败')
-        }
+          var that = this;
+          if(that.username=='' || that.password==''){
+            this.$Notice.warning(setNoticConfig("用户名或密码不能为空！",null,null,"error"));
+            return;
+          }
+        userApi.login(that.username, that.password).then((response)=>{
+          response.data.password=null;
+          setLoginStatus(true);
+          setUserInfo( response.data)
+          that.$router.push( {path:'/index'} )
+        }).catch((response)=>{
+          this.$Notice.error(setNoticConfig(response.message,null,null,"error"));
+        })
       }
     }
   }

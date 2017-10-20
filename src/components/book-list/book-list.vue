@@ -20,7 +20,7 @@
                  {{total}}条已借书籍记录
               </span>-->
 
-              <Page :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
+              <Page  v-if="list_type==''" :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
             </div>
             <div class="book-item" v-for="data in content">
               <div class="book-img"><div class="bottom-content"><img :src="imgUrl+'9780001821743.jpg'"></div></div>
@@ -132,8 +132,8 @@ import bookManageApi from '../../api/bookManage'
             switch(type){
               case 'advancedSearch' :  that.advancedSearch();break;
               case 'search' :  that.searchBook();break;
-              case 'collect' :  that.advancedSearch();break;
-              case 'reserve' :  that.advancedSearch();break;
+              case 'collect' :  that.getSaveInfo();break;
+              case 'reserve' :  that.getOrderBookList();break;
               case 'history' :  that.advancedSearch();break;
               case 'reading' :  that.advancedSearch();break;
 
@@ -155,7 +155,6 @@ import bookManageApi from '../../api/bookManage'
 
               let type = that.$route.query.booktype
               let value = that.$route.query.searchValue ?  that.$route.query.searchValue:""
-            console.log(1111)
               bookManageApi.searchBook(type,value,that.index,that.pageSize).then((response) =>{
               that.total = parseInt(response.data.totalElements);
               that.content = response.data.content;
@@ -170,6 +169,25 @@ import bookManageApi from '../../api/bookManage'
               if(LISTTYPE == 'advancedSearch' )that.advancedSearch();
               else if(LISTTYPE == 'search')that.searchBook();
           },
+          getOrderBookList(){
+              if(isNull(USERINFO))return;
+              let orderBookInfo = USERINFO.orderInfo;
+              this.setContent(orderBookInfo,"orderBookInfo");
+          },
+          getSaveInfo(){
+              if(isNull(USERINFO))return;
+              let orderBookInfo = USERINFO.saveInfos;
+              this.setContent(orderBookInfo,"saveBookInfo");
+
+          },
+          setContent(val,obj){
+            let i =0,len = val.length;
+            this.total = len;
+            for(i;i<len;i++){
+              this.content[i] = val[i][obj];
+            }
+
+          }
         }
     }
 </script>

@@ -27,8 +27,15 @@ new Vue({
 
 
 router.beforeEach((to, from, next) => {
-  console.log(to.name)
-  if(to.name == '' || to.name==null )next();
+  if(to.name.indexOf("login") > -1 || to.name.indexOf("首页") > -1 ){
+    MAINBREADCRUMB = [{name:'首页',url:'/index',level:1}];
+    sessionStorage.setItem("MAINBREADCRUMB", JSON.stringify(MAINBREADCRUMB));
+    next();
+    return;
+  }
+  if(to.name == '' || to.name==null ){
+    next();return;
+  }
   let toArr = to.name.split('#');
   let fromArr = from.name.split('#');
   let toLeavl = toArr[1],fromLeavl = fromArr[1],toName = toArr[0],fromName = fromArr[0];

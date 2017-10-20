@@ -24,35 +24,35 @@ export default new Router({
     {
       path: '/login',
       component: login,
-      name:""
+      name:"login"
     }, {
       path: '/regist',
       component: regist,
-      name:""
+      name:"login1"
     }, {
       path: '/xgpassword',
       component: xgpassword,
-      name:"",
+      name:"login2",
       children: [
         {
           path: '/xgpassword/first',
           component: first,
-          name:""
+          name:"login3"
         },
         {
           path: '/xgpassword/second',
           component: second,
-          name:""
+          name:"login4"
         },
         {
           path: '/xgpassword/third',
           component: third,
-          name:""
+          name:"login5"
         },
         {
           path: '/xgpassword/forth',
           component: forth,
-          name:""
+          name:"login6"
         }
       ]
 

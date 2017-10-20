@@ -9,6 +9,7 @@ import './common/css/style.scss'
 import './common/css/iconFont.css'
 import './common/css/function.scss'
 import './globalFun'
+import './setGlobalValue'
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import './common/css/swiper-3.4.2.min.css'
@@ -26,7 +27,8 @@ new Vue({
 
 
 router.beforeEach((to, from, next) => {
-  if(to.name == '' )next();
+  console.log(to.name)
+  if(to.name == '' || to.name==null )next();
   let toArr = to.name.split('#');
   let fromArr = from.name.split('#');
   let toLeavl = toArr[1],fromLeavl = fromArr[1],toName = toArr[0],fromName = fromArr[0];

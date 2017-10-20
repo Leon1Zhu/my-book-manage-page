@@ -8,9 +8,12 @@ global.TOKENTIME=new Date();
 global.TOKEN="";
 global.ISLOGIN=false;
 global.IMGURL='http://106.15.90.228:8090/dummyPath/'
-//搜索看结果
-global.SEARCHRESULT=[{},{},{},{}];
+global.BASICSEARCH= JSON.parse(sessionStorage.getItem("BASICSEARCH")) ?  JSON.parse(sessionStorage.getItem("BASICSEARCH")): null;
+global.ARSEARCH=JSON.parse(sessionStorage.getItem("ARSEARCH")) ?  JSON.parse(sessionStorage.getItem("ARSEARCH")): null;;
+global.LLSEARCH=JSON.parse(sessionStorage.getItem("LLSEARCH")) ?  JSON.parse(sessionStorage.getItem("LLSEARCH")): null;;
+global.LISTTYPE=sessionStorage.getItem("LISTTYPE") ? sessionStorage.getItem("LISTTYPE") : null;
 
+global.SEARCHINFO = sessionStorage.getItem("SEARCHINFO") ? sessionStorage.getItem("SEARCHINFO") : null;
 
 if(process.env.NODE_ENV=="production"){
   global.tokenUrl="http://119.23.40.120:9091/getToken"

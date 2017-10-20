@@ -14,14 +14,6 @@ global.setNoticConfig= function(title,desc,duration,key,onClose){
   return cof;
 }
 
-global.setSearchResult=function(val){
-  if(isNull(val)){
-    SEARCHRESULT ="";
-  }else{
-    SEARCHRESULT =val;
-  }
-}
-
 global.isNull =function (val){
   if(val===null || val === undefined || val ==="")return true;
   else return false;
@@ -46,6 +38,7 @@ axios.interceptors.request.use(
         console.log(config)
       }
     }
+    console.log(config)
     return config;
   },
   err => {
@@ -82,6 +75,7 @@ global.refushToken=function(){
       console.log("尚未过时，尚能使用")
     }
 }
+
 /*global.setLoginInfo=function(logininfo,rememberMe){
     USERINFO = logininfo
     ISLOGIN=true;

@@ -71,7 +71,7 @@
           </Tabs>
           <div  class="basics-search-button-group">
             <div class="search-btn">
-              <Button type="info" @click="handleSpinCustom">搜索</Button>
+              <Button type="info" @click="getSearchInfo">搜索</Button>
             </div>
             <div class="empty-btn">
               <Button type="info" @click="emptyBasic()">清空</Button>
@@ -127,51 +127,28 @@ import  searchApi from '../../api/advancedSearch'
         methods: {
           emptyBasic(){
              this.basicSearch={
-               type:null,
-               title:null,
-               author:null,
-               ISBN:null,
-               publisher:null,
+               type:'',
+               title:'',
+               author:'',
+               ISBN:'',
+               publisher:'',
              }
             this.ARSearch={
-              inLev:null,
-              ABLev:null,
-              ABLevT:null,
-              ARP:null,
-              ARPT:null,
-              QN:null,
-              QT:null,
+              inLev:'',
+              ABLev:'',
+              ABLevT:'',
+              ARP:'',
+              ARPT:'',
+              QN:'',
+              QT:'',
             }
             this.LLSearch={
-              LLV:null,
-              LLVT:null,
+              LLV:'',
+              LLVT:'',
             }
           },
-          handleSpinCustom () {
-            this.$Spin.show({
-              render: (h) => {
-                return h('div', [
-                  h('Icon', {
-                    'class': 'demo-spin-icon-load',
-                    props: {
-                      type: 'load-c',
-                      size: 28
-                    }
-                  }),
-                  h('div', '拼命加载中')
-                ])
-              }
-            });
-
-            this.getSearchInfo();
-          },
           getSearchInfo(){
-            /*searchApi.advancedSearch().then((response)=>{
-
-            }).catch((response)=>{
-              setNoticConfig(response.message,null,null,"error")
-            })*/
-            this.$Spin.hide();
+             setAdvancedSearchInfo(this.basicSearch,this.ARSearch,this.LLSearch)
             this.$router.push({path: '/index/book_list'})
 
 

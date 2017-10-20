@@ -3,11 +3,11 @@
       <div class="header-bar">
           <div class="container_12">
               <div class="grid_6" v-if="!loginStatus">
-                <div class="login-content">
+                <div class="login-content" @click="login">
                   <i class="iconfont icon-yaochi"></i>
                   <span class="book-login login-in">&nbsp;登&nbsp;陆&nbsp;</span>
                 </div>
-                <div class="login-content">
+                <div class="login-content" @click="regist">
                   <i  style="margin-left: 4px;" class="iconfont icon-Ankerwebicon-"></i>
                  <span class="book-login login-up">&nbsp;注&nbsp;册&nbsp;</span>
                 </div>
@@ -50,7 +50,7 @@
                      <Option value="ar">AR书籍</Option>
                      <Option value="lexile">Lexile书籍</Option>
                    </Select>
-                   <Button slot="append" icon="ios-search"></Button>
+                   <Button @click="searchList" slot="append" icon="ios-search"></Button>
                    </Input>
                </div>
                <router-link :to="{ path: '/index/advancedsearch' }" > <div class="advanced-search animateClass" >高级搜索</div></router-link>
@@ -135,6 +135,17 @@ import personCenter from '../personalCenter/personalCenter.vue'
               this.isActive = !this.isActive
               let statu = this.isActive ? "hidden":"auto";
             document.getElementById("app").style.overflow=statu;
+          },
+          searchList(){
+              let that=this;
+              setBookListType("search")
+              that.$router.push({ path: '/index/book_list', query: { booktype: that.searchBookSelect , searchValue: that.searchBookInput}})
+          },
+          login(){
+            this.$router.push({ path: '/login'})
+          },
+          regist(){
+            this.$router.push({ path:'/regist'})
           }
         },
         computed:{

@@ -3,9 +3,12 @@
         <div class="">
           <div class=" book-list-content">
             <div class="result-size">
-              <span >
+              <span  v-if="total>0">
                 {{total}}条结果
               </span>
+              <div class="no-book-class"  v-if="total==0">
+                暂无对应数据结果!
+              </div>
              <!-- <span  v-if="list_type=='collect'">
                 {{total}}条收藏记录
               </span>
@@ -128,16 +131,16 @@ import bookManageApi from '../../api/bookManage'
               }
             });
             let type = that.list_type == '' ? LISTTYPE :that.list_type;
-            console.log(type)
             switch(type){
               case 'advancedSearch' :  that.advancedSearch();break;
               case 'search' :  that.searchBook();break;
               case 'collect' :  that.getSaveInfo();break;
               case 'reserve' :  that.getOrderBookList();break;
-              case 'history' :  that.advancedSearch();break;
-              case 'reading' :  that.advancedSearch();break;
+              case 'history' :  that.getHARBook('historyBook');break;
+              case 'reading' :  that.getHARBook('readingBook');break;
 
             }
+            this.$Spin.hide();
           },
           advancedSearch(){
               var that = this;
@@ -148,7 +151,6 @@ import bookManageApi from '../../api/bookManage'
               }).catch((response)=>{
                 that.$Notice.error(setNoticConfig("获取书籍列表出错！",null,null,"error"));
               })
-            this.$Spin.hide();
           },
           searchBook(){
               var that = this;
@@ -161,7 +163,6 @@ import bookManageApi from '../../api/bookManage'
               }).catch((response)=>{
                 that.$Notice.error(setNoticConfig("获取书籍列表出错！",null,null,"error"));
               })
-            this.$Spin.hide();
           },
           changepage(val){
               let that = this;
@@ -186,7 +187,12 @@ import bookManageApi from '../../api/bookManage'
             for(i;i<len;i++){
               this.content[i] = val[i][obj];
             }
-
+          },
+          getHARBook(val){
+              if(!isNull(RAHBOOK)){
+                  this.content = RAHBOOK[''+val+'']
+                  this.total =  this.content.length
+              }
           }
         }
     }

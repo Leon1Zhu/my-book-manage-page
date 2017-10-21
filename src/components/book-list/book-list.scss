@@ -5,7 +5,20 @@
     -moz-border-radius: $radius;
     border-radius: $radius;;
   }
+  .ivu-page.mini {
+    float: right;
+    position: absolute;
+    top: 5px;
+    right: 0px;
+  }
+  .no-book-class{
+    text-align: center;
+    color: #ccc;
+    font-size: 18px;
+    font-weight: 700;
+  }
   .book-list-content{
+    position: relative;
     @include my-border-radius(3px);
     border:1px solid #ccc;
     padding:6px 10px;
@@ -77,9 +90,6 @@
     .book-item:last-child{
       border-bottom:1px solid #ccc;
     }
-  }
-  .ivu-page.mini{
-    float: right;
   }
   .ivu-page-item,.ivu-page-next, .ivu-page-prev{
     background: #f1f1f1;

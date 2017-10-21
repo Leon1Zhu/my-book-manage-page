@@ -92,7 +92,7 @@ import  searchApi from '../../api/advancedSearch'
               bookType:[{value:1,label:"精装版本"},{value:2,label:"平装版本"},{value:3,label:"纸版书"},],
               quizType:[{value:1,label:"Any Quiz Type"},{value:2,label:"Reading Practice"},{value:3,label:"Recorded Voice"},{value:4,label:"Vocabulary Practice"},{value:5,label:"Literacy Skills"}],
               interestLevel:[{value:1,label:"所有等级"},{value:2,label:"Lower Grades(LG K-3)"},{value:3,label:"Middle Grades(MG 4-8)"},{value:4,label:"Middle Grades Plus(MG+ 6 and up)"},{value:5,label:"Upper Grades(UG 9-12)"}],
-              sort:[{value:1,label:"作者"},{value:2,label:"蓝思等级"},{value:3,label:"BL等级"},{value:4,label:"兴趣等级"},{value:5,label:"阅读分值"},{value:6,label:"页数"}],
+              sort:[{value:'author',label:"作者"},{value:'lexile_value',label:"蓝思等级"},{value:'bl',label:"BL等级"},{value:'il',label:"兴趣等级"},{value:'arpoints',label:"阅读分值"},{value:'pages',label:"页数"}],
               basicSearch:{
                   type:null,
                   title:null,

@@ -645,8 +645,46 @@
           }
         }, 1000)
       },
-      regist(){
+      regist: function () {
+        if (this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
+          || this.detailaddress1.length === 0 || this.mail.length === 0 || this.username.length === 0 || this.password1.length === 0
+          || this.repassword.length === 0 || this.phone.length === 0 || this.inputyzm.length === 0) {
+          this.$Message.error('请检查以上数据是否留空')
+        } else {
+          let date = ''
+          if (this.birthdate !== 0) {
+            let y = this.birthdate.getFullYear()
+            let m = this.birthdate.getMonth() + 1
+            m = m < 10 ? ('0' + m) : m
+            let d = this.birthdate.getDate()
+            d = d < 10 ? ('0' + d) : d
+            date = y + '-' + m + '-' + d
+          }
+          if (/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.name) === true
+            && /^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.contact)
+            && /^[a-z0-9]+@\w+\.(com|cn)$/.test(this.mail)
+            && this.username.length > 3 && this.username.length < 13 && /^[0-9]*$/.test(this.username) === false
+            && this.password1.length > 5 && this.password1.length < 21 && /^1[34578]\d{9}$/.test(this.phone) === true
+            && this.inputyzm === this.yzm4) {
+            let regdata = {
+              phoneNo: this.phone,
+              password: this.password1,
+              rName: this.name,
+              rSex: this.sex,
+              rBirthday: date,
+              name: this.contact,
+              address: this.value1 + this.detailaddress1,
+              email: this.mail,
+              nickName: this.username
+            }
+            /*
+             这里直接把数据传数据库
+             */
 
+          } else {
+            this.$Message.error('请检查以上数据是否填写正确')
+          }
+        }
       }
 
     }

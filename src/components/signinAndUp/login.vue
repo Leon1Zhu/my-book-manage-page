@@ -186,9 +186,10 @@
             return;
           }
         userApi.login(that.username, that.password).then((response)=>{
-          response.data.password=null;
+          response.data.userInfo.password=null;
           setLoginStatus(true);
-          setUserInfo( response.data)
+          setUserInfo( response.data.userInfo)
+          setRAHBook(response.data.bookInfo)
           that.$router.push( {path:'/index'} )
         }).catch((response)=>{
           this.$Notice.error(setNoticConfig(response.message,null,null,"error"));

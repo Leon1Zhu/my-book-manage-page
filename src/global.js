@@ -10,6 +10,8 @@ global.TOKEN="";*/
 global.ISLOGIN=sessionStorage.getItem("LOGINSTATUS") ? sessionStorage.getItem("LOGINSTATUS") : false;
 //登陆用户信息
 global.USERINFO=sessionStorage.getItem("LOGINSTATUS") ?  JSON.parse(sessionStorage.getItem("USERINFO")) : null;
+//登陆用户信息
+global.RAHBOOK=sessionStorage.getItem("LOGINSTATUS") ?  JSON.parse(sessionStorage.getItem("RAHBOOK")) : null;
 //图书封面url
 global.IMGURL='http://106.15.90.228:8090/dummyPath/'
 //高级搜索的基础信息搜索

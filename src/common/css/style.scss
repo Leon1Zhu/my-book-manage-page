@@ -23,7 +23,11 @@ html,body,#app{
     width:976px
   }
 }
-.ivu-select-item-selected, .ivu-select-item-selected:hover {
+.ivu-select-visible .ivu-select-selection{
+  border-color: #6a4f90;
+  box-shadow: 0 0 0 2px rgba(95,70,133,.2);
+}
+.ivu-select-item-selected, .ivu-select-item-selected:hover,ivu-select-selection:hover,ivu-select-selection:hover {
   background: #6a4f90;
 }
 .ivu-input:focus, .ivu-select-selection:focus{

@@ -75,11 +75,18 @@ global.setUserInfo = function(userinfo){
 }
 
 
+global.setRAHBook = function(val){
+  global.RAHBOOK = val
+  sessionStorage.setItem("RAHBOOK",JSON.stringify(val));
+}
+
+
 global.LoginOut = function(){
   global.USERINFO = null;
   global.LOGINSTATUS = false;
   sessionStorage.setItem("USERINFO",null);
   sessionStorage.setItem("LOGINSTATUS", false);
+  sessionStorage.setItem("RAHBOOK", null);
 }
 
 

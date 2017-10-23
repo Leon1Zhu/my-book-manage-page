@@ -9,7 +9,7 @@
                     <img :src="imgurl+'9780002251785.jpg'">
                     <div class="book-info book-name">{{book.name}}</div>
                     <div class="book-info book-publish">{{book.author}}</div>
-                    <div class="book-info"><Button type="info" size="small" >预定</Button> <Button type="success" size="small" @click="collectBook(book.id)">收藏</Button></div>
+                    <div class="book-info"><Button type="info" size="small"  @click="reserveBook(book)">预定</Button> <Button type="success" size="small" @click="collectBook(book)">收藏</Button></div>
                   </div>
                 </div>
               </div>
@@ -35,13 +35,12 @@ import bookManageApi from '../../api/bookManage'
         mounted(){
         },
         methods: {
-          collectBook(bookId){
-              bookManageApi.collectBook(bookId).then((response)=>{
-
-              }).catch((response)=>{
-
-              })
-          }
+          reserveBook(data){
+            this.$reserveBook(data);
+          },
+          collectBook(data){
+            this.$collectBook(data);
+          },
         }
     }
 </script>

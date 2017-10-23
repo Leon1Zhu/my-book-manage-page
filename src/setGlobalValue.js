@@ -118,6 +118,14 @@ global.removeSaveBook = function(val){
   }
   sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
 }
+global.isLoginFun=function(){
+  if(!ISLOGIN){
+    that.$Notice.error(setNoticConfig("请先登录再进行该操作！",null,null,"error"));
+    return false;
+  }else{
+    return true;
+  }
+}
 
 
 global.removeOrderBook = function(val){

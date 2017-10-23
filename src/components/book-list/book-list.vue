@@ -202,40 +202,14 @@ import bookManageApi from '../../api/bookManage'
               }
           },
           reserveBook(data){
-            let that = this;
-            if(!that.isLoginFun())return;
-            this.$Modal.confirm({
-              title: '书记预定确认',
-              content: '确认预定书籍['+data.name+']吗？',
-              onOk: () => {
-                 bookManageApi.reserveBook(USERINFO.id,data.id,that.booklimit).then((response)=>{
-                   orderNewBook(response.data);
-                   that.$Notice.success(setNoticConfig('预定成功！',null,null,"success"));
-                 }).catch((response)=>{
-                   that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
-                 })
-              }
-            });
+            this.$reserveBook(data)
           },
           collectBook(data){
-              let that = this;
-            if(!that.isLoginFun())return;
-            this.$Modal.confirm({
-              title: '书记收藏确认',
-              content: '确认收藏书籍['+data.name+']吗？',
-              onOk: () => {
-                bookManageApi.collectBook(USERINFO.id,data.id).then((response)=>{
-                  saveNewBook(response.data);
-                  that.$Notice.success(setNoticConfig('收藏成功！',null,null,"success"));
-                }).catch((response)=>{
-                  that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
-                })
-              }
-            });
+              this.$collectBook(data)
           },
           deletesave(data){
             let that = this;
-            if(!that.isLoginFun())return;
+            if(!isLoginFun())return;
             this.$Modal.confirm({
               title: '书记收藏删除确认',
               content: '确认删除对于书籍['+data.name+']的收藏吗？',
@@ -279,14 +253,6 @@ import bookManageApi from '../../api/bookManage'
               }
               return arr;
           },
-          isLoginFun(){
-            if(!ISLOGIN){
-              that.$Notice.error(setNoticConfig("请先登录再进行该操作！",null,null,"error"));
-              return false;
-            }else{
-              return true;
-            }
-          }
         }
     }
 </script>

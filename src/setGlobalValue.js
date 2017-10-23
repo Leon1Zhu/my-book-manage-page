@@ -89,4 +89,44 @@ global.LoginOut = function(){
   sessionStorage.setItem("RAHBOOK", null);
 }
 
+global.orderNewBook = function(val){
+  USERINFO.orderInfo.push(val);
+  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+}
+
+global.saveNewBook = function(val){
+  USERINFO.saveInfos.push(val);
+  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+}
+global.removeSaveBook = function(val){
+  let saveList =  USERINFO.saveInfos
+  for(let i =0;i< saveList.length;i++){
+    if(saveList[i].id = val.id){
+      USERINFO.saveInfos.splice(i,1);
+    }
+  }
+  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+}
+
+
+global.removeSaveBook = function(val){
+  let saveList =  USERINFO.saveInfos
+  for(let i =0;i< saveList.length;i++){
+    if(saveList[i].saveBookInfo.id == val){
+      USERINFO.saveInfos.splice(i,1);
+    }
+  }
+  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+}
+
+
+global.removeOrderBook = function(val){
+  for(let i =0;i< USERINFO.orderInfo.length;i++){
+    if(USERINFO.orderInfo[i].orderBookInfo.id == val){
+      USERINFO.orderInfo.splice(i,1);
+    }
+  }
+  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+}
+
 

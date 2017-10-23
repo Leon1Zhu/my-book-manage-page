@@ -23,13 +23,13 @@ axios.interceptors.request.use(
     if(config.url.indexOf("/api")>-1 || config.url.indexOf("/book")>-1){
       config.url = SERVICEURL+config.url;
     }
-    if(config.url.indexOf("/api")>-1){
+   /* if(config.url.indexOf("/api")>-1){
       if (TOKEN) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
         config.headers.Authorization = TOKEN;
         console.log("发送请求!")
         console.log(config)
       }
-    }
+    }*/
     console.log(config)
     return config;
   },

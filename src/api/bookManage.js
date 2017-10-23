@@ -8,14 +8,44 @@ let loginBook = '/api';
 let getRecommendBook =  bookIndex+'/getRecommendBook'
 let advancedSearch = bookIndex+'/advancedSearch'
 let searchBook = bookIndex+'/searchBook'
+let reserveBook = loginBook+'/reserveBook'
+let collectBook = loginBook+'/collectBook'
+let deleteSaveBook = loginBook+'/deleteSaveBook'
+let deleteOrderBook = loginBook+'/deleteOrderBook'
 export default {
+  deleteSaveBook(readerId,bookId){
+    let params={
+      readerId:readerId,
+      bookId:bookId,
+    }
+    return api.delete(deleteSaveBook,params)
+  },
+  deleteOrderBook(readerId,bookId){
+    let params={
+      readerId:readerId,
+      bookId:bookId,
+    }
+    return api.delete(deleteOrderBook,params)
+  },
   getRecommendBook : function(){
     return api.get(getRecommendBook,{})
   },
-  collectBook : function(){
-    if(ISLOGIN){
-      return Promise.reject({message:"请先登录再进行收藏操作！"})
+  reserveBook : function(readerId,bookId,limit){
+    let params={
+      readerId:readerId,
+      bookId:bookId,
+      limit:limit
     }
+    return api.post(reserveBook,{},params)
+
+  },
+  collectBook : function(readerId,bookId){
+
+    let params={
+      readerId:readerId,
+      bookId:bookId,
+    }
+    return api.post(collectBook,{},params)
   },
   advancedSearch : function(index,length){
       let params={

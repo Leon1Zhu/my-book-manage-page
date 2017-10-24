@@ -36,10 +36,14 @@ import bookManageApi from '../../api/bookManage'
         },
         methods: {
           reserveBook(data){
-            this.$reserveBook(data);
+            this.$reserveBook(data)/*.then((response)=>{
+              this.$emit('reservBook',response)
+            })*/
           },
           collectBook(data){
-            this.$collectBook(data);
+            this.$collectBook(data)/*.then((response)=>{
+              this.$emit('collectBook',response)
+            })*/
           },
         }
     }

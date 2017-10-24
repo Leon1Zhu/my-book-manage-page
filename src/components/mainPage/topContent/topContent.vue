@@ -50,7 +50,7 @@
                      <Option value="ar">AR书籍</Option>
                      <Option value="lexile">Lexile书籍</Option>
                    </Select>
-                   <Button @click="searchList" slot="append" icon="ios-search"></Button>
+                   <Button  @click="searchList" slot="append" icon="ios-search"></Button>
                    </Input>
                </div>
                <router-link :to="{ path: '/index/advancedsearch' }" > <div class="advanced-search animateClass" >高级搜索</div></router-link>
@@ -106,7 +106,7 @@ import personCenter from '../personalCenter/personalCenter.vue'
         data(){
             return {
                 searchBookSelect:'all',
-                searchBookInput:null,
+                searchBookInput:"",
                 value:6791002,
                 mainBreadcrumb:MAINBREADCRUMB,
                 liActive:[true,false,false,false,false,false,false,false,false],

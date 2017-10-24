@@ -69,10 +69,28 @@ global.getLoginStatus=function(){
 }
 
 
-global.setUserInfo = function(userinfo){
+global.setUserInfo = function(userinfo,orderInfo,saveInfo){
   global.USERINFO = userinfo
+  global.ORDERINFO = [{id:-1}]
+  for(let i=0;i<orderInfo.length;i++){
+    global.ORDERINFO.push(orderInfo[i])
+  }
+  global.SAVEINFO = [{id:-1}]
+  for(let i=0;i<saveInfo.length;i++){
+    global.SAVEINFO.push(saveInfo[i])
+  }
+  global.USERINFO.saveInfos = null;
+  global.USERINFO.orderInfo = null;
   sessionStorage.setItem("USERINFO",JSON.stringify(userinfo));
+  if(!isNull(orderInfo)){
+    sessionStorage.setItem("ORDERINFO",JSON.stringify(orderInfo));
+  }
+  if(!isNull(saveInfo)){
+    sessionStorage.setItem("SAVEINFO",JSON.stringify(saveInfo));
+  }
+
 }
+
 
 
 global.setRAHBook = function(val){
@@ -90,34 +108,38 @@ global.LoginOut = function(){
 }
 
 global.orderNewBook = function(val){
-  USERINFO.orderInfo.push(val);
-  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+  if(isNull(ORDERINFO))ORDERINFO = [];
+  let temp = ORDERINFO;
+  temp.push(val);
+  ORDERINFO = temp;
+  console.log(ORDERINFO)
+  sessionStorage.setItem("ORDERINFO",JSON.stringify(ORDERINFO));
 }
 
 global.saveNewBook = function(val){
-  USERINFO.saveInfos.push(val);
-  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+  if(isNull(SAVEINFO))SAVEINFO = [];
+  var temp = SAVEINFO
+  temp.push(val)
+  SAVEINFO = temp
+  sessionStorage.setItem("SAVEINFO",JSON.stringify(SAVEINFO));
 }
 global.removeSaveBook = function(val){
-  let saveList =  USERINFO.saveInfos
-  for(let i =0;i< saveList.length;i++){
-    if(saveList[i].id = val.id){
-      USERINFO.saveInfos.splice(i,1);
-    }
-  }
-  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
-}
-
-
-global.removeSaveBook = function(val){
-  let saveList =  USERINFO.saveInfos
-  for(let i =0;i< saveList.length;i++){
+  let saveList =  SAVEINFO
+  for(let i =1;i< saveList.length;i++){
     if(saveList[i].saveBookInfo.id == val){
-      USERINFO.saveInfos.splice(i,1);
+      SAVEINFO.splice(i--,1);
     }
   }
-  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+  console.log(SAVEINFO)
+  if(SAVEINFO.length==0){
+    sessionStorage.removeItem("SAVEINFO")
+  }else{
+    sessionStorage.setItem("SAVEINFO",JSON.stringify(SAVEINFO) );
+  }
+
 }
+
+
 global.isLoginFun=function(){
   if(!ISLOGIN){
     that.$Notice.error(setNoticConfig("请先登录再进行该操作！",null,null,"error"));
@@ -129,12 +151,20 @@ global.isLoginFun=function(){
 
 
 global.removeOrderBook = function(val){
-  for(let i =0;i< USERINFO.orderInfo.length;i++){
-    if(USERINFO.orderInfo[i].orderBookInfo.id == val){
-      USERINFO.orderInfo.splice(i,1);
+  var temp = ORDERINFO;
+  console.log(temp)
+  for(let i =1;i< temp.length;i++){
+    if(temp[i].orderBookInfo.id == val){
+      temp.splice(i--,1);
     }
   }
-  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+  global.ORDERINFO = temp;
+  console.log(ORDERINFO)
+  if(ORDERINFO.length==0){
+    sessionStorage.removeItem("ORDERINFO")
+  }else{
+    sessionStorage.setItem("ORDERINFO",JSON.stringify(ORDERINFO) );
+  }
 }
 
 

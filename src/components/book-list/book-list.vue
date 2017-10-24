@@ -3,88 +3,34 @@
         <div class="">
           <div class=" book-list-content">
             <div class="result-size">
-              <span  v-if="total>0">
+              <span  v-if="total>0 && list_type!='collect' && list_type!='reserve' ">
                 {{total}}条结果
               </span>
-              <div class="no-book-class"  v-if="total==0">
+              <span  v-if="list_type=='collect' && saveInfo.length >1">
+                {{saveInfo.length-1}}条结果
+              </span>
+              <span  v-if="list_type=='reserve' && orderInfo.length >1">
+                {{orderInfo.length-1}}条结果
+              </span>
+              <div class="no-book-class"  v-if="total==0 && list_type!='collect' && list_type!='reserve' ">
                 暂无对应数据结果!
               </div>
-             <!-- <span  v-if="list_type=='collect'">
-                {{total}}条收藏记录
-              </span>
-              <span  v-if="list_type=='reserve'">
-                 {{total}}条预定记录
-              </span>
-              <span  v-if="list_type=='history'">
-                 {{total}}条借阅历史记录
-              </span>
-
-              <span  v-if="list_type=='reading'">
-                 {{total}}条已借书籍记录
-              </span>-->
-
+              <div  class="no-book-class" v-if="list_type=='collect' && saveInfo.length==1">
+                暂无对应数据结果!
+              </div>
+              <div class="no-book-class" v-if="list_type=='reserve' && orderInfo.length==1">
+                暂无对应数据结果!
+              </div>
               <Page  v-if="list_type==''" :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
             </div>
-            <div class="book-item" v-for="data in content">
-              <div class="book-img"><div class="bottom-content"><img :src="imgUrl+'9780001821743.jpg'"></div></div>
-
-              <div class="book-introduce-content">
-                <div class="book-name">{{data.name | filterNull}}</div>
-                <div class="book-item-info">
-                    <div class="left-info">作者:{{data.author  | filterNull}}</div>
-                    <div class="right-info">BL值:{{data.bl  | filterNull}}</div>
-                  </div>
-                  <div class="book-item-info">
-                    <div class="left-info">ISBN13:{{data.iSBN13  | filterNull}}</div>
-                    <div class="right-info">兴趣值:{{data.il  | filterNull}}</div>
-                  </div>
-                  <div class="book-item-info">
-                    <div class="left-info">ISBN10:{{data.iSBN10  | filterNull}}</div>
-                    <div class="right-info">积分点:{{data.arpoints  | filterNull}}</div>
-                  </div>
-                  <div class="book-item-info">
-                    <div class="left-info">类型:{{data.docType  | filterNull}}</div>
-                    <div class="right-info">评分值:{{data.arrating  | filterNull}}</div>
-                  </div>
-                  <div class="book-item-info">
-                    <div class="left-info">页数:{{data.pages  | filterNull}}</div>
-                    <div class="right-info">测试号:{{data.quizNo  | filterNull}}</div>
-                  </div>
-                  <div class="book-item-info">
-                    <div class="left-info">版本:{{data.bookType  | filterNull}}</div>
-                    <div class="right-info">蓝思值:{{data.lexileCombined  | filterNull}}</div>
-                  </div>
-                  <div class="book-item-info">
-                    <div class="left-info">重量:{{data.weight | filterNull}}</div>
-                    <div class="right-info">系列IS:{{data.series  | filterNull}}</div>
-                  </div>
-                  <div class="book-item-info">
-                    <div class="left-info">尺寸:{{data.diamension  | filterNull}}</div>
-                    <div class="right-info">价格:{{data.book_type  | filterNull}}</div>
-                  </div>
-                <div class="book-item-info">
-                  <div class="left-info" v-if="list_type!='reserve' && list_type!='reading'">
-                    <Button type="info"  @click="reserveBook(data)">预定</Button>
-                  </div>
-                  <div class="right-info" v-if="(roterType=='search' || roterType=='advancedSearch' && list_type=='') || list_type=='reserve' || list_type=='reading'">
-                    <Button type="success"  @click="collectBook(data)">收藏</Button>
-                  </div>
-                  <div class="right-info" v-if="list_type=='collect'">
-                    <Button type="error" @click="deletesave(data)">删除</Button>
-                  </div>
-                  <div class="right-info" v-if="list_type=='reserve'">
-                    <Button type="error"  @click="deleteOrder(data)" >删除</Button>
-                  </div>
-                </div>
-              </div>
-              <div class="book-sign-img">
-                 <div class="sign-img-content" v-if="data.artag">
-                   <img src="../../assets/ARLogo.png">
-                 </div>
-                  <div class="sign-img-content" v-if="data.lexile_tag">
-                    <img src="../../assets/lexile.png">
-                  </div>
-              </div>
+            <div class="book-item" v-for="data in saveInfo" v-if="list_type=='collect'  && saveInfo.length>1">
+            <list_content v-if="data.id!=-1"  @reservBook="reservBookP" :data="data.saveBookInfo" :list_type="list_type"></list_content>
+          </div>
+            <div class="book-item" v-for="data in orderInfo" v-if="list_type=='reserve'  && orderInfo.length>1">
+              <list_content v-if="data.id!=-1" @collectBook="collectBookP" :data="data.orderBookInfo" :list_type="list_type"></list_content>
+            </div>
+            <div class="book-item" v-for="data in content" v-if=" list_type!='reserve' && list_type!='collect'">
+              <list_content :data="data" :list_type="list_type"></list_content>
             </div>
           </div>
         </div>
@@ -94,6 +40,7 @@
 <script>
 import './book-list.scss'
 import bookManageApi from '../../api/bookManage'
+import list_content from './list-content.vue'
     export default{
         props: {
           list_type: {
@@ -102,16 +49,28 @@ import bookManageApi from '../../api/bookManage'
         },
         data(){
             return {
-              roterType:LISTTYPE,
-              imgUrl:IMGURL,
               index:0,
               total:0,
               pageSize:5,
               content:[],
               booklimit:10,
+              saveInfo:SAVEINFO,
+              orderInfo:ORDERINFO,
             }
         },
-        components: {},
+      computed:{
+       /* saveInfo(){
+            if(this.list_type != "collect")return null;
+          return SAVEINFO;
+        },
+        orderInfo(){
+          if(this.list_type != "reserve")return null;
+          return orderInfo;
+        },*/
+      },
+        components: {
+            'list_content':list_content,
+        },
         created(){
           var vm = this;
           vm.handleSpinCustom();
@@ -119,9 +78,18 @@ import bookManageApi from '../../api/bookManage'
         mounted(){
         },
         methods: {
+          reservBookP(val){
+              if(this.orderInfo.length==0)this.orderInfo = [];
+            this.$set(this.orderInfo,this.orderInfo.length,val)
+            console.log(this.orderInfo)
+          },
+          collectBookP(val){
+            if(this.saveInfo.length == 0)this.saveInfo = [];
+            this.$set(this.saveInfo,this.saveInfo.length-1,val)
+          },
           handleSpinCustom () {
             var that =this;
-            this.$Spin.show({
+            /*this.$Spin.show({
               render: (h) => {
                 return h('div', [
                   h('Icon', {
@@ -134,20 +102,18 @@ import bookManageApi from '../../api/bookManage'
                   h('div', '拼命加载中')
                 ])
               }
-            });
+            });*/
             let type = that.list_type == '' ? LISTTYPE :that.list_type;
             switch(type){
               case 'advancedSearch' :  that.advancedSearch();break;
               case 'search' :  that.searchBook();break;
-              case 'collect' :  that.getSaveInfo();break;
-              case 'reserve' :  that.getOrderBookList();break;
+              /*case 'collect' :  that.getSaveInfo();break;*/
+             /* case 'reserve' :  that.getOrderBookList();break;*/
               case 'history' :  that.getHARBook('historyBook');break;
               case 'reading' :  that.getHARBook('readingBook');break;
 
             }
-            this.$Spin.hide();
-          },
-          watch:{
+           /* this.$Spin.hide();*/
           },
           advancedSearch(){
               var that = this;
@@ -177,14 +143,13 @@ import bookManageApi from '../../api/bookManage'
               else if(LISTTYPE == 'search')that.searchBook();
           },
           getOrderBookList(){
-              if(isNull(USERINFO))return;
-              let orderBookInfo = USERINFO.orderInfo;
+              if(isNull(this.orderInfo))return;
+              let orderBookInfo = this.orderInfo;
               this.setContent(orderBookInfo,"orderBookInfo");
           },
           getSaveInfo(){
-              if(isNull(USERINFO))return;
-            console.log( USERINFO.saveInfos)
-              let orderBookInfo = USERINFO.saveInfos;
+              if(isNull(this.saveInfo))return;
+              let orderBookInfo = this.saveInfo;
               this.setContent(orderBookInfo,"saveBookInfo");
 
           },
@@ -200,58 +165,6 @@ import bookManageApi from '../../api/bookManage'
                   this.content = RAHBOOK[''+val+'']
                   this.total =  this.content.length
               }
-          },
-          reserveBook(data){
-            this.$reserveBook(data)
-          },
-          collectBook(data){
-              this.$collectBook(data)
-          },
-          deletesave(data){
-            let that = this;
-            if(!isLoginFun())return;
-            this.$Modal.confirm({
-              title: '书记收藏删除确认',
-              content: '确认删除对于书籍['+data.name+']的收藏吗？',
-              onOk: () => {
-                bookManageApi.deleteSaveBook(USERINFO.id,data.id).then((response)=>{
-                  removeSaveBook(data.id);
-                  that.content = that.filterArry(that.content,data.id);
-                  that.total--;
-                  that.$Notice.success(setNoticConfig('删除收藏成功！',null,null,"success"));
-                }).catch((response)=>{
-                  that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
-                })
-              }
-            });
-          },
-          deleteOrder(data){
-            let that = this;
-            if(!that.isLoginFun())return;
-            this.$Modal.confirm({
-              title: '书记预定删除确认',
-              content: '确认删除对于书籍['+data.name+']的预定吗？',
-              onOk: () => {
-                bookManageApi.deleteOrderBook(USERINFO.id,data.id).then((response)=>{
-                  removeOrderBook(data.id);
-                  that.total--;
-                  that.content = that.filterArry(that.content,data.id);
-                  that.$Notice.success(setNoticConfig('删除预定成功！',null,null,"success"));
-                }).catch((response)=>{
-                  that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
-                })
-              }
-            });
-          },
-          filterArry(arr,value){
-              let len = arr.length
-              for(let i = 0 ;i<len;i++){
-                  if(arr[i].id == value){
-                      arr.splice(i,1);
-                  }
-                  break;
-              }
-              return arr;
           },
         }
     }

@@ -10,6 +10,11 @@ global.TOKEN="";*/
 global.ISLOGIN=sessionStorage.getItem("LOGINSTATUS") ? sessionStorage.getItem("LOGINSTATUS") : false;
 //登陆用户信息
 global.USERINFO=sessionStorage.getItem("LOGINSTATUS") ?  JSON.parse(sessionStorage.getItem("USERINFO")) : null;
+global.ORDERINFO = sessionStorage.getItem("ORDERINFO") ?  JSON.parse(sessionStorage.getItem("ORDERINFO")) : [{id:-1}];
+global.SAVEINFO = sessionStorage.getItem("SAVEINFO") ?  JSON.parse(sessionStorage.getItem("SAVEINFO")) : [{id:-1}];
+
+console.log(ORDERINFO)
+console.log(SAVEINFO)
 //登陆用户信息
 global.RAHBOOK=sessionStorage.getItem("LOGINSTATUS") ?  JSON.parse(sessionStorage.getItem("RAHBOOK")) : null;
 //图书封面url

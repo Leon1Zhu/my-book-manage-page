@@ -31,7 +31,11 @@ import userIfno from './userInfo/userInfo.vue'
 import book_list from '../../book-list/book-list.vue'
     export default{
         data(){
-            return {}
+            return {
+                ss:SAVEINFO
+            }
+        },
+        computed:{
         },
         components: {
             'userIfno':userIfno,
@@ -40,6 +44,8 @@ import book_list from '../../book-list/book-list.vue'
         created(){
         },
         mounted(){
+
+
         },
         methods: {
           changeVal(val){

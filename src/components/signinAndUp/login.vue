@@ -188,7 +188,7 @@
         userApi.login(that.username, that.password).then((response)=>{
           response.data.userInfo.password=null;
           setLoginStatus(true);
-          setUserInfo( response.data.userInfo)
+          setUserInfo( response.data.userInfo,response.data.userInfo.orderInfo,response.data.userInfo.saveInfos)
           setRAHBook(response.data.bookInfo)
           that.$router.push( {path:'/index'} )
         }).catch((response)=>{

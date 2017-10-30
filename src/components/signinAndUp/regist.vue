@@ -17,9 +17,8 @@
                                                                                placeholder="输入您的姓名"/>
 
         </div>
-        <div style="float:left; margin-top: 30px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"
-                                                                                                v-if="grtr3"
-                                                                                                class="lsjt"/></div>
+        <div style="float:left; margin-top: 30px ; margin-left: 20px ; text-align:center ">
+          <img src="../../assets/img/greenarrow.jpg"  v-if="grtr3"   class="lsjt"/></div>
 
         <p class="usernamewarning" v-bind:class="{namecolor:isnamecolor}">{{namewarning}}</p>
         <br>
@@ -34,9 +33,7 @@
 
 
         </div>
-        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg
-                                                                                                v-if="grtr7"
-                                                                                                class="lsjt"/></div>
+        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg" v-if="grtr7" class="lsjt"/></div>
 
         <br>
         <div class="inputzu" style="line-height: 20px">

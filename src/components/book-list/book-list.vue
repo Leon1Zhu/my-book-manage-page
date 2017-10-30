@@ -59,14 +59,11 @@ import list_content from './list-content.vue'
             }
         },
       computed:{
-       /* saveInfo(){
+       saveInfo(){
             if(this.list_type != "collect")return null;
           return SAVEINFO;
         },
-        orderInfo(){
-          if(this.list_type != "reserve")return null;
-          return orderInfo;
-        },*/
+
       },
         components: {
             'list_content':list_content,
@@ -76,6 +73,10 @@ import list_content from './list-content.vue'
           vm.handleSpinCustom();
         },
         mounted(){
+            let that = this;
+            setInterval(function(){
+                console.log(that.saveInfo)
+            },1000)
         },
         methods: {
           reservBookP(val){

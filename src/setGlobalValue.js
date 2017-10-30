@@ -142,7 +142,6 @@ global.removeSaveBook = function(val){
 
 global.isLoginFun=function(){
   if(!ISLOGIN){
-    that.$Notice.error(setNoticConfig("请先登录再进行该操作！",null,null,"error"));
     return false;
   }else{
     return true;

@@ -1,10 +1,6 @@
+@import '../../common/css/function';
 .book-list{
   margin-top:5px;
-  @mixin my-border-radius($radius){
-    -webkit-border-radius: $radius;
-    -moz-border-radius: $radius;
-    border-radius: $radius;;
-  }
   .ivu-page.mini {
     float: right;
     position: absolute;
@@ -44,7 +40,11 @@
           img {
             max-width: 140px;
             max-height: 215px;
-
+            @include animateTime(.3s,0s);
+          }
+          img:hover{
+            cursor: pointer;
+            transform: scale(1.2);
           }
         }
 

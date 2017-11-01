@@ -1,10 +1,12 @@
 <template>
   <div id="main">
     <div class="header">
-      <h1 class="tb1">美原图书馆</h1>
+      <img style="float:left;width:250px;height: 50px;margin-top: 5px;margin-left: 10px;" src="../../assets/logo.png">
       <span class="tb2">欢迎注册</span>
+      <div style="position: absolute;right: 10px;top: 10px;">
       <span class="tb3">已有账户？</span>
-      <router-link to="/login" class="tb4">前往登录</router-link>
+      <router-link to="/" class="tb4">前往登录</router-link>
+      </div>
     </div>
     <hr/>
     <form>
@@ -14,17 +16,16 @@
         <div class="inputzu" style="margin-top: 10px">
           <span class="spa" slot="prepend">姓&nbsp&nbsp&nbsp&nbsp名</span><input type="text" v-model="name" class="inp"
                                                                                v-on:blur="losename" v-on:focus="getname"
-                                                                               placeholder="输入您的姓名"/>
+                                                                               placeholder="请输入姓名"/>
 
         </div>
-        <div style="float:left; margin-top: 30px ; margin-left: 20px ; text-align:center ">
-          <img src="../../assets/img/greenarrow.jpg"  v-if="grtr3"   class="lsjt"/></div>
+        <div style="float:left; margin-top: 30px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"   v-if="grtr3" class="lsjt"/></div>
 
         <p class="usernamewarning" v-bind:class="{namecolor:isnamecolor}">{{namewarning}}</p>
         <br>
 
 
-        <div class="inputzu">
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">性&nbsp&nbsp&nbsp&nbsp别</span>
           <RadioGroup class="radiogp" v-model="sex" @on-change="sexchange">
             <Radio label="男"></Radio>
@@ -33,128 +34,112 @@
 
 
         </div>
-        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg" v-if="grtr7" class="lsjt"/></div>
+        <div style="float:left; margin-top: 18px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"  v-if="grtr7"  class="lsjt"/></div>
 
         <br>
         <div class="inputzu" style="line-height: 20px">
           <span class="spa" slot="prepend">生&nbsp&nbsp&nbsp&nbsp日</span>
-          <DatePicker v-model="birthdate" @on-change="datechange" class="dp" type="date"
+          <DatePicker format="yyyy年MM月dd" value="new data()" v-model="birthdate" @on-change="datechange" class="dp"
+                      type="date"
                       placeholder="选择日期" style="width: 150px"></DatePicker>
         </div>
 
-        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"
-                                                                                                v-if="grtr6"
-                                                                                                class="lsjt"/></div>
+        <div style="float:left; margin-top: 18px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg" v-if="grtr6"  class="lsjt"/></div>
         <br>
-        <div class="inputzu">
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">联&nbsp系&nbsp人</span><input type="text" v-model="contact" class="inp"
                                                                       v-on:blur="losecontact" v-on:focus="getcontact"
-                                                                      placeholder="输入您的联系人姓名"/>
+                                                                      placeholder="请输入联系人姓名"/>
 
         </div>
-        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"
-                                                                                                v-if="grtr4"
-                                                                                                class="lsjt"/></div>
+        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg" v-if="grtr4"  class="lsjt"/></div>
         <p class="usernamewarning" v-bind:class="{contactcolor:iscontactcolor}">{{contactwarning}}</p>
         <br>
-        <div class="inputzu">
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">联系地址</span>
-          <Cascader class="cd" :data="data" v-model="value1"></Cascader>
+          <Cascader class="cd" :data="data" @on-change="addresschange" v-model="value1"></Cascader>
         </div>
-        <img src="../../assets/img/greenarrow.jpg" v-if="grtr11" class="lsjt"/>
-        <p class="usernamewarning" v-bind:class="{namecolor:isnamecolor}">{{namewarning}}</p>
+        <div style="float:left; margin-top: 22px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg"  v-if="grtr11" class="lsjt"/></div>
         <br>
-        <div class="inputzu" style="margin-top: 10px">
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">详细地址</span><input type="text" v-model="detailaddress1" class="inp"
                                                              v-on:blur="losedetailaddress" v-on:focus="getdetailaddress"
-                                                             placeholder="输入您的详细地址"/>
+                                                             placeholder="请输入详细地址"/>
 
         </div>
-        <div style="float:left; margin-top: 30px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"
-                                                                                                v-if="grtr9"
-                                                                                                class="lsjt"/></div>
+        <div style="float:left; margin-top: 25px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg"  v-if="grtr9"  class="lsjt"/></div>
 
         <br>
 
-        <div class="inputzu" style="margin-bottom: 10px">
+        <div class="inputzu" style="margin-bottom: 7px; margin-top: 7px">
           <span class="spa" slot="prepend">邮箱地址</span><input type="text" v-model="mail" class="inp"
-                                                             @blur="losemail" @focus="getmail"
-                                                             placeholder="输入您的邮箱地址"/>
+                                                             v-on:blur="losemail" v-on:focus="getmail"
+                                                             placeholder="请输入邮箱地址"/>
 
         </div>
-        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"
-                                                                                                v-if="grtr5"
-                                                                                                class="lsjt"/></div>
-        <p class="usernamewarning" :class="{mailcolor:ismailcolor}">{{mailwarning}}</p>
+        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg" v-if="grtr5" class="lsjt"/></div>
+        <p class="usernamewarning" v-bind:class="{mailcolor:ismailcolor}">{{mailwarning}}</p>
         <br>
         <div style="clear:both"></div>
         <hr>
         <p class="zt" style="margin-left: 39% ;font-size: 20px;">账户信息</p>
-        <div class="inputzu" style="margin-top: 10px">
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">用&nbsp户&nbsp名</span><input type="text" v-model="username" class="inp"
-                                                                      @blur="loseusername" @focus="getusername"
-                                                                      placeholder="输入您的用户名"/>
+                                                                      v-on:blur="loseusername" v-on:focus="getusername"
+                                                                      placeholder="用户名"/>
 
         </div>
-        <div style="float:left; margin-top: 28px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"
-                                                                                                v-if="grtr"
-                                                                                                class="lsjt"/></div>
-        <p class="usernamewarning" :class="{usernamecolor:isusernamecolor}">{{usernamewarning}}</p>
+        <div style="float:left; margin-top: 28px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg" v-if="grtr"  class="lsjt"/></div>
+        <p class="usernamewarning" v-bind:class="{usernamecolor:isusernamecolor}">{{usernamewarning}}</p>
         <br>
 
-        <div class="inputzu">
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">密&nbsp&nbsp&nbsp&nbsp码</span><input type="password" v-model="password1"
                                                                                class="inp"
-                                                                               @blur="losepassword"
-                                                                               @focus="getpassword"
-                                                                               placeholder="输入密码"/>
+                                                                               v-on:blur="losepassword"
+                                                                               v-on:focus="getpassword"
+                                                                               placeholder="密码"/>
 
         </div>
-        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"
-                                                                                                v-if="grtr1"
-                                                                                                class="lsjt"/></div>
-        <p class="usernamewarning" :class="{passwordcolor:ispasswordcolor}">{{passwordwarning}}</p>
+        <div style="float:left; margin-top: 19px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg"  v-if="grtr1"  class="lsjt"/></div>
+        <p class="usernamewarning" v-bind:class="{passwordcolor:ispasswordcolor}">{{passwordwarning}}</p>
         <br>
 
-        <div class="inputzu">
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">重复密码</span><input type="password" v-model="repassword" class="inp"
-                                                             @blur="loserepassword" @focus="getrepassword"
-                                                             placeholder="重复输入密码"/>
+                                                             v-on:blur="loserepassword" v-on:focus="getrepassword"
+                                                             placeholder="密码确认"/>
 
         </div>
-        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"
-                                                                                                v-if="grtr2"
-                                                                                                class="lsjt"/></div>
-        <p class="usernamewarning" :class="{repasswordcolor:isrepasswordcolor}">{{repasswordwarning}}</p>
+        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg"   v-if="grtr2"  class="lsjt"/></div>
+        <p class="usernamewarning" v-bind:class="{repasswordcolor:isrepasswordcolor}">{{repasswordwarning}}</p>
         <br>
 
-        <div class="inputzu">
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">手&nbsp机&nbsp号</span><input type="text" v-model="phone" class="inp"
-                                                                      @blur="losephone" @focus="getphone"
-                                                                      placeholder="输入您的手机号"/>
+                                                                      v-on:blur="losephone" v-on:focus="getphone"
+                                                                      placeholder="手机号"/>
 
         </div>
-        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img src="../../assets/img/greenarrow.jpg"
-                                                                                                v-if="grtr8"
-                                                                                                class="lsjt"/></div>
-        <p class="usernamewarning" :class="{phonecolor:isphonecolor}">{{phonewarning}}</p>
+        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg"   v-if="grtr8"  class="lsjt"/></div>
+        <p class="usernamewarning" v-bind:class="{phonecolor:isphonecolor}">{{phonewarning}}</p>
         <br>
 
-        <div class="inputzu">
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">验&nbsp证&nbsp码</span>
-          <input type="text" style="width:70px;" v-model="name" class="inp"
-                 @blur="losename" @focus="getname"
-                 placeholder="输入验证码"/>
-          <Button class="btn" type="ghost" style="width:120px" :disabled="dis" @click="getyzm">{{yzm}}
+          <input type="text" maxlength="6" style="width:70px;" v-model="inputyzm" class="inp"
+                 v-on:change="yzmchange"
+                 placeholder="验证码"/>
+          <Button class="btn" type="ghost" style="width:120px"  v-bind:disabled="dis" v-on:click="getyzm">
+            {{yzm}}
           </Button>
-          </Input>
 
 
         </div>
-        <img src="../../assets/img/greenarrow.jpg" v-if="grtr10" class="lsjt"/>
+        <div style="float:left; margin-top: 22px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg" v-if="grtr10"  class="lsjt"/></div>
         <!--        <p class="usernamewarning" v-bind:class="{yzmcolor:isyzmcolor}">{{yzmwarning}}</p>-->
-        <br>
-       <Button type="ghost" @click="regist"
+        <br style="margin-top: 10px">
+        <Button type="ghost" v-on:click="regist"
                 style="width:200px;margin-left:28%;margin-top: 3%;,margin-bottom: 2%; background: orange; height:40px; color: white; font-size: 20px;">
           注册
         </Button>
@@ -171,24 +156,21 @@
 
 <style>
   #main {
-    height:auto;
     width: 100%;
+    height: 100%;
+    position: relative;
     MARGIN-RIGHT: auto;
     MARGIN-LEFT: auto;
   }
 
-  #usernamegrp{
+  #usernamegrp,.header{
     background: #ffffff;
-    padding:15px 10px;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
   }
-
   .header {
     height: 15%;
     width: 100%;
   }
+
   .ivu-icon-ios-calendar-outline {
     margin-top: 8px;
   }
@@ -263,7 +245,6 @@
 
   .tb3 {
     float: left;
-    margin-left: 60%;
     margin-top: 40px;
 
   }
@@ -381,7 +362,7 @@
 </style>
 <script>
   import area from '../../assets/json/area.json'
-  console.log(area)
+  import userApi from '../../api/userService'
   function tranData (val) {
     val = val || []
     let data = []
@@ -398,9 +379,8 @@
         let children = tranData(temp_val.children)
         temp_data.children = children
       }
-      data.push(temp_data);
+      data.push(temp_data)
     }
-    console.log(data)
     return data
   }
 
@@ -419,6 +399,7 @@
         username: '',
         password1: '',
         phone: '',
+        yzm4: '',
         dis: true,
         yzm: '获取验证码',
         isusernamecolor: false,
@@ -439,6 +420,7 @@
         grtr9: false,
         grtr10: false,
         grtr11: false,
+        inputyzm: '',
         val: '获取验证码',
         detailaddress1: '',
         name: '',
@@ -471,7 +453,6 @@
         this.grtr3 = false
       },
       sexchange: function () {
-        console.log(this.sex)
         if (this.sex === '男' || this.sex === '女') {
           this.grtr7 = true
         } else {
@@ -483,6 +464,13 @@
           this.grtr6 = true
         } else {
           this.grtr6 = false
+        }
+      },
+      addresschange: function () {
+        if (this.value1.length === 0) {
+          this.grtr11 = true
+        } else {
+          this.grtr11 = false
         }
       },
       getcontact: function () {
@@ -558,10 +546,10 @@
         this.ispasswordcolor = false
         this.grtr1 = false
         this.grtr2 = false
-        this.passwordwarning = '建议使用数字、字母、符号俩种及以上的组合，6-12个字符'
+        this.passwordwarning = '建议使用数字、字母、符号俩种及以上的组合，6-20个字符'
       },
       losepassword: function () {
-        if (this.password1.length > 5 && this.password1.length < 13) {
+        if (this.password1.length > 5 && this.password1.length < 21) {
           if (this.password1 === this.repassword) {
             this.repasswordwarning = ''
             this.passwordwarning = ''
@@ -583,7 +571,7 @@
         } else {
           this.ispasswordcolor = true
           this.grtr1 = false
-          this.passwordwarning = '长度只能在6-12之间'
+          this.passwordwarning = '长度只能在6-20之间'
         }
       },
       loserepassword: function () {
@@ -606,7 +594,7 @@
         this.repasswordwarning = ''
       },
       getphone: function () {
-        this.grtr7 = false
+        this.grtr8 = false
         this.phonewarning = ''
       },
       losephone: function () {
@@ -628,25 +616,43 @@
         }
       },
       getyzm: function () {
-        var num = 60
         let $vm = this
+        if($vm.dis)return;
+        $vm.dis = true;
+        var a = Math.random()*900000|0+100000;
+        this.yzm4 = parseInt(a)
+        var num = 60
         var timer = setInterval(function () {
           num--
           if (num === 0) {
             clearInterval(timer)
             $vm.yzm = '获取验证码'
-            $vm.dis = false
+            $vm.dis = false;
           } else {
             $vm.yzm = num + '秒后重新获取'
-            $vm.dis = true
           }
         }, 1000)
+        alert($vm.yzm4)
+        userApi.sendCode($vm.phone,$vm.yzm4).then((response)=>{
+          this.$Message.info('验证码已成功发送，注意查收！')
+        }).catch((response)=>{
+          this.$Message.error('验证码发送失败，请检查手机号！')
+         })
+
       },
+      yzmchange: function () {
+        if (this.inputyzm.length > 5) {
+          this.grtr10 = true
+        } else {
+          this.grtr10 = false
+        }
+      },
+
       regist: function () {
         if (this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
           || this.detailaddress1.length === 0 || this.mail.length === 0 || this.username.length === 0 || this.password1.length === 0
           || this.repassword.length === 0 || this.phone.length === 0 || this.inputyzm.length === 0) {
-          this.$Message.error('请检查以上数据是否留空')
+          this.$Message.error('请检查信息的正确性！')
         } else {
           let date = ''
           if (this.birthdate !== 0) {
@@ -657,12 +663,14 @@
             d = d < 10 ? ('0' + d) : d
             date = y + '-' + m + '-' + d
           }
+          if(!(this.inputyzm === this.yzm4)){
+            this.$Message.error('验证码错误！')
+          }
           if (/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.name) === true
             && /^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.contact)
-            && /^[a-z0-9]+@\w+\.(com|cn)$/.test(this.mail)
-            && this.username.length > 3 && this.username.length < 13 && /^[0-9]*$/.test(this.username) === false
-            && this.password1.length > 5 && this.password1.length < 21 && /^1[34578]\d{9}$/.test(this.phone) === true
-            && this.inputyzm === this.yzm4) {
+           && /^[a-z0-9]+@\w+\.(com|cn)$/.test(this.mail)
+          && this.username.length > 3 && this.username.length < 13 && /^[0-9]*$/.test(this.username) === false
+          && this.password1.length > 5 && this.password1.length < 21 && /^1[34578]\d{9}$/.test(this.phone) === true) {
             let regdata = {
               phoneNo: this.phone,
               password: this.password1,
@@ -674,16 +682,16 @@
               email: this.mail,
               nickName: this.username
             }
-            /*
-             这里直接把数据传数据库
-             */
+            userApi.regist(regdata).then((response)=>{
 
+            })/*.catch({
+
+            })*/
           } else {
-            this.$Message.error('请检查以上数据是否填写正确')
+            this.$Message.error('请检查信息的正确性！')
           }
         }
       }
-
     }
   }
 </script>

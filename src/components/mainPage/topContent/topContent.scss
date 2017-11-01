@@ -5,6 +5,10 @@
   border-radius: $radius;;
 }
 .top-content{
+  .ivu-breadcrumb-item-link:hover{
+    cursor: pointer;
+    color: #62247f;
+  }
   .globalnav{
     z-index:9;
     -webkit-transform: translateZ(0);

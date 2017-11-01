@@ -12,6 +12,7 @@ let reserveBook = loginBook+'/reserveBook'
 let collectBook = loginBook+'/collectBook'
 let deleteSaveBook = loginBook+'/deleteSaveBook'
 let deleteOrderBook = loginBook+'/deleteOrderBook'
+let findOneBook =  bookIndex+'/getBookDetailInfo'
 export default {
   deleteSaveBook(readerId,bookId){
     let params={
@@ -65,5 +66,11 @@ export default {
       length:parseInt(length)
     }
     return api.get(searchBook,params)
+  },
+  findOneBook(bookid){
+    let params={
+      bookid:bookid
+    }
+    return api.get(findOneBook,params)
   }
 }

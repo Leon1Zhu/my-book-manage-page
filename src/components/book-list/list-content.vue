@@ -2,7 +2,7 @@
 
 
     <div class="temp_class" >
-      <div class="book-img"><div class="bottom-content"><img :src="imgUrl+'9780001821743.jpg'"></div></div>
+      <div class="book-img"><div class="bottom-content"><img @click="getDetailInfo" :src="imgUrl+'9780001821743.jpg'"></div></div>
 
       <div class="book-introduce-content">
         <div class="book-name">{{data.name | filterNull}}</div>
@@ -40,10 +40,10 @@
         </div>
         <div class="book-item-info">
           <div class="left-info" v-if="list_type!='reserve' && list_type!='reading'">
-            <Button type="info"  @click="reserveBook(data)">预定</Button>
+            <Button type="info"  @click="$reserveBook(data)">预定</Button>
           </div>
           <div class="right-info" v-if="list_type!='collect'">
-            <Button type="success"  @click="collectBook(data)">收藏</Button>
+            <Button type="success"  @click="$collectBook(data)">收藏</Button>
           </div>
           <div class="right-info" v-if="list_type=='collect'">
             <Button type="error" @click="deletesave(data)">删除</Button>
@@ -90,46 +90,8 @@
         mounted(){
         },
         methods: {
-          reserveBook(data){
-            this.$reserveBook(data)
-           /* let that = this;
-            if(!isLoginFun())return;
-            this.$Modal.confirm({
-              title: '书记收藏确认',
-              content: '确认预定书籍['+data.name+']吗？',
-              onOk: () => {
-                  bookManageApi.reserveBook(USERINFO.id,data.id,this.limit).then((response)=>{
-                    orderNewBook(response.data);
-                    that.$Notice.success(setNoticConfig('预定成功！',null,null,"success"));
-                    this.$emit('reservBook',response.data)
-                  }).catch((response)=>{
-                    that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
-                  })
-
-              }
-            });*/
-
-
-
-          },
-          collectBook(data){
-            this.$collectBook(data)
-            /*let that = this;
-            if(!isLoginFun())return;
-            this.$Modal.confirm({
-              title: '书记预定确认',
-              content: '确认收藏书籍['+data.name+']吗？',
-              onOk: () => {
-                bookManageApi.collectBook(USERINFO.id,data.id).then((response)=>{
-                  saveNewBook(response.data);
-                  that.$Notice.success(setNoticConfig('收藏成功！',null,null,"success"));
-                  this.$emit('collectBook',response.data)
-                }).catch((response)=>{
-                  that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
-                })
-              }
-            });*/
-
+          getDetailInfo(){
+            this.$router.push({ path: '/index/book_detail', query: { bookid: this.data.id }})
           },
           deletesave(data){
             let that = this;

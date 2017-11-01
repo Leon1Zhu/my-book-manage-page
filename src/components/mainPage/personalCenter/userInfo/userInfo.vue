@@ -76,7 +76,6 @@ import './userInfo.scss'
         },
         components: {},
         created(){
-            console.log(USERINFO)
         },
         mounted(){
         },

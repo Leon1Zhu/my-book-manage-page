@@ -84,7 +84,7 @@
             <div class="nav-info">
               <div class="layout-breadcrumb">
                <Breadcrumb separator="->" >
-                 <BreadcrumbItem  v-for=" (bread,index) in  mainBreadcrumb"  :key="index" :href="bread.url">{{bread.name}}</BreadcrumbItem>
+                 <BreadcrumbItem  v-for=" (bread,index) in  mainBreadcrumb"  :key="index" @click.native="toPath(bread)">{{bread.name}}</BreadcrumbItem>
                </Breadcrumb>
              </div>
             </div>
@@ -123,6 +123,9 @@ import personCenter from '../personalCenter/personalCenter.vue'
         mounted(){
         },
         methods: {
+          toPath(bread){
+            this.$router.push({ path:bread.url, query: bread.query })
+          },
           chooseLi(val,path){
               for(let i=0;i<this.liActive.length;i++){
                   this.$set(this.liActive,i,false)

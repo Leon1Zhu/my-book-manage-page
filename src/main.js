@@ -28,7 +28,11 @@ new Vue({
 
 router.beforeEach((to, from, next) => {
   if(to.name.indexOf("login") > -1 || to.name.indexOf("首页") > -1 ){
-    MAINBREADCRUMB = [{name:'首页',url:'/index',level:1}];
+    for(let i=0;i<MAINBREADCRUMB.length;i++){
+        MAINBREADCRUMB.splice(i,1);
+        i--;
+    }
+    MAINBREADCRUMB.push({name:'首页',url:'/index',level:1,query:null});
     sessionStorage.setItem("MAINBREADCRUMB", JSON.stringify(MAINBREADCRUMB));
     next();
     return;
@@ -49,7 +53,7 @@ router.beforeEach((to, from, next) => {
         }
       }
     }
-  MAINBREADCRUMB.push({name: toName, url: to.path, level: toLeavl})
+  MAINBREADCRUMB.push({name: toName, url: to.path, level: toLeavl,query:to.query})
   sessionStorage.setItem("MAINBREADCRUMB", JSON.stringify(MAINBREADCRUMB));
   next()
 })

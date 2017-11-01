@@ -59,11 +59,6 @@ import list_content from './list-content.vue'
             }
         },
       computed:{
-       saveInfo(){
-            if(this.list_type != "collect")return null;
-          return SAVEINFO;
-        },
-
       },
         components: {
             'list_content':list_content,
@@ -73,16 +68,11 @@ import list_content from './list-content.vue'
           vm.handleSpinCustom();
         },
         mounted(){
-            let that = this;
-            setInterval(function(){
-                console.log(that.saveInfo)
-            },1000)
         },
         methods: {
           reservBookP(val){
               if(this.orderInfo.length==0)this.orderInfo = [];
             this.$set(this.orderInfo,this.orderInfo.length,val)
-            console.log(this.orderInfo)
           },
           collectBookP(val){
             if(this.saveInfo.length == 0)this.saveInfo = [];
@@ -90,31 +80,15 @@ import list_content from './list-content.vue'
           },
           handleSpinCustom () {
             var that =this;
-            /*this.$Spin.show({
-              render: (h) => {
-                return h('div', [
-                  h('Icon', {
-                    'class': 'demo-spin-icon-load',
-                    props: {
-                      type: 'load-c',
-                      size: 28
-                    }
-                  }),
-                  h('div', '拼命加载中')
-                ])
-              }
-            });*/
+
             let type = that.list_type == '' ? LISTTYPE :that.list_type;
             switch(type){
               case 'advancedSearch' :  that.advancedSearch();break;
               case 'search' :  that.searchBook();break;
-              /*case 'collect' :  that.getSaveInfo();break;*/
-             /* case 'reserve' :  that.getOrderBookList();break;*/
               case 'history' :  that.getHARBook('historyBook');break;
               case 'reading' :  that.getHARBook('readingBook');break;
 
             }
-           /* this.$Spin.hide();*/
           },
           advancedSearch(){
               var that = this;

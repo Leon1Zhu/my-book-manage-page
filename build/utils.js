@@ -2,6 +2,36 @@ var path = require('path')
 var config = require('../config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+
+// =========
+// SASS 配置
+// =========
+function resolveResouce(name) {
+  return path.resolve(__dirname, '../src/assets/scss/' + name);
+}
+function generateSassResourceLoader() {
+  var loaders = [
+    cssLoader,
+    // 'postcss-loader',
+    'sass-loader',
+    {
+      loader: 'sass-resources-loader',
+      options: {
+        // it need a absolute path
+        resources: [resolveResouce('var.scss'), resolveResouce('mixins.scss')]
+      }
+    }
+  ];
+  if (options.extract) {
+    return ExtractTextPlugin.extract({
+      use: loaders,
+      fallback: 'vue-style-loader'
+    })
+  } else {
+    return ['vue-style-loader'].concat(loaders)
+  }
+}
+
 exports.assetsPath = function (_path) {
   var assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory

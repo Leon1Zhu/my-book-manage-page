@@ -1,0 +1,16 @@
+@mixin my-border-radius($radius){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;;
+}
+
+
+
+@mixin animateTime($teim11,$teim2){
+  -webkit-transition: all $teim11  ease-in-out $teim2;
+  -moz-transition: all $teim11 ease-in-out $teim2;
+  -ms-transition: all $teim11 ease-in-out $teim2;
+  -o-transition: all $teim11 ease-in-out $teim2;
+  transition: all $teim11 ease-in-out $teim2;
+}
+

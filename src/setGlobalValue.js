@@ -21,7 +21,6 @@ global.setAdvancedSearchInfo = function(basicSearch,arSearch,LLsearch){
   sessionStorage.setItem("ARSEARCH",JSON.stringify(arSearch));
   sessionStorage.setItem("LLSEARCH",JSON.stringify(LLsearch));
   sessionStorage.setItem("LISTTYPE","advancedSearch");
-  console.log(sessionStorage.getItem("LISTTYPE"))
 
 }
 global.outAdvancedSearchInfo = function(){
@@ -112,7 +111,6 @@ global.orderNewBook = function(val){
   let temp = ORDERINFO;
   temp.push(val);
   ORDERINFO = temp;
-  console.log(ORDERINFO)
   sessionStorage.setItem("ORDERINFO",JSON.stringify(ORDERINFO));
 }
 
@@ -130,7 +128,6 @@ global.removeSaveBook = function(val){
       SAVEINFO.splice(i--,1);
     }
   }
-  console.log(SAVEINFO)
   if(SAVEINFO.length==0){
     sessionStorage.removeItem("SAVEINFO")
   }else{
@@ -151,14 +148,12 @@ global.isLoginFun=function(){
 
 global.removeOrderBook = function(val){
   var temp = ORDERINFO;
-  console.log(temp)
   for(let i =1;i< temp.length;i++){
     if(temp[i].orderBookInfo.id == val){
       temp.splice(i--,1);
     }
   }
   global.ORDERINFO = temp;
-  console.log(ORDERINFO)
   if(ORDERINFO.length==0){
     sessionStorage.removeItem("ORDERINFO")
   }else{

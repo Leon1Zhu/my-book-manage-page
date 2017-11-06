@@ -5,7 +5,7 @@
       <span class="tb2">欢迎注册</span>
       <div style="position: absolute;right: 10px;top: 10px;">
       <span class="tb3">已有账户？</span>
-      <router-link to="/" class="tb4">前往登录</router-link>
+      <router-link to="/login" class="tb4">前往登录</router-link>
       </div>
     </div>
     <hr/>
@@ -83,12 +83,19 @@
         <div style="clear:both"></div>
         <hr>
         <p class="zt" style="margin-left: 39% ;font-size: 20px;">账户信息</p>
+
         <div class="inputzu" style="margin-top: 7px">
+          <span class="spa" slot="prepend">手&nbsp机&nbsp号</span><input type="text" v-model="phone" class="inp"
+                                                                      v-on:blur="losephone" v-on:focus="getphone"
+                                                                      placeholder="手机号"/>
+        </div>
+        <p class="usernamewarning" v-bind:class="{phonecolor:isphonecolor}">{{phonewarning}}</p>
+        <!--<div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">用&nbsp户&nbsp名</span><input type="text" v-model="username" class="inp"
                                                                       v-on:blur="loseusername" v-on:focus="getusername"
                                                                       placeholder="用户名"/>
 
-        </div>
+        </div>-->
         <div style="float:left; margin-top: 28px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg" v-if="grtr"  class="lsjt"/></div>
         <p class="usernamewarning" v-bind:class="{usernamecolor:isusernamecolor}">{{usernamewarning}}</p>
         <br>
@@ -115,22 +122,16 @@
         <p class="usernamewarning" v-bind:class="{repasswordcolor:isrepasswordcolor}">{{repasswordwarning}}</p>
         <br>
 
-        <div class="inputzu" style="margin-top: 7px">
-          <span class="spa" slot="prepend">手&nbsp机&nbsp号</span><input type="text" v-model="phone" class="inp"
-                                                                      v-on:blur="losephone" v-on:focus="getphone"
-                                                                      placeholder="手机号"/>
 
-        </div>
-        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg"   v-if="grtr8"  class="lsjt"/></div>
-        <p class="usernamewarning" v-bind:class="{phonecolor:isphonecolor}">{{phonewarning}}</p>
-        <br>
+        <!--<div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg"   v-if="grtr8"  class="lsjt"/></div>-->
+       <!-- <br>-->
 
         <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend">验&nbsp证&nbsp码</span>
           <input type="text" maxlength="6" style="width:70px;" v-model="inputyzm" class="inp"
                  v-on:change="yzmchange"
                  placeholder="验证码"/>
-          <Button class="btn" type="ghost" style="width:120px"  v-bind:disabled="dis" v-on:click="getyzm">
+          <Button class="btn" type="ghost"   v-bind:disabled="dis" v-on:click="getyzm">
             {{yzm}}
           </Button>
 
@@ -162,7 +163,9 @@
     MARGIN-RIGHT: auto;
     MARGIN-LEFT: auto;
   }
-
+  .inputzu{
+    background: #ffffff;
+  }
   #usernamegrp,.header{
     background: #ffffff;
   }
@@ -520,7 +523,7 @@
         this.mailwarning = ''
         this.grtr5 = false
       },
-      loseusername: function () {
+    /*  loseusername: function () {
         if (this.username.length > 3 && this.username.length < 13 && /^[0-9]*$/.test(this.username) === false) {
           this.usernamewarning = ''
           this.grtr = true
@@ -536,7 +539,7 @@
           this.grtr = false
           this.usernamewarning = '长度只能在4-12之间'
         }
-      },
+      },*/
       getusername: function () {
         this.isusernamecolor = false
         this.grtr = false
@@ -650,9 +653,9 @@
 
       regist: function () {
         if (this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
-          || this.detailaddress1.length === 0 || this.mail.length === 0 || this.username.length === 0 || this.password1.length === 0
+          || this.detailaddress1.length === 0 || this.mail.length === 0 || this.password1.length === 0
           || this.repassword.length === 0 || this.phone.length === 0 || this.inputyzm.length === 0) {
-          this.$Message.error('请检查信息的正确性！')
+          this.$Message.error('请确认信息不为空！')
         } else {
           let date = ''
           if (this.birthdate !== 0) {
@@ -663,13 +666,13 @@
             d = d < 10 ? ('0' + d) : d
             date = y + '-' + m + '-' + d
           }
-          if(!(this.inputyzm === this.yzm4)){
+          if(!(parseInt(this.inputyzm) === this.yzm4)){
             this.$Message.error('验证码错误！')
           }
+
           if (/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.name) === true
             && /^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.contact)
            && /^[a-z0-9]+@\w+\.(com|cn)$/.test(this.mail)
-          && this.username.length > 3 && this.username.length < 13 && /^[0-9]*$/.test(this.username) === false
           && this.password1.length > 5 && this.password1.length < 21 && /^1[34578]\d{9}$/.test(this.phone) === true) {
             let regdata = {
               phoneNo: this.phone,
@@ -680,13 +683,14 @@
               name: this.contact,
               address: this.value1 + this.detailaddress1,
               email: this.mail,
-              nickName: this.username
             }
+            var that = this;
             userApi.regist(regdata).then((response)=>{
-
-            })/*.catch({
-
-            })*/
+              this.$Message.success("注册成功！")
+              that.$router.push( {path:'/login'} )
+            }).catch((response)=>{
+              this.$Message.error(response.message)
+            })
           } else {
             this.$Message.error('请检查信息的正确性！')
           }

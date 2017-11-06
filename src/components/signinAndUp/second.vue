@@ -5,7 +5,7 @@
     <div style="margin-left: 35%; margin-top: 5%">
       <div class="inputzu2" style="margin-top: 10px">
         <span class="spa2" slot="prepend">姓名</span><input type="text" readonly="readonly" class="inp2"
-                                                          value="zz"/>
+                                                          v-model="name" />
       </div>
       <div class="inputzu2" style="margin-top: 10px">
         <span class="spa2" slot="prepend">手机</span><input type="text" readonly="readonly" class="inp2"
@@ -73,16 +73,23 @@
   export default {
     data () {
       return {
+        name:null,
         yzm2: '',
         yzm3: '',
         dis1: false,
         yzm: '获取验证码',
-        phone1: '18752001826'
+        phone1: null
       }
+    },
+    created(){
+       let vm = this;
+
+       vm.phone1 = vm.$route.query.phoneNo
+      vm.name = vm.$route.query.rName
     },
     methods: {
       getyzm1: function () {
-        var a = (Math.random() * 9 + 1) * 100000
+        var a = Math.random()*900000|0+100000;
         this.yzm3 = parseInt(a)
         alert(this.yzm3)
         var num = 60
@@ -101,8 +108,8 @@
         /*this.$http.post('' , phone1 , yzm3)*/
       },
       tj2: function () {
-        if (this.yzm2 == this.yzm3 && this.yzm2.length !== 0) {
-          this.$router.push({path: '/xgpassword/third'})
+        if (parseInt(this.yzm2) === this.yzm3 && this.yzm2.length !== 0) {
+          this.$router.push({path: '/xgpassword/third',query:{phone:this.phone1}})
         } else if (this.yzm2.length === 0 && this.yzm3.length === 0) {
           this.$Message.error('请先获取验证码')
         } else {

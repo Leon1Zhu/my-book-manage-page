@@ -9,6 +9,8 @@ let loginBook = '/api';
 let login = bookIndex+"/userLogin";
 let getCode = bookIndex+'/getUserYzNumber'
 let regist = bookIndex+'/regist'
+let getUByPhone = bookIndex+'/getUserInfoByPhone'
+let changepassword = bookIndex+'/changePassword'
 export  default {
   login(userphoe,password){
     let params={
@@ -26,5 +28,18 @@ export  default {
   },
   regist(userInfo){
     return api.post(regist,userInfo,"");
-  }
+  },
+  getUserByPhone(phone){
+    let params={
+      phoneno : phone
+    }
+    return api.get(getUByPhone,params);
+  },
+   changePassword(phone,password){
+       var params={
+         phoneno:phoneno,
+         newpassword:password
+       }
+       return api.post(changepassword,"",params)
+   }
 }

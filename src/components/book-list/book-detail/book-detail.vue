@@ -42,28 +42,24 @@
               </div>
               <div class="book-item-info">
                 <div class="left-info">
-                  <div class="sign-img-content" v-if="data.artag">
-                    <img src="../../../assets/ARLogo.png">
+                  <div class="sign-img-content" v-if="data.artag==1">
+                    <img class="sign-img-item" src="../../../assets/untitled.png">
                   </div>
                 </div>
                 <div class="right-info">
-                  <div class="sign-img-content" v-if="data.lexileTag">
-                    <img src="../../../assets/lexile.png">
+                  <div class="sign-img-content" v-if="data.lexileTag==1">
+                    <img class="sign-img-item" src="../../../assets/lexile-logo.png">
                   </div>
                 </div>
               </div>
 
 
-
-
-
-
               <div class="book-item-info">
                 <div class="left-info">
-                  <Button type="info"  @click="$reserveBook(data)">预定</Button>
+                  <Button type="info"  @click="$reserveBook(data)" long>预定</Button>
                 </div>
                 <div class="right-info">
-                  <Button type="success"  @click="$collectBook(data)">收藏</Button>
+                  <Button type="success"  @click="$collectBook(data)" long>收藏</Button>
                 </div>
               </div>
             </div>

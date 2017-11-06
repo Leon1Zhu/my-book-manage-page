@@ -74,6 +74,7 @@
   }
 </style>
 <script>
+  import apiUser from '../../api/userService'
   export default {
     data () {
       return {
@@ -82,8 +83,13 @@
         isrepasswordcolor1: false,
         ispasswordcolor1: false,
         password2: '',
-        repassword2: ''
+        repassword2: '',
+        phone:null,
       }
+    },
+    created(){
+        let vm = this;
+        vm.phone = this.$route.params.phone
     },
     methods: {
       getpassword2: function () {
@@ -132,7 +138,12 @@
       },
       tj3: function () {
         if (this.password2.length > 5 && this.password2.length < 13 && this.password2 === this.repassword2) {
-          this.$router.push({path: '/xgpassword/forth'})
+            apiUser.changePassword(phone).then((response)=>{
+              this.$router.push({path: '/xgpassword/forth'})
+            }).catch((response)=>{
+              this.$Message.error(response.data.message)
+            })
+
         } else if (this.password2.length < 6 || this.password2.length > 12) {
           this.$Message.error('密码设置的长度不符合要求')
         } else {

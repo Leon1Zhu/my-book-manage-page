@@ -5,7 +5,7 @@
     <div style="margin-left: 35%; margin-top: 5%">
       <div class="inputzu1" style="margin-top: 10px">
         <span class="spa1" slot="prepend">用户名</span><input type="text" v-model="username1" class="inp1"
-                                                           placeholder="输入您的用户名"/>
+                                                           placeholder="输入您的注册手机号"/>
       </div>
       <div class="inputzu1" style="margin-top: 10px">
         <span class="spa1" slot="prepend">验证码</span><input type="text" style="width: 110px;" v-model="yzm1"
@@ -68,6 +68,7 @@
   }
 </style>
 <script>
+  import apiUser from '../../api/userService'
   export default {
     data () {
       return {
@@ -94,15 +95,22 @@
         this.checkCode = code// 把code值赋给验证码
       },
       tj1: function () {
-        if (this.username1 != 1 && this.yzm1 == this.checkCode) {
-          this.$router.push({path: '/xgpassword/second'})
-        } else if (this.username1 == 1) {
-          this.$Message.error('不存在该用户')
-        } else if (this.username1 != 1 || this.yzm1 != this.checkCode) {
-          this.$Message.error({
-            content: '验证码输入错误'
-          })
+        let that =this;
+        if (isNull(this.username1 ) ) {
+          this.$Message.error('用户名不能为空！')
+          return;
         }
+        if(this.yzm1 != this.checkCode){
+          this.$Message.error('验证码错误！')
+          return;
+        }
+        apiUser.getUserByPhone(this.username1).then((response)=>{
+
+          that.$router.push({path: '/xgpassword/second',query : {rName:response.data.rName,phoneNo:response.data.phoneNo}})
+        }).catch((response)=>{
+          that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
+        })
+
       }
     }
   }

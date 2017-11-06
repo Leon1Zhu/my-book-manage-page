@@ -2,10 +2,10 @@
 
 <div class="main">
   <div class="header">
-    <h1 class="tb1">美原图书馆</h1>
+    <img style="float:left;width:250px;height: 50px;margin-top: 5px;margin-left: 10px;" src="../../assets/logo.png">
     <span class="tb2">修改密码</span>
     <span class="tb3">已完成修改？</span>
-    <router-link to="/" class="tb4" >前往登录</router-link>
+    <router-link to="/login" class="tb4" >前往登录</router-link>
   </div>
   <hr>
   <div class="center1">
@@ -48,7 +48,7 @@
 
   .tb3 {
     float: left;
-    margin-left: 60%;
+    margin-left: 40%;
     margin-top: 40px;
 
   }

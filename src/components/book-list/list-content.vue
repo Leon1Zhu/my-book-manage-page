@@ -54,11 +54,17 @@
         </div>
       </div>
       <div class="book-sign-img">
-        <div class="sign-img-content" v-if="data.artag">
+        <div class="sign-img-content" v-if="data.artag==1">
           <img src="../../assets/ARLogo.png">
         </div>
-        <div class="sign-img-content" v-if="data.lexile_tag">
+        <div class="sign-img-content" v-else>
+          <img src="../../assets/ARlogo2.png">
+        </div>
+        <div class="sign-img-content" v-if="data.lexileTag==1">
           <img src="../../assets/lexile.png">
+        </div>
+        <div class="sign-img-content" v-else>
+          <img src="../../assets/lexile2.png">
         </div>
       </div>
     </div>

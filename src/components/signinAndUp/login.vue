@@ -189,7 +189,7 @@
           setLoginStatus(true);
           setUserInfo( response.data.userInfo,response.data.userInfo.orderInfo,response.data.userInfo.saveInfos)
           setRAHBook(response.data.bookInfo)
-          that.$router.push( {path:'/index'} )
+          that.$router.push( {path:'/'} )
         }).catch((response)=>{
           this.$Notice.error(setNoticConfig(response.message,null,null,"error"));
         })

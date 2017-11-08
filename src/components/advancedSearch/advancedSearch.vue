@@ -149,7 +149,7 @@ import  searchApi from '../../api/advancedSearch'
           },
           getSearchInfo(){
              setAdvancedSearchInfo(this.basicSearch,this.ARSearch,this.LLSearch)
-            this.$router.push({path: '/index/book_list'})
+            this.$router.push({path: '/book_list'})
 
 
           }

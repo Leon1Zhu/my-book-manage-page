@@ -97,7 +97,7 @@
         },
         methods: {
           getDetailInfo(){
-            this.$router.push({ path: '/index/book_detail', query: { bookid: this.data.id }})
+            this.$router.push({ path: '/book_detail', query: { bookid: this.data.id }})
           },
           deletesave(data){
             let that = this;

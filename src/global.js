@@ -1,7 +1,7 @@
 /**
  * Created by zhuliang on 2017/4/6.
  */
-global.MAINBREADCRUMB= JSON.parse(sessionStorage.getItem("MAINBREADCRUMB")) ?  JSON.parse(sessionStorage.getItem("MAINBREADCRUMB")): [{name:'首页',url:'/index',level:1,query:null}]
+global.MAINBREADCRUMB= JSON.parse(sessionStorage.getItem("MAINBREADCRUMB")) ?  JSON.parse(sessionStorage.getItem("MAINBREADCRUMB")): [{name:'首页',url:'/',level:1,query:null}]
 global.SERVICEURL="http://localhost:8090";
 /*global.tokenUrl="http://localhost:8090/getToken"
 global.TOKENTIME=new Date();
@@ -30,9 +30,8 @@ global.SEARCHINFO = sessionStorage.getItem("SEARCHINFO") ? sessionStorage.getIte
 
 if(process.env.NODE_ENV=="production"){
   global.tokenUrl="http://119.23.40.120:9091/getToken"
-  global.SERVICEURL="http://119.23.40.120:9091"
+  global.SERVICEURL="http://121.43.171.195:8090"
 }
-
 
 
 

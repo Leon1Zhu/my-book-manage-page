@@ -43,12 +43,18 @@
               <div class="book-item-info">
                 <div class="left-info">
                   <div class="sign-img-content" v-if="data.artag==1">
-                    <img class="sign-img-item" src="../../../assets/untitled.png">
+                    <img src="../../../assets/ARLogo.png">
+                  </div>
+                  <div class="sign-img-content" v-else>
+                    <img src="../../../assets/ARlogo2.png">
                   </div>
                 </div>
                 <div class="right-info">
                   <div class="sign-img-content" v-if="data.lexileTag==1">
-                    <img class="sign-img-item" src="../../../assets/lexile-logo.png">
+                    <img src="../../../assets/lexile.png">
+                  </div>
+                  <div class="sign-img-content" v-else>
+                    <img src="../../../assets/lexile2.png">
                   </div>
                 </div>
               </div>

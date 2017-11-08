@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App'
+require("es6-promise").polyfill();
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';    // 使用 CSS
 import router from './router'
@@ -33,7 +34,7 @@ router.beforeEach((to, from, next) => {
         MAINBREADCRUMB.splice(i,1);
         i--;
     }
-    MAINBREADCRUMB.push({name:'首页',url:'/index',level:1,query:null});
+    MAINBREADCRUMB.push({name:'首页',url:'/',level:1,query:null});
     sessionStorage.setItem("MAINBREADCRUMB", JSON.stringify(MAINBREADCRUMB));
     next();
     return;

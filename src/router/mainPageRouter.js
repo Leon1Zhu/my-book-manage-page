@@ -11,7 +11,7 @@ const book_list = resolve => require(['@/components/book-list/book-list'], resol
 const book_detail = resolve => require(['@/components/book-list/book-detail/book-detail'], resolve);
 
 const mainPageRouter= {
-    path: '/index',
+    path: '/',
     component:index,
     children: [
       {path:'/',components:{main:mainPage},name:"首页#1"},

@@ -5,7 +5,6 @@
         <!-- slides -->
         <swiper-slide>
           <img src="../../../assets/1.png">
-          <!--<iframe width="250" height="375" src="http://widgets1.renlearn.com/content/htmlwidget/widget.html?widgetId=RDSVZT&widgetHost=http://widgets1.renlearn.com/" frameborder="0"></iframe>-->
         </swiper-slide>
         <swiper-slide>
           <img src="../../../assets/2.png">
@@ -13,6 +12,9 @@
         <!-- Optional controls -->
         <div class="swiper-pagination"  slot="pagination"></div>
       </swiper>
+        <div class="ifream-content">
+           <!--<iframe width="250" height="375" src="http://widgets1.renlearn.com/content/htmlwidget/widget.html?widgetId=RDSVZT&widgetHost=http://widgets1.renlearn.com/" frameborder="0"></iframe>-->
+        </div>
       </div>
     </div>
 </template>

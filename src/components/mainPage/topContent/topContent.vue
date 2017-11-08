@@ -53,7 +53,7 @@
                    <Button  @click="searchList" slot="append" icon="ios-search"></Button>
                    </Input>
                </div>
-               <router-link :to="{ path: '/index/advancedsearch' }" > <div class="advanced-search animateClass" >高级搜索</div></router-link>
+               <router-link :to="{ path: '/advancedsearch' }" > <div class="advanced-search animateClass" >高级搜索</div></router-link>
              </div>
            </div>
       </div>
@@ -63,7 +63,7 @@
             <div class="container_12">
                 <div class="grid_12 nav-inner">
                     <ul>
-                      <li  :class="{'active': liActive[0]}"   @click="chooseLi(0,'/index')">主页</li>
+                      <li  :class="{'active': liActive[0]}"   @click="chooseLi(0,'/')">主页</li>
                       <li :class="{'active': liActive[1]}" @click="chooseLi(1)">活动中心</li>
                       <li :class="{'active': liActive[2]}" @click="chooseLi(2)">加速阅读</li>
                       <li :class="{'active': liActive[3]}" @click="chooseLi(3)">蓝思阅读</li>
@@ -142,7 +142,7 @@ import personCenter from '../personalCenter/personalCenter.vue'
           searchList(){
               let that=this;
               setBookListType("search")
-              that.$router.push({ path: '/index/book_list', query: { booktype: that.searchBookSelect , searchValue: that.searchBookInput}})
+              that.$router.push({ path: '/book_list', query: { booktype: that.searchBookSelect , searchValue: that.searchBookInput}})
           },
           login(){
             this.$router.push({ path: '/login'})

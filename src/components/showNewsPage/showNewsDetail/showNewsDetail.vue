@@ -2,8 +2,7 @@
     <div class="showNewsDetail">
       <div class="container_12">
         <div class="grid_12">
-          <div>
-
+          <div v-html="content">
           </div>
         </div>
       </div>
@@ -14,10 +13,16 @@
 import './showNewsDetail.scss'
     export default{
         data(){
-            return {}
+            return {
+                content:null
+            }
         },
-        components: {},
+        components: {
+
+        },
         created(){
+            var vm = this;
+           vm.content = this.$route.query.content
         },
         mounted(){
         },

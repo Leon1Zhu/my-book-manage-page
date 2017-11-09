@@ -26,6 +26,8 @@ const speedReading = resolve => require(['@/components/speedReading/speedReading
 
 const partners = resolve => require(['@/components/partners/partners'], resolve);
 
+const newsDetail = resolve => require(['@/components/showNewsPage/showNewsDetail/showNewsDetail'], resolve);
+
 const mainPageRouter= {
     path: '/',
     component:index,
@@ -34,38 +36,38 @@ const mainPageRouter= {
       {path:'advancedsearch',components:{main:advancedSearch},name:"高级搜索#2"},
       {path:'book_list',components:{main:book_list},name:"搜索结果#3"},
       {path:'book_detail',components:{main:book_detail},name:"图书详情#4"},
-      {
-        path: '/about',
-        component: about,
-        name:"关于我们#2"
-      }, {
-        path: '/activityCenter',
-        component: activityCenter,
+      {path: 'about', components: {main:about}, name:"关于我们#2"}, {
+        path: 'activityCenter',
+        components: {main:activityCenter},
         name:"活动中心#2"
       }, {
-        path: '/commonQuestion',
-        component: commonQuestion,
+        path: 'commonQuestion',
+        components: {main:commonQuestion},
         name:"常见问题#2"
       }, {
-        path: '/joinUs',
-        component: joinUs,
+        path: 'joinUs',
+        components: {main:joinUs},
         name:"加入我们#2"
       }, {
-        path: '/knowlwdgeShare',
-        component: knowlwdgeShare,
+        path: 'knowlwdgeShare',
+        components: {main:knowlwdgeShare},
         name:"知识分享#2"
       }, {
-        path: '/leixiReading',
-        component: leixiReading,
+        path: 'leixiReading',
+        components: {main:leixiReading},
         name:"蓝思阅读#2"
       }, {
-        path: '/speedReading',
-        component: speedReading,
+        path: 'speedReading',
+        components:{ main:speedReading},
         name:"加速阅读#2"
       }, {
-        path: '/partners',
-        component: partners,
+        path: 'partners',
+        components: {main:partners},
         name:"合作伙伴#2"
+      },{
+        path: 'newsDetail',
+        components: {main:newsDetail},
+        name:"新闻详情#3"
       },
     ]
 }

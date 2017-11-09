@@ -2,7 +2,13 @@
     <div class="showNewsPage">
       <div class="container_12">
         <div class="grid_12">
-            <div v-for="news in newsArr"></div>
+            <div v-for="news in newsArr">
+              <div class="tempContent">
+                <div class="newTitle" @click="readNews(news.news_content)"> {{news.news_title}}</div>
+                <div class="newTime">{{news.news_time | folterData}}</div>
+              </div>
+              <hr>
+            </div>
         </div>
       </div>
     </div>
@@ -30,6 +36,9 @@
         mounted(){
         },
         methods: {
+          readNews(con){
+            this.$router.push({ path: '/newsDetail', query: { content: con}})
+          },
             getAllNews(){
                 let that = this;
                 bookManageApi.getBookkNews(this.newsType).then((response)=>{

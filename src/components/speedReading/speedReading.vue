@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="speedReadingg">
       <newList newsType="2"></newList>
     </div>
 </template>

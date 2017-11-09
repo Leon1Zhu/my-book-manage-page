@@ -1,3 +1,37 @@
+@import '../../common/css/function';
 .showNewsPage{
+  position: relative;
+  width:100%;
+  border:1px solid #ccc;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:5px;
+  padding:10px 15px;
+  line-height: 150%;
+  font-size:18px;
+  hr{
+    width:95%;
+    width:calc( 100% - 30px);
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin-top: .7rem;
+    margin-bottom: .7rem;
+  }
+  .tempContent{
+    display: flex;
+  }
+  .newTime{
+    position: absolute;
+    right:15px;
+  }
+  .newTitle{
+    @include animateTime(.1s,0s);
+  }
 
+  .newTitle:hover{
+    color: lightskyblue;;
+    cursor: pointer;
+  }
 }

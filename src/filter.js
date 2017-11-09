@@ -9,6 +9,9 @@ Vue.filter( 'filterTopNewsData' , function(value,discount) {
     return value.substring(5,10)
   }
 });
+Vue.filter('folterData',function(data){
+  return new Date(data).Format('yyyy-MM-dd hh:mm:ss');
+});
 
 Date.prototype.Format = function (fmt) { //author: meizz
   var o = {

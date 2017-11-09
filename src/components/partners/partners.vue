@@ -1,5 +1,6 @@
 <template>
     <div>
+      111111111
         <newList newsType="7"></newList>
     </div>
 </template>

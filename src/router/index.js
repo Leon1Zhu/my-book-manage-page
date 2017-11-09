@@ -16,6 +16,7 @@ const third = resolve => require(['@/components/signinAndUp/third'], resolve);
 const forth = resolve => require(['@/components/signinAndUp/forth'], resolve);
 
 
+
 export default new Router({
   /*mode: 'history',*/
   base: __dirname,

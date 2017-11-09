@@ -13,7 +13,14 @@ let collectBook = loginBook+'/collectBook'
 let deleteSaveBook = loginBook+'/deleteSaveBook'
 let deleteOrderBook = loginBook+'/deleteOrderBook'
 let findOneBook =  bookIndex+'/getBookDetailInfo'
+let getBookNews = bookIndex+'/getAllBookNews'
 export default {
+  getBookkNews(newsType){
+    let params={
+      newsType:newsType
+    }
+    return api.get(getBookNews,params);
+  },
   deleteSaveBook(readerId,bookId){
     let params={
       readerId:readerId,

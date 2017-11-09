@@ -64,14 +64,14 @@
                 <div class="grid_12 nav-inner">
                     <ul>
                       <li  :class="{'active': liActive[0]}"   @click="chooseLi(0,'/')">主页</li>
-                      <li :class="{'active': liActive[1]}" @click="chooseLi(1)">活动中心</li>
-                      <li :class="{'active': liActive[2]}" @click="chooseLi(2)">加速阅读</li>
-                      <li :class="{'active': liActive[3]}" @click="chooseLi(3)">蓝思阅读</li>
-                      <li :class="{'active': liActive[4]}" @click="chooseLi(4)">知识分享</li>
-                      <li :class="{'active': liActive[5]}" @click="chooseLi(5)">加入我们</li>
-                      <li :class="{'active': liActive[6]}" @click="chooseLi(6)">常见问题</li>
-                      <li :class="{'active': liActive[7]}" @click="chooseLi(7)">合作伙伴</li>
-                      <li :class="{'active': liActive[8]}" @click="chooseLi(8)">关于我们</li>
+                      <li :class="{'active': liActive[1]}" @click="chooseLi(1,'/activityCenter')">活动中心</li>
+                      <li :class="{'active': liActive[2]}" @click="chooseLi(2,'/speedReading')">加速阅读</li>
+                      <li :class="{'active': liActive[3]}" @click="chooseLi(3,'/leixiReading')">蓝思阅读</li>
+                      <li :class="{'active': liActive[4]}" @click="chooseLi(4,'/knowlwdgeShare')">知识分享</li>
+                      <li :class="{'active': liActive[5]}" @click="chooseLi(5,'/joinUs')">加入我们</li>
+                      <li :class="{'active': liActive[6]}" @click="chooseLi(6,'/commonQuestion')">常见问题</li>
+                      <li :class="{'active': liActive[7]}" @click="chooseLi(7,'/partners')">合作伙伴</li>
+                      <li :class="{'active': liActive[8]}" @click="chooseLi(8,'/about')">关于我们</li>
                     </ul>
                 </div>
             </div>

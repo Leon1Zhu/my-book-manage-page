@@ -3,7 +3,7 @@
     <div class="header">
       <img style="float:left;width:250px;height: 50px;margin-top: 18px;margin-left: 10px;" src="../../assets/logo.png">
       <span class="tb2">欢迎注册</span>
-      <div style="position: absolute;right: 10px;top: 0px;">
+      <div style="position: absolute;right: 20px;top: 0px;">
       <span class="tb3">已有账户？</span>
       <router-link to="/login" class="tb4">前往登录</router-link>
       </div>
@@ -641,7 +641,7 @@
             $vm.yzm = num + '秒后重新获取'
           }
         }, 1000)
-        alert($vm.yzm4)
+        //alert($vm.yzm4)
         userApi.sendCode($vm.phone,$vm.yzm4).then((response)=>{
           this.$Message.info('验证码已成功发送，注意查收！')
         }).catch((response)=>{

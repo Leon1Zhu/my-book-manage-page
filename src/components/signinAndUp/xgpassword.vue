@@ -2,12 +2,14 @@
 
 <div class="main">
   <div class="header">
-    <img style="float:left;width:250px;height: 50px;margin-top: 5px;margin-left: 10px;" src="../../assets/logo.png">
+    <img style="float:left;width:250px;height: 50px;margin-top: 16px;margin-left: 10px;" src="../../assets/logo.png">
     <span class="tb2">修改密码</span>
-    <span class="tb3">已完成修改？</span>
-    <router-link to="/login" class="tb4" >前往登录</router-link>
+    <div style="position: absolute;right: 20px;top: 0px;">
+      <span class="tb3">已完成修改？</span>
+      <router-link to="/login" class="tb4" >前往登录</router-link>
+    </div>
+
   </div>
-  <hr>
   <div class="center1">
     <router-view/>
   </div>
@@ -25,7 +27,7 @@
   }
 
   .header {
-    height: 15%;
+    height: 90px;
     width: 100%;
   }
   .tb1 {
@@ -40,16 +42,13 @@
 
   .tb2 {
     float: left;
-    margin-top: 18px;
+    margin-top: 35px;
     margin-left: 5%;
     font-family: "Microsoft Yahei";
     font-size: 30px;
   }
 
   .tb3 {
-    float: left;
-    margin-left: 40%;
-    margin-top: 40px;
 
   }
   .tb4 {

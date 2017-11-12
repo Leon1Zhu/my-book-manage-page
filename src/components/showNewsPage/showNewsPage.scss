@@ -29,7 +29,23 @@
   .newTitle{
     @include animateTime(.1s,0s);
   }
-
+  .ivu-icon-sad-outline{
+    font-size: 50px;
+    color: #755d97;
+  }
+  .no-news-content{
+    .content{
+      text-align: center;
+      span{
+        position: relative;
+        top:-10px;
+        font-size: 23px;
+        font-weight: 500;
+        text-shadow: #ccc 1px 1px;
+        color: #755d97;
+      }
+    }
+  }
   .newTitle:hover{
     color: lightskyblue;;
     cursor: pointer;

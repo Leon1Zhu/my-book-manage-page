@@ -2,7 +2,7 @@
     <div class="showNewsDetail">
       <div class="container_12">
         <div class="grid_12">
-          <div v-html="content">
+          <div v-html="content" style="background: #ffffff;padding: 5px 10px;-webkit-border-radius: 5px;-moz-border-radius:5px ;border-radius: 5px;">
           </div>
         </div>
       </div>

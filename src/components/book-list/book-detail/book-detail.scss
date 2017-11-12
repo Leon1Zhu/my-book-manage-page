@@ -2,6 +2,10 @@
   .grid_12{
     border:1px solid #ccc;
   }
+  .ivu-tabs-tabpane{
+    padding: 10px;
+    padding-top: 0px;
+  }
   .book-info-content{
     position: relative;
     width:100%;
@@ -30,7 +34,7 @@
       .book-item-info{
         display: flex;
         .left-info,.right-info{
-          flex:1 1 50%;
+          flex:1 1 33%;
           .sign-img-content{
             text-align: center;
             img{

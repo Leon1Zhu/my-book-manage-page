@@ -42,20 +42,29 @@
               </div>
               <div class="book-item-info">
                 <div class="left-info">
-                  <div class="sign-img-content" v-if="data.artag==1">
-                    <img src="../../../assets/ARLogo.png">
-                  </div>
-                  <div class="sign-img-content" v-else>
+                  <Poptip  class="sign-img-content"  trigger="hover" content="AR书籍" v-if="data.artag===1">
+                      <img src="../../../assets/ARLogo.png">
+                  </Poptip>
+                  <Poptip class="sign-img-content"  trigger="hover" content="不具有AR属性" v-else>
                     <img src="../../../assets/ARlogo2.png">
-                  </div>
+                  </Poptip>
                 </div>
                 <div class="right-info">
-                  <div class="sign-img-content" v-if="data.lexileTag==1">
+                  <Poptip class="sign-img-content" trigger="hover" content="蓝思书籍"  v-if="data.lexileTag===1">
                     <img src="../../../assets/lexile.png">
-                  </div>
-                  <div class="sign-img-content" v-else>
+                  </Poptip>
+                  <Poptip class="sign-img-content"  trigger="hover" content="不具有蓝思属性"  v-else>
                     <img src="../../../assets/lexile2.png">
-                  </div>
+                  </Poptip>
+                </div>
+
+                <div class="right-info">
+                  <Poptip class="sign-img-content" trigger="hover" content="具有配套音频"  v-if="data.audio===1">
+                    <img src="../../../assets/audio.jpg">
+                  </Poptip>
+                  <Poptip  class="sign-img-content"  trigger="hover" content="不具有配套音频"  v-else>
+                    <img src="../../../assets/audio-no-color.jpg">
+                  </Poptip>
                 </div>
               </div>
 
@@ -70,6 +79,13 @@
               </div>
             </div>
 
+          </div>
+          <div class="introduce-content">
+            <Tabs type="card"  v-if="data.introduction != 'NULL' && data.introduction != null && data.introduction != '' && data.review1 != 'NULL' && data.review1 != null && data.review1 != '' &&data.review2 != 'NULL' && data.review2 != null && data.review2 != ''">
+              <TabPane label="书籍简介" v-if="data.introduction != 'NULL' && data.introduction != null && data.introduction != ''">{{data.introduction}}</TabPane>
+              <TabPane label="评论1"   v-if="data.review1 != 'NULL' && data.review1 != null && data.review1 != ''">{{data.review1}}</TabPane>
+              <TabPane label="评论2"  v-if="data.review2 != 'NULL' && data.review2 != null && data.review2 != ''">{{data.review2}}</TabPane>
+            </Tabs>
           </div>
         </div>
       </div>

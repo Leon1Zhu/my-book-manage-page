@@ -2,7 +2,13 @@
     <div class="showNewsPage">
       <div class="container_12">
         <div class="grid_12">
-            <div v-for="news in newsArr">
+          <div class="no-news-content" v-if="newsArr == null || newsArr.length == 0">
+              <div class="content" >
+                <Icon type="sad-outline"></Icon>
+                <span>空空如也哦~</span>
+              </div>
+          </div>
+            <div v-for="news in newsArr" v-else>
               <div class="tempContent">
                 <div class="newTitle" @click="readNews(news.news_content)"> {{news.news_title}}</div>
                 <div class="newTime">{{news.news_time | folterData}}</div>

@@ -23,6 +23,7 @@
       margin-bottom: 5px;
     }
     .book-item {
+      min-height:300px;
       .temp_class{
       position: relative;
       border: 1px solid #ccc;
@@ -74,6 +75,9 @@
         position: absolute;
         right: 10px;
         margin-top: 3%;
+        .ivu-poptip{
+          display: block;
+        }
         .sign-img-content {
           img {
             width: 80px;

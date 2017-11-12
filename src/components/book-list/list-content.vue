@@ -54,18 +54,24 @@
         </div>
       </div>
       <div class="book-sign-img">
-        <div class="sign-img-content" v-if="data.artag==1">
-          <img src="../../assets/ARLogo.png">
-        </div>
-        <div class="sign-img-content" v-else>
-          <img src="../../assets/ARlogo2.png">
-        </div>
-        <div class="sign-img-content" v-if="data.lexileTag==1">
-          <img src="../../assets/lexile.png">
-        </div>
-        <div class="sign-img-content" v-else>
-          <img src="../../assets/lexile2.png">
-        </div>
+        <Poptip  class="sign-img-content"  trigger="hover" content="AR书籍" v-if="data.artag===1">
+            <img src="../../assets/ARLogo.png">
+        </Poptip>
+        <Poptip class="sign-img-content"  trigger="hover" content="不具有AR属性" v-else>
+            <img src="../../assets/ARlogo2.png">
+        </Poptip>
+        <Poptip class="sign-img-content" trigger="hover" content="蓝思书籍"  v-if="data.lexileTag===1">
+            <img src="../../assets/lexile.png">
+        </Poptip>
+        <Poptip class="sign-img-content"  trigger="hover" content="不具有蓝思属性"  v-else>
+            <img src="../../assets/lexile2.png">
+        </Poptip>
+        <Poptip class="sign-img-content" trigger="hover" content="具有配套音频"  v-if="data.audio===1">
+            <img src="../../assets/audio.jpg">
+        </Poptip>
+        <Poptip  class="sign-img-content"  trigger="hover" content="不具有配套音频"  v-else>
+            <img src="../../assets/audio-no-color.jpg">
+        </Poptip>
       </div>
     </div>
 </template>

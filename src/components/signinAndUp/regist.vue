@@ -1,15 +1,14 @@
 <template>
   <div id="main">
     <div class="header">
-      <img style="float:left;width:250px;height: 50px;margin-top: 5px;margin-left: 10px;" src="../../assets/logo.png">
+      <img style="float:left;width:250px;height: 50px;margin-top: 18px;margin-left: 10px;" src="../../assets/logo.png">
       <span class="tb2">欢迎注册</span>
-      <div style="position: absolute;right: 10px;top: 10px;">
+      <div style="position: absolute;right: 10px;top: 0px;">
       <span class="tb3">已有账户？</span>
       <router-link to="/login" class="tb4">前往登录</router-link>
       </div>
     </div>
-    <hr/>
-    <form>
+    <form style="display: flex; margin-bottom: 10px;background: #fff;position: relative;">
 
       <div class="inputvalue" id="usernamegrp" v-cloak>
         <p class="zt" style="margin-left: 39% ;font-size: 20px;">个人信息</p>
@@ -56,7 +55,7 @@
         <p class="usernamewarning" v-bind:class="{contactcolor:iscontactcolor}">{{contactwarning}}</p>
         <br>
         <div class="inputzu" style="margin-top: 7px">
-          <span class="spa" slot="prepend">联系地址</span>
+          <span class="spa" slot="prepend" style="float: left;">联系地址</span>
           <Cascader class="cd" :data="data" @on-change="addresschange" v-model="value1"></Cascader>
         </div>
         <div style="float:left; margin-top: 22px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg"  v-if="grtr11" class="lsjt"/></div>
@@ -81,7 +80,7 @@
         <p class="usernamewarning" v-bind:class="{mailcolor:ismailcolor}">{{mailwarning}}</p>
         <br>
         <div style="clear:both"></div>
-        <hr>
+        <hr style="color: #ccc;width: 60%;margin:2% 0 2% 15%;">
         <p class="zt" style="margin-left: 39% ;font-size: 20px;">账户信息</p>
 
         <div class="inputzu" style="margin-top: 7px">
@@ -127,7 +126,7 @@
        <!-- <br>-->
 
         <div class="inputzu" style="margin-top: 7px">
-          <span class="spa" slot="prepend">验&nbsp证&nbsp码</span>
+          <n class="spa" slot="prepend">验&nbsp证&nbsp码</n>
           <input type="text" maxlength="6" style="width:70px;" v-model="inputyzm" class="inp"
                  v-on:change="yzmchange"
                  placeholder="验证码"/>
@@ -146,7 +145,7 @@
         </Button>
       </div>
 
-      <div class="rightmdl" style="border-left:1px solid grey;">
+      <div class="rightmdl" style="">
         <img src="../../assets/img/bz.jpg" style="margin-left:22% ; margin-top:2%;height:200px ; width: 300px;"/>
         <img src="../../assets/img/book.jpg" style="margin-left:22% ;height:200px ; width: 300px;"/>
       </div>
@@ -162,16 +161,16 @@
     position: relative;
     MARGIN-RIGHT: auto;
     MARGIN-LEFT: auto;
-  }
-  .inputzu{
     background: #ffffff;
   }
   #usernamegrp,.header{
     background: #ffffff;
   }
   .header {
-    height: 15%;
+    height: 90px;
     width: 100%;
+    box-shadow: 0 5px 4px -4px rgba(0,0,0,0.1);
+    margin-bottom:10px;
   }
 
   .ivu-icon-ios-calendar-outline {
@@ -182,7 +181,6 @@
     font-family: "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
     font-size: 15px;
     margin-left: 10px;
-    float: left;
     margin-top: 13px;
     width: 70px;
 
@@ -240,7 +238,7 @@
 
   .tb2 {
     float: left;
-    margin-top: 18px;
+    margin-top: 32px;
     margin-left: 5%;
     font-family: "Microsoft Yahei";
     font-size: 30px;
@@ -328,11 +326,19 @@
   }
 
   .rightmdl {
-    float: left;
     width: 40%;
     height: 800px;
-    margin-left: 10%;
+    margin-left: 5%;
 
+
+  }
+  .rightmdl:before{
+    content: ' ';
+    width:1px;
+    height:90%;
+    background: #ccc;
+    position: absolute;
+    top:5%;
   }
 
   .bottom {

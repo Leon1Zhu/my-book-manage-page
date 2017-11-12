@@ -11,7 +11,7 @@ var limit = 10;
 Vue.prototype.$collectBook = function(data){
   let that = this;
   if(!isLoginFun()){
-    that.$Notice.error(setNoticConfig("请先登录再进行操作！",null,null,"error"));
+    that.$Notice.error(setNoticConfig("请先登录再进行该操作！",null,null,"error"));
     return;
   }
   this.$Modal.confirm({
@@ -31,7 +31,7 @@ Vue.prototype.$collectBook = function(data){
 Vue.prototype.$reserveBook = function(data){
   let that = this;
   if(!isLoginFun()){
-    that.$Notice.error(setNoticConfig("请先登录再进行操作！",null,null,"error"));
+    that.$Notice.error(setNoticConfig("请先登录再进行该操作！",null,null,"error"));
     return ;
   };
   this.$Modal.confirm({

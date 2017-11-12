@@ -2,8 +2,8 @@
     <div id="advanced-search">
       <div class="container_12 search-content">
         <div class="grid_12">
-          <Tabs type="card">
-            <TabPane label="基础信息查书">
+          <!--<Tabs type="card">
+            <TabPane label="基础信息查书">-->
               <div class="search-input"><div class="word">书名</div><Input v-model="basicSearch.title" placeholder="请输入搜索书籍的标题" style=""></Input></div>
               <div class="search-input"><div class="word">作者</div><Input v-model="basicSearch.author" placeholder="请输入搜索书籍的作者" style=""></Input></div>
               <div class="search-input"><div class="word">书号</div><Input v-model="basicSearch.ISBN" placeholder="请输入搜索书籍的ISBN编号" style=""></Input></div>
@@ -19,8 +19,7 @@
                   <Option v-for="item in bookType" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </div>
-            </TabPane>
-            <TabPane label="加速阅读(AR)查书">
+
               <div class="search-input">
                 <div class="word">
                   <Tooltip content="这里是提示文字" placement="top">
@@ -44,21 +43,19 @@
               </div>
 
               <div class="search-input">
-                  <div class=" word double">
-                    <Tooltip content="这里是提示文字" placement="top">
+                <div class=" word double">
+                  <Tooltip content="这里是提示文字" placement="top">
                     <i  class="iconfont icon-wenhao"></i>
                   </Tooltip>BL值范围</div><Input v-model="ARSearch.ABLev" placeholder="请输入搜索书籍的标题" style=""></Input>
                 <span class="tilde">~</span><Input v-model="ARSearch.ABLevT" placeholder="请输入搜索书籍的标题" style=""></Input>
               </div>
               <div class="search-input">
-                  <div class="word double">AR Points</div><Input v-model="ARSearch.ARP" placeholder="请输入搜索书籍的标题" style=""></Input>
-                  <span class="tilde">~</span><Input v-model="ARSearch.ARPT" placeholder="请输入搜索书籍的标题" style=""></Input>
+                <div class="word double">AR Points</div><Input v-model="ARSearch.ARP" placeholder="请输入搜索书籍的标题" style=""></Input>
+                <span class="tilde">~</span><Input v-model="ARSearch.ARPT" placeholder="请输入搜索书籍的标题" style=""></Input>
               </div>
 
-            </TabPane>
-            <TabPane label="蓝思阅读(Lexile)查书">
               <div class="search-input">
-                  <div class="word double">蓝思值范围</div><Input v-model="LLSearch.LLV" placeholder="请输入搜索书籍的标题" style=""></Input>
+                <div class="word double">蓝思值范围</div><Input v-model="LLSearch.LLV" placeholder="请输入搜索书籍的标题" style=""></Input>
                 <span class="tilde">~</span><Input v-model="LLSearch.LLVT" placeholder="请输入搜索书籍的标题" style=""></Input>
               </div>
               <div class="search-input">
@@ -67,8 +64,15 @@
                   <Option v-for="item in sort" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </div>
+       <!--     </TabPane>
+            <TabPane label="加速阅读(AR)查书">
+
+
             </TabPane>
-          </Tabs>
+            <TabPane label="蓝思阅读(Lexile)查书">
+
+            </TabPane>
+          </Tabs>-->
           <div  class="basics-search-button-group">
             <div class="search-btn">
               <Button type="info" @click="getSearchInfo">搜索</Button>

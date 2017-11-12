@@ -56,6 +56,7 @@ import list_content from './list-content.vue'
               booklimit:10,
               saveInfo:SAVEINFO,
               orderInfo:ORDERINFO,
+              searchValue:this.$route.query.searchValue,
             }
         },
       computed:{
@@ -66,6 +67,16 @@ import list_content from './list-content.vue'
         created(){
           var vm = this;
           vm.handleSpinCustom();
+        },
+        watch:{
+          '$route.query.searchValue'(v1,v2){
+              if(v2 == null){
+                  return
+              }
+              if(this.list_type == ""){
+                  this.searchBook();
+              }
+          }
         },
         mounted(){
         },

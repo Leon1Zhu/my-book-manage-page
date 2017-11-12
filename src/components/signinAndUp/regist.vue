@@ -40,7 +40,7 @@
           <span class="spa" slot="prepend">生&nbsp&nbsp&nbsp&nbsp日</span>
           <DatePicker format="yyyy年MM月dd" value="new data()" v-model="birthdate" @on-change="datechange" class="dp"
                       type="date"
-                      placeholder="选择日期" style="width: 150px"></DatePicker>
+                      placeholder="选择日期"></DatePicker>
         </div>
 
         <div style="float:left; margin-top: 18px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg" v-if="grtr6"  class="lsjt"/></div>
@@ -181,8 +181,11 @@
     font-family: "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
     font-size: 15px;
     margin-left: 10px;
-    margin-top: 13px;
+    margin-top: 18px;
     width: 70px;
+    float:left;
+
+
 
   }
 
@@ -194,18 +197,19 @@
   }
 
   .cd {
-    width: 50%;
+    width: 45%;
     height: 50px;
     float: left;
     line-height: 50px;
-    margin-left: 34px;
+    margin-left: 40px;
 
   }
 
   .dp {
     border: none;
     outline: medium;
-    margin-left: 32px;
+    width:45% ;
+    margin-left: 40px;
     line-height: 50px;
     height: 50px;
 
@@ -222,7 +226,7 @@
   .radiogp {
     width: 50%;
     height: 50px;
-    margin-left: 35px;
+    margin-left: 40px;
     line-height: 50px;
   }
 

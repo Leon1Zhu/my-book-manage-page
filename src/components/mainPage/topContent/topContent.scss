@@ -5,6 +5,10 @@
   border-radius: $radius;;
 }
 .top-content{
+  .ivu-input-wrapper{
+    width:90%;
+    margin-left:10%;
+  }
   .ivu-breadcrumb-item-link:hover{
     cursor: pointer;
     color: #62247f;
@@ -93,16 +97,16 @@
       }
       .all-book-content{
         position: absolute;
-        right:0%;
+        right:6%;
         top:0;
-        margin-top:1.2em;
+        margin-top:1.6em;
         .all-book-count{
-          font-size: 2.0em;
+          font-size: 1.5em;
           color: #8e79ad;
           font-weight:700;
         }
         .all-book-item{
-          font-size:1.1em;
+          font-size:1.0em;
           color: #aaa;
           font-weight:700;
         }
@@ -110,7 +114,7 @@
       }
       .select-info{
         .select-input{
-          margin-top:20px;
+          margin-top:29px;
           .ivu-input-group-prepend{
             background: white;
           }

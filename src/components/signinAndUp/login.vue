@@ -22,9 +22,9 @@
           </div>
 
           <div class="wjmm">
-            <router-link to="/xgpassword/first"  style="margin-left: 62%;">忘记密码</router-link>
+            <router-link to="/xgpassword/first"  style="margin-left: 60%;">忘记密码</router-link>
           </div>
-          <Button @click="login" class="btn1" id="dl" style="width:180px; background: #BADCDB; color: white; font-size:15px;">登录
+          <Button @click="login" class="btn1" id="dl" style="width:180px; background: #BADCDB; color: white; font-size:15px;margin-left: 22%">登录
           </Button>
           <div class="registmdl">
             <img class="jt" src="../../assets/img/redarrow.jpg"/>
@@ -35,13 +35,13 @@
 
       </div>
     </div>
-    <div id="bottom" style="margin-left: 40% ; margin-top: 2%">
+<!--    <div id="bottom" style="margin-left: 40% ; margin-top: 2%">
       <a href="">关于我们&nbsp&nbsp&nbsp&nbsp&nbsp</a>
       <a href="">联系我们&nbsp&nbsp&nbsp&nbsp</a>
       <a href="">广告服务&nbsp&nbsp&nbsp&nbsp</a>
       <a href="">美原公益&nbsp&nbsp&nbsp&nbsp</a>
       <a href="">美原社区</a>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -55,7 +55,7 @@
   .center {
     height: 70%;
     width: 100%;
-    background: url(../../assets/img/book2_rep.png) no-repeat;
+/*    background: url(../../assets/img/book2_rep.png) no-repeat;*/
     background-size: 100%;
 
   }
@@ -153,7 +153,7 @@
   }
 
   .jt {
-    margin-left: 33%;
+    margin-left: 48%;
     float: left;
     width: 25px;
     height: 25px;

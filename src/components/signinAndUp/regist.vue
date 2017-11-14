@@ -145,11 +145,6 @@
         </Button>
       </div>
 
-      <div class="rightmdl" style="">
-        <img src="../../assets/img/bz.jpg" style="margin-left:22% ; margin-top:2%;height:200px ; width: 300px;"/>
-        <img src="../../assets/img/book.jpg" style="margin-left:22% ;height:200px ; width: 300px;"/>
-      </div>
-
     </form>
   </div>
 </template>
@@ -293,7 +288,7 @@
     height: 70%;
     float: left;
     margin-bottom: 2%;
-    margin-left: 10%;
+    margin-left: 32%;
 
   }
 

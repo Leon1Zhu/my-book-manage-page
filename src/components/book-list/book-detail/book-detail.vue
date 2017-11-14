@@ -4,7 +4,10 @@
         <div class="grid_12">
           <div class="book-info-content">
             <div class="left-img">
-               <div class="bottom-content"><img  :src="imgUrl+'9780001821743.jpg'"></div>
+               <div class="bottom-content">
+                 <img v-if="data.iSBN13!=0 && data.iSBN13!=null" :src="imgUrl+data.iSBN13+'.jpg'">
+                 <img v-if="data.iSBN10!=0 && data.iSBN10!=null" :src="imgUrl+data.iSBN10+'.jpg'">
+               </div>
             </div>
             <div class="book-introduce-content">
               <div class="book-name">{{data.name | filterNull}}</div>
@@ -41,7 +44,7 @@
                 <div class="right-info">价格:{{data.book_type  | filterNull}}</div>
               </div>
               <div class="book-item-info">
-                <div class="left-info">
+                <div class="left-info right-imgT">
                   <Poptip  class="sign-img-content"  trigger="hover" content="AR书籍" v-if="data.artag===1">
                       <img src="../../../assets/ARLogo.png">
                   </Poptip>
@@ -49,7 +52,7 @@
                     <img src="../../../assets/ARlogo2.png">
                   </Poptip>
                 </div>
-                <div class="right-info">
+                <div class="right-info left-imgT">
                   <Poptip class="sign-img-content" trigger="hover" content="蓝思书籍"  v-if="data.lexileTag===1">
                     <img src="../../../assets/lexile.png">
                   </Poptip>
@@ -58,7 +61,7 @@
                   </Poptip>
                 </div>
 
-                <div class="right-info">
+                <div class="right-info left-imgT">
                   <Poptip class="sign-img-content" trigger="hover" content="具有配套音频"  v-if="data.audio===1">
                     <img src="../../../assets/audio.jpg">
                   </Poptip>
@@ -81,10 +84,10 @@
 
           </div>
           <div class="introduce-content">
-            <Tabs type="card"  v-if="data.introduction != 'NULL' && data.introduction != null && data.introduction != '' && data.review1 != 'NULL' && data.review1 != null && data.review1 != '' &&data.review2 != 'NULL' && data.review2 != null && data.review2 != ''">
-              <TabPane label="书籍简介" v-if="data.introduction != 'NULL' && data.introduction != null && data.introduction != ''">{{data.introduction}}</TabPane>
-              <TabPane label="评论1"   v-if="data.review1 != 'NULL' && data.review1 != null && data.review1 != ''">{{data.review1}}</TabPane>
-              <TabPane label="评论2"  v-if="data.review2 != 'NULL' && data.review2 != null && data.review2 != ''">{{data.review2}}</TabPane>
+            <Tabs type="card" >
+              <TabPane label="书籍简介" >{{data.introduction | filterNull}}</TabPane>
+              <TabPane label="评论1"   >{{data.review1 | filterNull}}</TabPane>
+              <TabPane label="评论2"  >{{data.review2 | filterNull}}</TabPane>
             </Tabs>
           </div>
         </div>

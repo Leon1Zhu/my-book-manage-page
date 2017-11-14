@@ -6,7 +6,9 @@
               <div class="bookContent">
                 <div v-for="book in bookinfo" class="book-info-content">
                   <div class="botton-content">
-                    <img :src="imgurl+'9780002251785.jpg'">
+                    <img v-if="book.iSBN13!=0 && book.iSBN13!=null" :src="imgurl+book.iSBN13+'.jpg'">
+                    <img v-if="book.iSBN10!=0 && book.iSBN10!=null" :src="imgurl+book.iSBN10+'.jpg'">
+                    <!--<img v-if="book.iSBN13!=0 && book.iSBN13!=null" :src="imgurl+book.iSBN13">-->
                     <div class="book-info book-name">{{book.name}}</div>
                     <div class="book-info book-publish">{{book.author}}</div>
                     <div class="book-info"><Button type="info" size="small"  @click="reserveBook(book)">预定</Button> <Button type="success" size="small" @click="collectBook(book)">收藏</Button></div>

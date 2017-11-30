@@ -22,6 +22,7 @@
 
 <script>
     import './showNewsPage.scss'
+    import axios  from 'axios'
     import bookManageApi from '../../api/bookManage'
     export default{
         props:{
@@ -48,10 +49,13 @@
             getAllNews(){
                 let that = this;
                 bookManageApi.getBookkNews(this.newsType).then((response)=>{
-                    that.newsArr = response.data
-                }).catch((response)=>{
+                    /*that.newsArr = response.data*/
+                })/*.catch((response)=>{
                   that.$Notice.error(setNoticConfig("获取消息列表出错！",null,null,"error"));
+                })*/
+                axios.get('/book/getAllBookNews',{params:{newsType:this.newsType}}).then((response)=>{
                 })
+
             }
         }
     }

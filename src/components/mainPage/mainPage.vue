@@ -1,7 +1,7 @@
 <template>
     <div id="library-mainpage">
       <topContent></topContent>
-      <div class="container_12">
+      <div class="container_12 flex-content">
         <div class="grid_12">
           <router-view name="main"></router-view>
         </div>

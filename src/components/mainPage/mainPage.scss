@@ -1,7 +1,12 @@
 #library-mainpage{
+  display: flex;
+  flex-flow: column;
+  min-height:100vh;
+  .flex-content{
+    flex:1;
+  }
   footer{
     height: 20px;;
-    padding-top:10px;
     background: #f0f0f0;
     .company-info{
       font-size:14px;

@@ -14,6 +14,7 @@
     font-weight: 700;
   }
   .book-list-content {
+    will-change: transform;
     position: relative;
     @include my-border-radius(3px);
     border: 1px solid #ccc;

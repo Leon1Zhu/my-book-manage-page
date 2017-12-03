@@ -6,8 +6,8 @@
               <div class="bookContent">
                 <div v-for="book in bookinfo" class="book-info-content">
                   <div class="botton-content">
-                    <img v-if="book.iSBN13!=0 && book.iSBN13!=null" :src="imgurl+book.iSBN13+'.jpg'">
-                    <img v-if="book.iSBN10!=0 && book.iSBN10!=null" :src="imgurl+book.iSBN10+'.jpg'">
+                    <img @click="getDetailInfo(book.id)" v-if="book.iSBN13" :src="imgurl+book.iSBN13+'.jpg'">
+                    <img @click="getDetailInfo(book.id)" v-if="book.iSBN10 && !book.iSBN13" :src="imgurl+book.iSBN10+'.jpg'">
                     <!--<img v-if="book.iSBN13!=0 && book.iSBN13!=null" :src="imgurl+book.iSBN13">-->
                     <div class="book-info book-name">{{book.name}}</div>
                     <div class="book-info book-publish">{{book.author}}</div>
@@ -37,6 +37,9 @@ import bookManageApi from '../../api/bookManage'
         mounted(){
         },
         methods: {
+          getDetailInfo(id){
+            this.$router.push({ path: '/book_detail', query: { bookid: id }})
+          },
           reserveBook(data){
             this.$reserveBook(data)/*.then((response)=>{
               this.$emit('reservBook',response)

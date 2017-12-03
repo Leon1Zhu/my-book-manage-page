@@ -168,6 +168,7 @@
         ul{
           display: table-row;
           li{
+            position: relative;
             transition: all 0.1s ease-in-out 0s;
             font-weight:700;
             font-size:15px;
@@ -184,11 +185,28 @@
               color: white;
             }
           }
+          .extra-content{
+            position: absolute;
+            border:1px solid #ccc;
+            padding:0px 5px;
+            width:100%;
+            background: #755B99;
+            z-index:10;
+            height:0%;
+            transition: all .3s ease;
+            //防止height为0时，字体不消失
+            overflow: hidden;
+          }
           li.active{
             background: #5c4280;
           }
-          li:hover{
+          li:hover,.extra-content:hover{
             background: #5c4280;
+          }
+          li:nth-child(3):hover{
+            .extra-content{
+              height:100%;
+            }
           }
         }
       }

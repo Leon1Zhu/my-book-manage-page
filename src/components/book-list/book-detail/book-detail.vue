@@ -5,41 +5,41 @@
           <div class="book-info-content">
             <div class="left-img">
                <div class="bottom-content">
-                 <img v-if="data.iSBN13!=0 && data.iSBN13!=null" :src="imgUrl+data.iSBN13+'.jpg'">
-                 <img v-if="data.iSBN10!=0 && data.iSBN10!=null" :src="imgUrl+data.iSBN10+'.jpg'">
+                 <img v-if="data.iSBN13" :src="imgUrl+data.iSBN13+'.jpg'">
+                 <img v-if="data.iSBN10 && !data.iSBN13" :src="imgUrl+data.iSBN10+'.jpg'">
                </div>
             </div>
-            <div class="book-introduce-content">
-              <div class="book-name">{{data.name | filterNull}}</div>
-              <div class="book-item-info">
+            <div class="book-introduce-content ">
+              <div class="book-name font-content">{{data.name | filterNull}}</div>
+              <div class="book-item-info font-content">
                 <div class="left-info">作者:{{data.author  | filterNull}}</div>
                 <div class="right-info">BL值:{{data.bl  | filterNull}}</div>
               </div>
-              <div class="book-item-info">
+              <div class="book-item-info font-content">
                 <div class="left-info">ISBN13:{{data.iSBN13  | filterNull}}</div>
                 <div class="right-info">兴趣值:{{data.il  | filterNull}}</div>
               </div>
-              <div class="book-item-info">
+              <div class="book-item-info font-content" >
                 <div class="left-info">ISBN10:{{data.iSBN10  | filterNull}}</div>
                 <div class="right-info">积分点:{{data.arpoints  | filterNull}}</div>
               </div>
-              <div class="book-item-info">
+              <div class="book-item-info font-content">
                 <div class="left-info">类型:{{data.docType  | filterNull}}</div>
                 <div class="right-info">评分值:{{data.arrating  | filterNull}}</div>
               </div>
-              <div class="book-item-info">
+              <div class="book-item-info font-content">
                 <div class="left-info">页数:{{data.pages  | filterNull}}</div>
                 <div class="right-info">测试号:{{data.quizNo  | filterNull}}</div>
               </div>
-              <div class="book-item-info">
+              <div class="book-item-info font-content">
                 <div class="left-info">版本:{{data.bookType  | filterNull}}</div>
                 <div class="right-info">蓝思值:{{data.lexileCombined  | filterNull}}</div>
               </div>
-              <div class="book-item-info">
+              <div class="book-item-info font-content">
                 <div class="left-info">重量:{{data.weight | filterNull}}</div>
                 <div class="right-info">系列IS:{{data.series  | filterNull}}</div>
               </div>
-              <div class="book-item-info">
+              <div class="book-item-info font-content">
                 <div class="left-info">尺寸:{{data.diamension  | filterNull}}</div>
                 <div class="right-info">价格:{{data.book_type  | filterNull}}</div>
               </div>

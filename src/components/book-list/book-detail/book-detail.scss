@@ -5,12 +5,18 @@
   .ivu-tabs-tabpane{
     padding: 10px;
     padding-top: 0px;
+    line-height:200%;
+    font-size:18px;
+    font-weight:550;
   }
   .book-info-content{
     position: relative;
     width:100%;
     height:100%;
     display: flex;
+    .font-content{
+      padding-left:10px;
+    }
     .left-img{
       width: 348px;
       height: 472px;
@@ -23,7 +29,9 @@
       }
     }
     .book-introduce-content{
-      margin-left:10px;
+      margin-top:3%;
+      width:100%;
+      margin-left:3%;
       line-height:150%;
       font-size:18px;
       .ivu-btn-long{

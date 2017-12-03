@@ -2,18 +2,20 @@
     <div class="top-content">
       <div class="header-bar">
           <div class="container_12">
-              <div class="grid_6" v-if="!loginStatus">
-                <div class="login-content" @click="login">
+              <div class="grid_6" v-if="!loginStatus"  style="position: relative;float: right;">
+                <div  style="position: absolute;right: 0px;top: 3px;">
+                <div class="login-content" @click="login" style="display: inline;">
                   <i class="iconfont icon-yaochi"></i>
                   <span class="book-login login-in">&nbsp;登&nbsp;陆&nbsp;</span>
                 </div>
-                <div class="login-content" @click="regist">
+                <div class="login-content" @click="regist" style="display: inline;">
                   <i  style="margin-left: 4px;" class="iconfont icon-Ankerwebicon-"></i>
                  <span class="book-login login-up">&nbsp;注&nbsp;册&nbsp;</span>
                 </div>
+                </div>
               </div>
-            <div class="grid_6" v-if="loginStatus" >
-              <div class="login-content" :class="{ 'roateIcon':isActive}" @click="showNav">
+            <div class="grid_6" v-if="loginStatus" style="position: relative;float: right;" >
+              <div class="login-content" :class="{ 'roateIcon':isActive}" @click="showNav" style="position: absolute;right: 0px;">
                 <i class="iconfont icon-denglutouxiangmoren"></i>
                 <span class="book-login login-in">&nbsp;个人中心&nbsp;</span>
                 <i class="ivu-icon ivu-icon-arrow-down-b "></i>
@@ -65,7 +67,11 @@
                     <ul>
                       <li  :class="{'active': liActive[0]}"   @click="chooseLi(0,'/')">主页</li>
                       <li :class="{'active': liActive[1]}" @click="chooseLi(1,'/activityCenter')">活动中心</li>
-                      <li :class="{'active': liActive[2]}" @click="chooseLi(2,'/speedReading')">加速阅读</li>
+                      <li :class="{'active': liActive[2]}" @click="chooseLi(2,'/speedReading')">加速阅读
+                        <div class="extra-content">
+                           加速阅读
+                        </div>
+                      </li>
                       <li :class="{'active': liActive[3]}" @click="chooseLi(3,'/leixiReading')">蓝思阅读</li>
                       <li :class="{'active': liActive[4]}" @click="chooseLi(4,'/knowlwdgeShare')">知识分享</li>
                       <li :class="{'active': liActive[5]}" @click="chooseLi(5,'/joinUs')">加入我们</li>

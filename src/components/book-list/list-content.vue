@@ -4,8 +4,8 @@
     <div class="temp_class" >
       <div class="book-img">
         <div class="bottom-content">
-          <img  @click="getDetailInfo" v-if="data.iSBN13!=0 && data.iSBN13!=null" :src="imgUrl+data.iSBN13+'.jpg'">
-          <img  @click="getDetailInfo" v-if="data.iSBN10!=0 && data.iSBN10!=null" :src="imgUrl+data.iSBN10+'.jpg'">
+          <img  @click="getDetailInfo" v-if="data.iSBN13" :src="imgUrl+data.iSBN13+'.jpg'">
+          <img  @click="getDetailInfo" v-if="data.iSBN10 && !data.iSBN13" :src="imgUrl+data.iSBN10+'.jpg'">
       </div></div>
 
       <div class="book-introduce-content">

@@ -1,5 +1,8 @@
 <template>
     <div class="top-content">
+      <div class="login-content-top" :class="{showLoginContent : showloginflag}">
+        <loginContent @closeLogin="closeLogin"></loginContent>
+      </div>
       <div class="header-bar">
           <div class="container_12">
               <div class="grid_6" v-if="!loginStatus"  style="position: relative;float: right;">
@@ -21,13 +24,6 @@
                 <i class="ivu-icon ivu-icon-arrow-down-b "></i>
               </div>
             </div>
-              <!--<div class="grid_6">
-                <div class="headRight">
-                  <i class="iconfont icon-gouwuche"></i>
-                  <span>购物车：<span class="basketCount">0</span></span>
-                  <span>金额：<span class="book-money">¥&nbsp;0</span></span>
-                </div>
-              </div>-->
           </div>
       </div>
       <div  v-if="loginStatus"  :class="{ 'globalnav-hidden':!isActive}" class="globalnav">
@@ -108,6 +104,7 @@
 import './topContent.scss'
 import  animatedInteger from '../../../common/animated-integer/animated-integer.vue'
 import personCenter from '../personalCenter/personalCenter.vue'
+import loginContent from '../../signinAndUp/login.vue'
     export default{
         data(){
             return {
@@ -118,17 +115,24 @@ import personCenter from '../personalCenter/personalCenter.vue'
                 liActive:[true,false,false,false,false,false,false,false,false],
                 loginStatus:getLoginStatus(),
                 isActive:false,
+                showloginflag:false
             }
         },
         components: {
             'animatedInteger':animatedInteger,
             'personCenter':personCenter,
+            'loginContent':loginContent
         },
         created(){
         },
         mounted(){
         },
         methods: {
+          closeLogin(){
+            this.showloginflag=false
+            let app =document.getElementById('app')
+            app.style.overflowY='auto'
+          },
           toPath(bread){
             this.$router.push({ path:bread.url, query: bread.query })
           },
@@ -151,7 +155,11 @@ import personCenter from '../personalCenter/personalCenter.vue'
               that.$router.push({ path: '/book_list', query: { booktype: that.searchBookSelect , searchValue: that.searchBookInput}})
           },
           login(){
-            this.$router.push({ path: '/login'})
+            //this.$router.push({ path: '/login'})
+            this.showloginflag=true
+            let app =document.getElementById('app')
+             app.style.overflow='hidden'
+
           },
           regist(){
             this.$router.push({ path:'/regist'})

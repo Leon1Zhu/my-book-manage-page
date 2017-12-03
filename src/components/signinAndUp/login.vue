@@ -1,9 +1,12 @@
 <template xmlns="http://www.w3.org/1999/html">
   <div id="main" class="main">
-    <div class="top">
+   <!-- <div class="top">
       <div class="icon">
        <img style="width:250px;height: 50px;" src="../../assets/logo.png">
       </div>
+    </div>-->
+    <div class="close-item animateClass" @click="closeLoginContent">
+      <i   class=" iconfont icon-close48"></i>
     </div>
     <div class="center">
       <div class="mdl">
@@ -51,7 +54,19 @@
     width: 100%;
 
   }
-
+ .close-item i{
+   font-size: 30px;
+   color: white;
+ }
+  .close-item{
+    width:30px;
+    position: absolute;
+    top:10px;
+    right: 10px;
+  }
+  .close-item:hover{
+    transform: rotate(180deg);
+  }
   .center {
     height: 70%;
     width: 100%;
@@ -96,12 +111,12 @@
   }
 
   .mdl {
-    float: left;
     height: 80%;
     width: 23%;
     background: white;
-    margin-left: 70%;
-    margin-top: 40px;
+    margin:0 auto;
+    position: relative;
+    top:35%;
   }
 
   .zhdl {
@@ -178,6 +193,9 @@
       }
     },
     methods: {
+      closeLoginContent(){
+        this.$emit("closeLogin");
+      },
       login: function () {
           var that = this;
           if(that.username=='' || that.password==''){

@@ -55,6 +55,19 @@
         <p class="usernamewarning" v-bind:class="{contactcolor:iscontactcolor}">{{contactwarning}}</p>
         <br>
         <div class="inputzu" style="margin-top: 7px">
+          <span class="spa" slot="prepend">学&nbsp&nbsp&nbsp&nbsp校</span><input type="text" v-model="school" class="inp"
+                                                                      v-on:blur="loseschool" v-on:focus="getschool"
+                                                                      placeholder="请输入所属学校"/>
+
+        </div>
+        <div style="float:left; margin-top: 20px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg" v-if="grtr15"  class="lsjt"/></div>
+        <div class="inputzu" style="margin-top: 7px">
+          <span class="spa" slot="prepend" style="float: left;">年&nbsp&nbsp&nbsp&nbsp级</span>
+          <Cascader class="cd" :data="data1" @on-change="gradechange" v-model="grade"></Cascader>
+
+        </div>
+        <div style="float:left; margin-top: 22px ; margin-left: 20px ; text-align:center "><img  src="../../assets/img/greenarrow.jpg"  v-if="grtr16" class="lsjt"/></div>
+        <div class="inputzu" style="margin-top: 7px">
           <span class="spa" slot="prepend" style="float: left;">联系地址</span>
           <Cascader class="cd" :data="data" @on-change="addresschange" v-model="value1"></Cascader>
         </div>
@@ -183,7 +196,9 @@
 
 
   }
-
+  .grade{
+    width:100% ;
+  }
   .btn {
     height: 40px;
     width: 100px;
@@ -221,7 +236,7 @@
   .radiogp {
     width: 50%;
     height: 50px;
-    margin-left: 40px;
+    margin-left: 12%;
     line-height: 50px;
   }
 
@@ -270,7 +285,7 @@
     border: none;
     height: 50px;
     outline: none;
-    margin-left: 40px;
+    margin-left: 12%;
 
   }
 
@@ -407,6 +422,7 @@
         username: '',
         password1: '',
         phone: '',
+        school:'',
         yzm4: '',
         dis: true,
         yzm: '获取验证码',
@@ -428,6 +444,8 @@
         grtr9: false,
         grtr10: false,
         grtr11: false,
+        grtr15: false,
+        grtr16:false,
         inputyzm: '',
         val: '获取验证码',
         detailaddress1: '',
@@ -439,7 +457,46 @@
         grtr7: false,
         birthdate: '',
         value1: [],
-        data: tranData(area)
+        data: tranData(area) ,
+        grade : [] ,
+        data1:[
+          {
+            value: '一年级',
+            label: '一年级'
+          },
+          {
+            value: '二年级',
+            label: '二年级'
+          },
+          {
+            value: '三年级',
+            label: '三年级'
+          },
+          {
+            value: '四年级',
+            label: '四年级'
+          },
+          {
+            value: '五年级',
+            label: '五年级'
+          },
+          {
+            value: '六年级',
+            label: '六年级'
+          },
+          {
+            value: '初一',
+            label: '初一'
+          },
+          {
+            value: '初二',
+            label: '初二'
+          },
+          {
+            value: '初三',
+            label: '初三'
+          }
+        ]
       }
     },
     methods: {
@@ -479,6 +536,13 @@
           this.grtr11 = true
         } else {
           this.grtr11 = false
+        }
+      },
+      gradechange: function () {
+        if (this.grade.length === 0) {
+          this.grtr16 = true
+        } else {
+          this.grtr16 = false
         }
       },
       getcontact: function () {
@@ -655,11 +719,22 @@
           this.grtr10 = false
         }
       },
+      getschool: function(){
+          this.grtr15 = false;
+
+      },
+      loseschool: function () {
+        if(this.school !== ""){
+          this.grtr15 = true ;
+        }else {
+          this.grtr15 = false;
+        }
+      },
 
       regist: function () {
         if (this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
           || this.detailaddress1.length === 0 || this.mail.length === 0 || this.password1.length === 0
-          || this.repassword.length === 0 || this.phone.length === 0 || this.inputyzm.length === 0) {
+          || this.repassword.length === 0 || this.phone.length === 0 || this.inputyzm.length === 0|| this.school.length === 0 || this.grade.length === 0) {
           this.$Message.error('请确认信息不为空！')
         } else {
           let date = ''
@@ -688,6 +763,8 @@
               name: this.contact,
               address: this.value1 + this.detailaddress1,
               email: this.mail,
+              school : this.school ,
+              grade : this.grade ,
             }
             var that = this;
             userApi.regist(regdata).then((response)=>{

@@ -8,26 +8,28 @@
     <div class="close-item animateClass" @click="closeLoginContent">
       <i   class=" iconfont icon-close48"></i>
     </div>
-    <div class="center">
       <div class="mdl">
         <div class="zhdl">
           <span style="margin-left:38% ;font-size:20px;color: white;">账户登陆</span>
         </div>
-
-        <div id="inputvalue">
+        <div id="inputvalue" style="width: 100%">
           <div class="inputgroup">
-            <Icon class="ivu-icon ivu-icon-person" style="margin-left: 18%;margin-top: 8%;" size="25"></Icon>
-            <Input type="text" class="inputtext" v-model="username" id="username" placeholder="手机号"/>
-            <br>
-            <Icon class="ivu-icon ivu-icon-locked" style="margin-left: 18%;margin-top: 8%;" size="25"></Icon>
-            <Input type="password" style="margin-bottom:5%;" class="inputtext" v-model="password" id="password"
+            <div style="width: 100%;  display: flex;justify-content: center;align-items: center;margin-top: 5%">
+              <Icon class="ivu-icon ivu-icon-person" size="25"></Icon>
+              <Input type="text" class="inputtext" style="width: 50%" v-model="username" id="username" placeholder="手机号"/>
+            </div>
+
+            <div style="width: 100%;  display: flex;justify-content: center;align-items: center;margin-top:5% ">
+            <Icon class="ivu-icon ivu-icon-locked"   size="25"></Icon>
+            <Input type="password" style=" width: 50%" class="inputtext"     v-model="password" id="password"
                    placeholder="密码"/>
+            </div>
           </div>
 
           <div class="wjmm">
-            <router-link to="/xgpassword/first"  style="margin-left: 60%;">忘记密码</router-link>
+            <router-link to="/xgpassword/first"  style="margin-left: 60%;margin-top: 5%">忘记密码</router-link>
           </div>
-          <Button @click="login" class="btn1" id="dl" style="width:180px; background: #BADCDB; color: white; font-size:15px;margin-left: 22%">登录
+          <Button @click="login" class="btn1" id="dl" style="margin-top: 8% ;width:60%; background: #BADCDB; color: white; font-size:15px;margin-left: 22%">登录
           </Button>
           <div class="registmdl">
             <img class="jt" src="../../assets/img/redarrow.jpg"/>
@@ -45,7 +47,6 @@
       <a href="">美原公益&nbsp&nbsp&nbsp&nbsp</a>
       <a href="">美原社区</a>
     </div>-->
-  </div>
 </template>
 
 <style>
@@ -67,13 +68,6 @@
   .close-item:hover{
     transform: rotate(180deg);
   }
-  .center {
-    height: 70%;
-    width: 100%;
-/*    background: url(../../assets/img/book2_rep.png) no-repeat;*/
-    background-size: 100%;
-
-  }
 
   #main {
     width: 100%;
@@ -92,12 +86,11 @@
   }
 
   .ivu-icon ivu-icon-person myicon1 {
-       margin-left: 18%;
+       margin-left: 20%;
        margin-top: 8%;
   }
   .ivu-icon ivu-icon-locked myicon1 {
-    margin-left: 18%;
-    margin-top: 8%;
+    margin-left: 20%;
 
   }
 
@@ -111,19 +104,21 @@
   }
 
   .mdl {
-    height: 80%;
-    width: 23%;
+    height: 320px;
+    width: 300px;
     background: white;
     margin:0 auto;
     position: relative;
-    top:35%;
+    top:33%;
+/*    display: flex;
+    justify-content: center;*/
   }
 
   .zhdl {
-    padding:10px 15px ;
     width: 100%;
     height: 10%;
     background: #BADCDB;
+    padding-top: 2%;
   }
 
   .username {
@@ -134,21 +129,22 @@
 
   .inputgroup {
     margin-top: 1%;
+    width: 100%;
   }
 
   .inputtext {
-    width: 50%;
-    margin-bottom: 3%;
-    margin-left: 3%;
+    width: 20%;
+
   }
 
   .ivu-icon ivu-icon-locked {
     margin-left: 2%;
+    margin-top: -10%;
   }
 
   .btn1 {
     margin-left: 20%;
-    margin-top: 5%;
+    margin-bottom: 5%;
   }
 
   .wjmm {
@@ -177,7 +173,7 @@
   .registmdl {
     width: 100%;
     height: 10%;
-    margin-top: 40px;
+    margin-top: 5%;
 
   }
 </style>

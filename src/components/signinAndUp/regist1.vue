@@ -334,7 +334,6 @@
         }
       },
       datechange: function () {
-        alert(this.birthdate)
         if (this.birthdate==="") {
           this.grtr6 = false
         } else {

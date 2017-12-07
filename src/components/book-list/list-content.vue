@@ -4,43 +4,42 @@
     <div class="temp_class" >
       <div class="book-img">
         <div class="bottom-content">
-          <img  @click="getDetailInfo" v-if="data.iSBN13" :src="imgUrl+data.iSBN13+'.jpg'">
-          <img  @click="getDetailInfo" v-if="data.iSBN10 && !data.iSBN13" :src="imgUrl+data.iSBN10+'.jpg'">
+          <Poptip class="sign-img-content book-poptip"  trigger="hover" content="点击封面查看详情"  >
+            <img  @click="getDetailInfo" v-if="data.iSBN13" :src="imgUrl+  data.iSBN13+'.jpg'">
+            <img  @click="getDetailInfo" v-if="data.iSBN10 && !data.iSBN13" :src="imgUrl+data.iSBN10+'.jpg'">
+          </Poptip>
       </div></div>
 
       <div class="book-introduce-content">
         <div class="book-name">{{data.name | filterNull}}</div>
         <div class="book-item-info">
           <div class="left-info">作者:{{data.author  | filterNull}}</div>
-          <div class="right-info">BL值:{{data.bl  | filterNull}}</div>
-        </div>
-        <div class="book-item-info">
-          <div class="left-info">ISBN13:{{data.iSBN13  | filterNull}}</div>
-          <div class="right-info">兴趣值:{{data.il  | filterNull}}</div>
-        </div>
-        <div class="book-item-info">
-          <div class="left-info">ISBN10:{{data.iSBN10  | filterNull}}</div>
-          <div class="right-info">积分点:{{data.arpoints  | filterNull}}</div>
-        </div>
-        <div class="book-item-info">
-          <div class="left-info">类型:{{data.docType  | filterNull}}</div>
-          <div class="right-info">评分值:{{data.arrating  | filterNull}}</div>
-        </div>
-        <div class="book-item-info">
-          <div class="left-info">页数:{{data.pages  | filterNull}}</div>
-          <div class="right-info">测试号:{{data.quizNo  | filterNull}}</div>
-        </div>
-        <div class="book-item-info">
           <div class="left-info">版本:{{data.bookType  | filterNull}}</div>
+        </div>
+        <div class="book-item-info">
           <div class="right-info">蓝思值:{{data.lexileCombined  | filterNull}}</div>
+          <div class="left-info">书籍类型:{{data.docType  | filterNull}}</div>
         </div>
         <div class="book-item-info">
+          <div class="right-info">BL值:{{data.bl  | filterNull}}</div>
+          <div class="right-info">图书系列:{{data.series  | filterNull}}</div>
+        </div>
+        <div class="book-item-info">
+          <div class="right-info">兴趣值:{{data.il  | filterNull}}</div>
+          <div class="left-info">页数:{{data.pages  | filterNull}}</div>
+        </div>
+        <div class="book-item-info">
+          <div class="right-info">AR积分点:{{data.arpoints  | filterNull}}</div>
           <div class="left-info">重量:{{data.weight | filterNull}}</div>
-          <div class="right-info">系列IS:{{data.series  | filterNull}}</div>
         </div>
         <div class="book-item-info">
-          <div class="left-info">尺寸:{{data.diamension  | filterNull}}</div>
+          <div class="right-info">AR推荐值:{{data.arrating  | filterNull}}</div>
+          <div class="left-info">在库数量:{{data.stock | filterNull}}</div>
+        </div>
+        <div class="book-item-info">
+          <div class="right-info">AR测试号:{{data.quizNo  | filterNull}}</div>
           <div class="right-info">价格:{{data.book_type  | filterNull}}</div>
+
         </div>
         <div class="book-item-info">
           <div class="left-info" v-if="list_type!='reserve' && list_type!='reading'">
@@ -58,19 +57,19 @@
         </div>
       </div>
       <div class="book-sign-img">
-        <Poptip  class="sign-img-content"  trigger="hover" content="AR书籍" v-if="data.artag===1">
+        <Poptip  class="sign-img-content"  trigger="click" content="AR书籍" v-if="data.artag===1 || data.artag">
             <img src="../../assets/ARLogo.png">
         </Poptip>
         <Poptip class="sign-img-content"  trigger="hover" content="不具有AR属性" v-else>
             <img src="../../assets/ARlogo2.png">
         </Poptip>
-        <Poptip class="sign-img-content" trigger="hover" content="蓝思书籍"  v-if="data.lexileTag===1">
+        <Poptip class="sign-img-content" trigger="hover" content="蓝思书籍"  v-if="data.lexileTag===1 || data.lexileTag">
             <img src="../../assets/lexile.png">
         </Poptip>
         <Poptip class="sign-img-content"  trigger="hover" content="不具有蓝思属性"  v-else>
             <img src="../../assets/lexile2.png">
         </Poptip>
-        <Poptip class="sign-img-content" trigger="hover" content="具有配套音频"  v-if="data.audio===1">
+        <Poptip class="sign-img-content" trigger="hover" content="具有配套音频"  v-if="data.audio===1 || data.audio">
             <img src="../../assets/audio.jpg">
         </Poptip>
         <Poptip  class="sign-img-content"  trigger="hover" content="不具有配套音频"  v-else>

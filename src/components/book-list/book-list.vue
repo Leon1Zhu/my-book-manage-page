@@ -70,12 +70,14 @@ import list_content from './list-content.vue'
         },
         watch:{
           '$route.query.searchValue'(v1,v2){
-              if(v2 == null){
-                  return
-              }
               if(this.list_type == ""){
                   this.searchBook();
               }
+          },
+          '$route.query.booktype'(v1,v2){
+            if(this.list_type == ""){
+              this.searchBook();
+            }
           }
         },
         mounted(){

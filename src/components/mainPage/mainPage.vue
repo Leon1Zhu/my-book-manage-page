@@ -8,7 +8,7 @@
       </div>
      <footer>
         <div class="container_12">
-          <p class="company-info ">美原少儿英文图书馆&nbsp;&nbsp;@2017&nbsp;ALL&nbsp;Right&nbsp;Reserved&nbsp;备案/许可证编号：苏ICP备17064227号-1</p>
+          <p class="company-info ">美原英文图书馆&nbsp;&nbsp;@2017&nbsp;ALL&nbsp;Right&nbsp;Reserved&nbsp;备案/许可证编号：苏ICP备17064227号-1</p>
         </div>
       </footer>
     </div>
@@ -17,6 +17,7 @@
 <script>
 import './mainPage.scss'
 import topContent from './topContent/topContent.vue'
+
     export default{
         data(){
             return {}
@@ -28,6 +29,8 @@ import topContent from './topContent/topContent.vue'
         },
         mounted(){
         },
-        methods: {}
+        methods: {
+
+        }
     }
 </script>

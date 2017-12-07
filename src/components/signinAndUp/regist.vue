@@ -192,6 +192,7 @@
     margin-top: 18px;
     width: 70px;
     float:left;
+    font-weight:bolder;
 
 
 

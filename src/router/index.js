@@ -8,7 +8,7 @@ const notFound = resolve => require(['@/components/404'], resolve);
 
 
 const login = resolve => require(['@/components/signinAndUp/login'], resolve);
-const regist = resolve => require(['@/components/signinAndUp/regist'], resolve);
+const regist = resolve => require(['@/components/signinAndUp/regist1'], resolve);
 const xgpassword = resolve => require(['@/components/signinAndUp/xgpassword'], resolve);
 const first = resolve => require(['@/components/signinAndUp/first'], resolve);
 const second= resolve => require(['@/components/signinAndUp/second'], resolve);

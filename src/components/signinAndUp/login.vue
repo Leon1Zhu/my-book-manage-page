@@ -14,13 +14,13 @@
         </div>
         <div id="inputvalue" style="width: 100%">
           <div class="inputgroup">
-            <div style="width: 100%;  display: flex;justify-content: center;align-items: center;margin-top: 5%">
-              <Icon class="ivu-icon ivu-icon-person" size="25"></Icon>
+            <div style="width: 100%;  display: flex;justify-content: left;align-items: center;margin-top: 5%;margin-left: 22%">
+              <Icon class="ivu-icon ivu-icon-person" size="25"></Icon>&nbsp&nbsp
               <Input type="text" class="inputtext" style="width: 50%" v-model="username" id="username" placeholder="手机号"/>
             </div>
 
-            <div style="width: 100%;  display: flex;justify-content: center;align-items: center;margin-top:5% ">
-            <Icon class="ivu-icon ivu-icon-locked"   size="25"></Icon>
+            <div style="width: 100%;  display: flex;justify-content: left;align-items: center;margin-top:5% ;margin-left: 22% ">
+            <Icon class="ivu-icon ivu-icon-locked"   size="25"></Icon>&nbsp&nbsp
             <Input type="password" style=" width: 50%" class="inputtext"     v-model="password" id="password"
                    placeholder="密码"/>
             </div>
@@ -109,7 +109,7 @@
     background: white;
     margin:0 auto;
     position: relative;
-    top:33%;
+    top:22%;
 /*    display: flex;
     justify-content: center;*/
   }

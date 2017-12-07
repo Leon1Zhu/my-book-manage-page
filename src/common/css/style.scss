@@ -82,7 +82,13 @@ html,body,#app{
 .ivu-tabs-nav .ivu-tabs-tab:hover{
   color: #62247f;
 }
-
+.ivu-checkbox-checked .ivu-checkbox-inner{
+  border-color: #514685;
+  background-color:#514685;
+}
+.ivu-checkbox-checked .ivu-checkbox-inner{
+  border-color: #514685;
+}
 @keyframes ani-demo-spin {
   from { transform: rotate(0deg);}
   50%  { transform: rotate(180deg);}

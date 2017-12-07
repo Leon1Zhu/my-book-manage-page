@@ -14,7 +14,14 @@ let deleteSaveBook = loginBook+'/deleteSaveBook'
 let deleteOrderBook = loginBook+'/deleteOrderBook'
 let findOneBook =  bookIndex+'/getBookDetailInfo'
 let getBookNews = bookIndex+'/getAllBookNews'
+
+let getWebConfig = bookIndex+'/getWebConfigInfo'
+
+
 export default {
+  getWebConfig(){
+    return api.get(getWebConfig,{});
+  },
   getBookkNews(newsType){
     let params={
       newsType:newsType

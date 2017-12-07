@@ -10,10 +10,31 @@
       position: relative;
       margin-top:10px;
     }
+  .search-input.after-br{
+    margin-bottom:4%;
+  }
+  .search-input.after-br:after{
+    content: '';
+    position: absolute;
+    background: #ccc;
+    width:90%;
+    margin-left:11%;
+    height: 1px;;
+    top:55px;
+    //left:60px;
+  }
     .search-input{
+      position: relative;
       width:60%;
       margin:0 auto;
       margin-top:15px;
+      .ivu-checkbox-wrapper{
+        margin-left:2%;
+      }
+      .ivu-checkbox-wrapper:first-child{
+        margin-left:149px;
+      }
+
       .search-input-sec{
         display: flex;
         width:50%;

@@ -31,7 +31,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 
 
 Vue.filter( 'filterNull' , function(value) {
-  if(value=="" || value==null || value=="NULL" || value=="null")
+  if(value==="" || value===null || value==="NULL" || value==="null")
     return "";
   else{
     return value

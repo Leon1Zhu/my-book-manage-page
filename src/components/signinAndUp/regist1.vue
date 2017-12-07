@@ -552,7 +552,7 @@
       },
 
       regist: function () {
-        alert(this.grade);
+
        /* alert(this.name+this.birthdate+this.contact+this.grade+this.school+this.phone+this.password+this.yzm3) ;*/
         if (this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
           || this.detailaddress1.length === 0 || this.mail.length === 0 || this.password1.length === 0

@@ -2,11 +2,11 @@
   <div class="center">
     <div class="inputgroup">
       <span class="regist_bq">读者姓名</span>
-      <Input class="regist_inp" v-model="name"  @on-blur="losename"  @on-focus="getname" placeholder="请输入姓名"/>&nbsp&nbsp
+      <Input class="regist_inp" v-model="name"  @on-blur="losename"  @on-focus="getname" placeholder="请输入姓名或者昵称"/>&nbsp&nbsp
       <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr3"   />
     </div>
     <div class=""></div>
-    <p class="regist_warning" v-bind:class="{namecolor:isnamecolor}">{{namewarning}}</p>
+<!--    <p class="regist_warning" v-bind:class="{namecolor:isnamecolor}">{{namewarning}}</p>-->
     <div class="inputgroup">
       <span class="regist_bq" >性&nbsp&nbsp&nbsp&nbsp&nbsp别</span>
       <RadioGroup style="width: 300px ;margin-top: 1.2% " v-model="sex" @on-change="sexchange">
@@ -28,7 +28,7 @@
       <Input class="regist_inp" v-model="contact" @on-blur="losecontact" @on-focus="getcontact" placeholder="请输入联系人"></Input>&nbsp&nbsp
       <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr4"   />
     </div>
-    <p class="regist_warning" v-bind:class="{contactcolor:iscontactcolor}">{{contactwarning}}</p>
+   <!-- <p class="regist_warning" v-bind:class="{contactcolor:iscontactcolor}">{{contactwarning}}</p>-->
     <div class="inputgroup">
       <span class="regist_bq">学&nbsp&nbsp&nbsp&nbsp&nbsp校</span>
       <Input class="regist_inp" v-model="school"  @on-blur="loseschool" @on-focus="getschool"  placeholder="输入你所在学校"></Input>&nbsp&nbsp
@@ -36,7 +36,7 @@
     </div>
     <div class="inputgroup">
       <span class="regist_bq">所属年级</span>
-      <Select v-model="grade" @on-change="gradechange"  style="width:300px">
+      <Select v-model="grade" @on-change="gradechange"   style="width:300px">
       <Option   v-for="item in gradeList"   :value="item.value" :key="item.value">{{ item.label }}</Option>
       </Select>&nbsp&nbsp
 <!--      <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr16"   />-->
@@ -45,9 +45,9 @@
       <span class="regist_bq">联系地址</span>
       <Cascader class="regist_spe" :data="data" @on-change="addresschange" @on-query-change="addresschanged" v-model="value1"></Cascader>&nbsp&nbsp
 
-    <!--  <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr11"   />-->
+     <!-- <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr11"   />-->
     </div>
-    <p class="regist_warning" v-bind:class="{contactcolor:iscontactcolor}">{{contactwarning}}</p>
+<!--    <p class="regist_warning" v-bind:class="{contactcolor:iscontactcolor}">{{contactwarning}}</p>-->
     <div class="inputgroup">
       <span class="regist_bq">详细地址</span>
       <Input class="regist_inp" v-model="detailaddress1" @on-blur="losedetailaddress" @on-focus="getdetailaddress" placeholder="请输入详细地址"></Input>&nbsp&nbsp
@@ -59,12 +59,6 @@
       <img class="greenarrow" src="../../assets/img/greenarrow.png"   v-if="grtr5"/>
     </div>
     <p class="regist_warning" v-bind:class="{mailcolor:ismailcolor}">{{mailwarning}}</p>
-    <div class="inputgroup">
-      <span class="regist_bq">手&nbsp机&nbsp号</span>
-      <Input class="regist_inp"  v-model="phone" @on-blur="losephone" @on-focus="getphone" placeholder="请输入你的手机号码"></Input>&nbsp&nbsp
-      <img class="greenarrow" src="../../assets/img/greenarrow.png"   v-if="grtr8" />
-    </div>
-    <p class="regist_warning" v-bind:class="{phonecolor:isphonecolor}">{{phonewarning}}</p>
     <div class="inputgroup">
       <span class="regist_bq">密&nbsp&nbsp&nbsp&nbsp&nbsp码</span>
       <Input class="regist_inp" type="password" v-model="password1" @on-blur="losepassword" @on-focus="getpassword" placeholder="输入密码"></Input>&nbsp&nbsp
@@ -78,11 +72,18 @@
     </div>
     <p class="regist_warning" v-bind:class="{repasswordcolor:isrepasswordcolor}">{{repasswordwarning}}</p>
     <div class="inputgroup">
+      <span class="regist_bq">手&nbsp机&nbsp号</span>
+      <Input class="regist_inp"  v-model="phone" @on-blur="losephone" @on-focus="getphone" placeholder="请输入你的手机号码"></Input>&nbsp&nbsp
+      <img class="greenarrow" src="../../assets/img/greenarrow.png"   v-if="grtr8" />
+    </div>
+    <p class="regist_warning" v-bind:class="{phonecolor:isphonecolor}">{{phonewarning}}</p>
+    <div class="inputgroup">
       <span class="regist_bq">验&nbsp证&nbsp码</span>
-      <Input class="regist_inp" maxlength="6"   style="width:180px;" v-model="inputyzm"  v-on:change="yzmchange" placeholder="验证码"></Input>&nbsp&nbsp
+      <Input class="regist_inp" maxlength=6   style="width:180px;" v-model="inputyzm"  v-on:change="yzmchange" placeholder="验证码"></Input>&nbsp&nbsp
       <Button class="yzm_btn" type="ghost"   v-bind:disabled="dis" v-on:click="getyzm">
         {{yzm}}
       </Button>
+      <hidden v-model="yzm4"></hidden>
       <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr10"  />
     </div>
     <Button type="ghost" v-on:click="regist"
@@ -227,7 +228,7 @@
         val: '获取验证码',
         detailaddress1: '',
         name: '',
-
+        grade:'',
         contact: '',
         mail: '',
         sex: '',
@@ -351,10 +352,10 @@
         this.grtr11 = true ;
       } ,
 
-      gradechanged: function () {
+     /* gradechanged: function () {
         this.grtr16 = true ;
-      } ,
-      gradechange: function () {
+      } ,*/
+     gradechange: function () {
         if (this.grade === "") {
           this.grtr16 = false
         } else  {
@@ -489,11 +490,16 @@
         this.phonewarning = ''
       },
       losephone: function () {
-        if (/^1[34578]\d{9}$/.test(this.phone) === true) {
-          this.grtr8 = true
-          this.ispasswordcolor = false
-          this.phonewarning = ''
-          this.dis = false
+        if (/^1[34578]\d{9}$/.test(this.phone)) {
+          if(this.yzm==="获取验证码"){
+            this.grtr8 = true
+            this.ispasswordcolor = false
+            this.phonewarning = ''
+            this.dis = false
+          }else{
+           this.dis=true
+          }
+
         } else if (this.phone.length === 0) {
           this.dis = true
           this.phonewarning = ''
@@ -523,7 +529,7 @@
             $vm.yzm = num + '秒后重新获取'
           }
         }, 1000)
-        //alert($vm.yzm4)
+        /*alert($vm.yzm4)*/
         userApi.sendCode($vm.phone,$vm.yzm4).then((response)=>{
           this.$Message.info('验证码已成功发送，注意查收！')
         }).catch((response)=>{
@@ -552,55 +558,100 @@
 
       regist: function () {
 
+   /*     alert(this.yzm4) ;*/
        /* alert(this.name+this.birthdate+this.contact+this.grade+this.school+this.phone+this.password+this.yzm3) ;*/
-        if (this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
+        if (this.phone.length ===0||/^1[34578]\d{9}$/.test(this.phone)===false/*this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
           || this.detailaddress1.length === 0 || this.mail.length === 0 || this.password1.length === 0
-          || this.repassword.length === 0 || this.phone.length === 0 || this.inputyzm.length === 0|| this.school.length === 0 || this.grade.length === 0) {
-          this.$Notice.error({ title: '检查是否有数据为空'}) ;
-        } else {
-          let date = ''
-          if (this.birthdate !== 0) {
-            let y = this.birthdate.getFullYear()
-            let m = this.birthdate.getMonth() + 1
-            m = m < 10 ? ('0' + m) : m
-            let d = this.birthdate.getDate()
-            d = d < 10 ? ('0' + d) : d
-            date = y + '-' + m + '-' + d
-          }
-          if(!(parseInt(this.inputyzm) === this.yzm4)){
-            this.$Notice.error({ title: '验证码输入错误'}) ;
-          }else{
-            if (/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.name) === true
-              && /^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.contact)
-              && /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.mail)
-              && this.password1.length > 5 && this.password1.length < 21 && /^1[34578]\d{9}$/.test(this.phone) === true) {
-              let regdata = {
-                phoneNo: this.phone,
-                password: this.password1,
-                rName: this.name,
-                rSex: this.sex,
-                rBirthday: date,
-                name: this.contact,
-                address: this.value1 + this.detailaddress1,
-                email: this.mail,
-                school : this.school ,
-                grade : this.grade ,
+          || this.repassword.length === 0 || this.phone.length === 0 || this.inputyzm.length === 0|| this.school.length === 0 || this.grade.length === 0*/) {
+          this.$Notice.error({ title: '手机号为必填项，是否有误'}) ;
+        }else if(this.inputyzm.length===0){
+          this.$Notice.error({ title: '手机验证码不能为空'}) ;
+        } else if((parseInt(this.inputyzm)) !== this.yzm4){
+          this.$Notice.error({ title: '验证码输入错误'}) ;
+        }/*else {
+         */
+          else if (this.mail.length === 0 || /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.mail)===true/*&& (this.password1.length === 0
+              ||(this.password1.length>5&&this.password1<21))&& (this.repassword===this.password1)  && /^1[34578]\d{9}$/.test(this.phone) === true&&this.inputyzm === this.yzm4*/) {
+            if(this.password1.length === 0 ||this.password1.length>5&&this.password1.length<21){
+              if(this.repassword === this.password1){
+                if (this.birthdate.length !== 0) {
+                  let date=''
+                  let y = this.birthdate.getFullYear()
+                  let m = this.birthdate.getMonth() + 1
+                  m = m < 10 ? ('0' + m) : m
+                  let d = this.birthdate.getDate()
+                  d = d < 10 ? ('0' + d) : d
+                  date = y + '-' + m + '-' + d
+                  alert(date)
+                  let regdata = {
+                    phoneNo: this.phone,
+                    password: this.password1,
+                    rName: this.name,
+                    rSex: this.sex,
+                    rBirthday: date,
+                    name: this.contact,
+                    address: this.value1 + this.detailaddress1,
+                    email: this.mail,
+                    school: this.school,
+                    grade: this.grade,
+                  }
+                  var that = this;
+                  userApi.regist(regdata).then((response) => {
+                    this.$Notice.success({title: '注册成功'});
+                    that.$router.push({path: '/login'})
+                  }).catch((response) => {
+                    this.$Message.error(response.message)
+                  })
+                }else{
+                  let regdata = {
+                    phoneNo: this.phone,
+                    password: this.password1,
+                    rName: this.name,
+                    rSex: this.sex,
+                    rBirthday: this.birthdate,
+                    name: this.contact,
+                    address: this.value1 + this.detailaddress1,
+                    email: this.mail,
+                    school: this.school,
+                    grade: this.grade,
+                  }
+                  var that = this;
+                  userApi.regist(regdata).then((response) => {
+                    this.$Notice.success({title: '注册成功'});
+                    that.$router.push({path: '/login'})
+                  }).catch((response) => {
+                    this.$Message.error(response.message)
+                  })
+                }
+
+
+
+
+              }else{
+                this.$Notice.error({ title: '俩次密码输入不同'}) ;
               }
-              var that = this;
-              userApi.regist(regdata).then((response)=>{
-                this.$Notice.success({ title: '注册成功'}) ;
-                that.$router.push( {path:'/login'} )
-              }).catch((response)=>{
-                this.$Message.error(response.message)
-              })
-            } else {
-              this.$Notice.error({ title: '检查数据正确性'}) ;
+
+
+            }else{
+              this.$Notice.error({ title: '密码设置不符合要求'}) ;
+            }
+
+        }else {
+              this.$Notice.error({ title: '邮箱输入错误'}) ;
             }
           }
 
 
         }
-      }
-    }
+/*      }*/
   }
+/*  /!* *!/if (this.birthdate !== 0) {
+    let date = ''
+    let y = this.birthdate.getFullYear()
+    let m = this.birthdate.getMonth() + 1
+    m = m < 10 ? ('0' + m) : m
+    let d = this.birthdate.getDate()
+    d = d < 10 ? ('0' + d) : d
+    date = y + '-' + m + '-' + d
+  }*/
 </script>

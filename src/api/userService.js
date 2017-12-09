@@ -27,6 +27,7 @@ export  default {
     return api.post(getCode,"",params);
   },
   regist(userInfo){
+
     return api.post(regist,userInfo,"");
   },
   getUserByPhone(phone){

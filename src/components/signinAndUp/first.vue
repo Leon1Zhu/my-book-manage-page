@@ -1,13 +1,13 @@
 <template>
   <div class="main">
-    <img src="../../assets/img/second.png" style="margin-left: 25% ; margin-top: 50px">
+    <img src="../../assets/img/second.png" style="margin-left: 20% ; margin-top: 51px">
     <br>
-    <div style="margin-left: 35%; margin-top: 5%">
-      <div class="inputzu1" style="margin-top: 10px">
+    <div style="margin-left: 28%; margin-top: 5%">
+      <div class="inputzu1" style="margin-top: 10px;background: #ffffff;">
         <span class="spa1" slot="prepend">用户名</span><input type="text" v-model="username1" class="inp1"
                                                            placeholder="输入您的注册手机号"/>
       </div>
-      <div class="inputzu1" style="margin-top: 10px">
+      <div class="inputzu1" style="margin-top: 10px;background: #ffffff;">
         <span class="spa1" slot="prepend">验证码</span><input type="text" style="width: 110px;" v-model="yzm1"
                                                            class="inp1"
                                                            placeholder="输入验证码"/>
@@ -16,7 +16,7 @@
                 class="verification1">{{checkCode}}
         </Button>
       </div>
-      <Button type="ghost" @click="tj1" style="margin-left:10%; width: 20% ; margin-top: 5%">提交
+      <Button type="info" @click="tj1" style=" font-size: 17px;width: 40% ; margin-top: 1%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
       </Button>
 
 

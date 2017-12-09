@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <img src="../../assets/img/forth.png" style="margin-left: 25% ; margin-top: 54px">
+    <img src="../../assets/img/forth.png" style="margin-left: 20% ; margin-top: 54px">
     <div class="nr">
       <img src="../../assets/img/greendraw.jpg" class="lsg">
       <div class="wzzu">
@@ -14,8 +14,8 @@
 </template>
 <style>
   .lsg{
-    margin-left: 38%;
-    margin-top:10%;
+    margin-left: 33%;
+    margin-top:5%;
     width: 60px ;
     height: 60px ;
     float: left;
@@ -42,7 +42,7 @@
   }
   .wzzu{
     float: left;
-    margin-top: 10%;
+    margin-top: 5%;
   }
 </style>
 <script>

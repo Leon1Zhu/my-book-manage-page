@@ -212,7 +212,6 @@
           .extra-content{
             position: absolute;
             border:1px solid #ccc;
-            padding:0px 5px;
             width:100%;
             background: #755B99;
             z-index:10;
@@ -224,12 +223,12 @@
           li.active{
             background: #5c4280;
           }
-          li:hover,.extra-content:hover{
+          li:hover,.extra-content-li:hover{
             background: #5c4280;
           }
           li:nth-child(3):hover{
             .extra-content{
-              height:100%;
+              height:600%;
             }
           }
         }

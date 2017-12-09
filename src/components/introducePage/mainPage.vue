@@ -1,12 +1,12 @@
 <template>
     <div class="main-page-introduce">
         <swiperIntroduce></swiperIntroduce>
-        <recommendCommon :recommendTilele="title1" :bookinfo="bookData"></recommendCommon>
+        <recommendCommon :showpage="showpage" :index="index" :total="total" :pageSize="pageSize"  :recommendTilele="title1" :bookinfo="bookData" @changepage="changepageRecommend"></recommendCommon>
       <!--  <div class="img-content container_12">
           <a><img style="height: 84px;width: 42%;" class="animateClass" src="../../assets/untitled.png"></a>
           <a><img class="animateClass" src="../../assets/lexile-logo.png"></a>
         </div>-->
-        <recommendCommon :recommendTilele="title2" :bookinfo="borrowData"></recommendCommon>
+        <recommendCommon :showpage="showpage"  :index="indexBorrow" :total="totalBorrow" :pageSize="pageSizeBorrow" :recommendTilele="title2" :bookinfo="borrowData"  @changepage="changepageBorrow"></recommendCommon>
     </div>
 </template>
 
@@ -22,6 +22,13 @@ import './mainPage.scss'
                 title2:"借阅排行",
                 bookData:null,
                 borrowData:null,
+                index:0,
+                total:0,
+                pageSize:10,
+                showpage:true,
+                indexBorrow:0,
+                totalBorrow:0,
+                pageSizeBorrow:10,
             }
         },
         components: {
@@ -31,19 +38,34 @@ import './mainPage.scss'
         created(){
             var vm= this;
             vm.getRecommendBook();
+            vm.getBorrowCount();
         },
         mounted(){
         },
         methods: {
-            getRecommendBook(){
-                var that =this;
-                 bookMangeApi.getRecommendBook().then((response)=>{
-                    that.bookData = response.data.recommendList.content;
-                    that.borrowData = response.data.borrowList
-                }).catch((response)=>{
-                   this.$Notice.error(setNoticConfig(response.message,null,null,"error"));
+          changepageRecommend(val){
+            this.index = val;
+            this.getRecommendBook()
+          },
+          changepageBorrow(val){
+              this.indexBorrow = val;
+              this.getBorrowCount()
+          },
+          getRecommendBook(){
+                let that =this;
+                 bookMangeApi.getRecommendBook(that.index,that.pageSize).then((response)=>{
+                    that.bookData = response.data.content;
+                    that.total = response.data.totalElements
                 })
             },
+            getBorrowCount(){
+               let that = this;
+               bookMangeApi.getBorrowRecomend(that.indexBorrow,that.pageSizeBorrow).then((response) => {
+                   that.borrowData = response.data.borrowRecommendList
+                   that.totalBorrow = response.data.total
+
+               })
+            }
         }
     }
 </script>

@@ -17,8 +17,17 @@ let getBookNews = bookIndex+'/getAllBookNews'
 
 let getWebConfig = bookIndex+'/getWebConfigInfo'
 
+let getBorrowRecommend = bookIndex+'/getBorrowRecommendBook'
+
 
 export default {
+  getBorrowRecomend(index,length){
+    let params={
+      index:index,
+      length:length
+    }
+    return api.get(getBorrowRecommend,params)
+  },
   getWebConfig(){
     return api.get(getWebConfig,{});
   },
@@ -42,8 +51,12 @@ export default {
     }
     return api.delete(deleteOrderBook,params)
   },
-  getRecommendBook : function(){
-    return api.get(getRecommendBook,{})
+  getRecommendBook : function(index,length){
+    let params={
+      index:index,
+      length:length,
+    }
+    return api.get(getRecommendBook,params)
   },
   reserveBook : function(readerId,bookId,limit){
     let params={

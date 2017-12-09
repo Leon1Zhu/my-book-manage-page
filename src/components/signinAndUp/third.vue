@@ -1,8 +1,6 @@
 <template>
   <div class="main">
-    <img src="../../assets/img/third.png" style="margin-left: 25% ; margin-top: 46.4px">
-    <br>
-    <div style="margin-left: 35%; margin-top: 5%">
+    <div style="margin-left: 28%; margin-top: 5%">
       <div class="inputzu3" style="margin-top: 10px">
         <span class="spa3" slot="prepend">新密码</span><input type="password" v-model="password2" v-on:blur="losepassword2"
                                                            v-on:focus="getpassword2" class="inp3"
@@ -16,7 +14,7 @@
                                                              placeholder="请再次新密码"/>
       </div>
       <p class="usernamewarning1" v-bind:class="{repasswordcolor1:isrepasswordcolor1}">{{repasswordwarning1}}</p>
-      <Button type="ghost" @click="tj3" style="margin-left:10%; width: 20% ; margin-top: 5%">提交</Button>
+      <Button type="info" @click="tj3" style="font-size: 17px;width: 40% ; margin-top: 1%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交</Button>
 
     </div>
 
@@ -65,6 +63,7 @@
   }
 
   .inputzu3 {
+    background: #ffffff;
     width: 40%;
     heigth: 50px;
     margin-top: 10%;
@@ -89,7 +88,7 @@
     },
     created(){
         let vm = this;
-        vm.phone = this.$route.params.phone
+        vm.phone = this.$route.query.phone
     },
     methods: {
       getpassword2: function () {
@@ -138,7 +137,7 @@
       },
       tj3: function () {
         if (this.password2.length > 5 && this.password2.length < 13 && this.password2 === this.repassword2) {
-            apiUser.changePassword(phone).then((response)=>{
+            apiUser.changePassword(this.phone,this.password2).then((response)=>{
               this.$router.push({path: '/xgpassword/forth'})
             }).catch((response)=>{
               this.$Message.error(response.data.message)

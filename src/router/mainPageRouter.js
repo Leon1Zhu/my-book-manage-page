@@ -28,6 +28,21 @@ const partners = resolve => require(['@/components/partners/partners'], resolve)
 
 const newsDetail = resolve => require(['@/components/showNewsPage/showNewsDetail/showNewsDetail'], resolve);
 
+const login = resolve => require(['@/components/signinAndUp/login'], resolve);
+
+const regist = resolve => require(['@/components/signinAndUp/regist1'], resolve);
+
+const xgpassword = resolve => require(['@/components/signinAndUp/xgpassword'], resolve);
+
+const first = resolve => require(['@/components/signinAndUp/first'], resolve);
+
+const second= resolve => require(['@/components/signinAndUp/second'], resolve);
+
+const third = resolve => require(['@/components/signinAndUp/third'], resolve);
+
+const forth = resolve => require(['@/components/signinAndUp/forth'], resolve);
+
+
 const mainPageRouter= {
     path: '/',
     component:index,
@@ -68,6 +83,42 @@ const mainPageRouter= {
         path: 'newsDetail',
         components: {main:newsDetail},
         name:"新闻详情#3"
+      },
+      {
+        path: '/login',
+        components: {main:login},
+        name:"用户登陆#2"
+      }, {
+        path: '/regist',
+        components: {main:regist},
+        name:"用户注册#2"
+      }, {
+        path: '/xgpassword',
+        components: {main:xgpassword},
+        name:"修改密码#2",
+        children: [
+          {
+            path: '/xgpassword/first',
+            component: first,
+            name:"填写账户名#2"
+          },
+          {
+            path: '/xgpassword/second',
+            component: second,
+            name:"验证身份#3"
+          },
+          {
+            path: '/xgpassword/third',
+            component: third,
+            name:"设置新密码#4"
+          },
+          {
+            path: '/xgpassword/forth',
+            component: forth,
+            name:"完成#5"
+          }
+        ]
+
       },
     ]
 }

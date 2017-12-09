@@ -5,13 +5,13 @@
        <img style="width:250px;height: 50px;" src="../../assets/logo.png">
       </div>
     </div>-->
-    <div class="close-item animateClass" @click="closeLoginContent">
+   <!-- <div class="close-item animateClass" @click="closeLoginContent">
       <i   class=" iconfont icon-close48"></i>
-    </div>
+    </div>-->
       <div class="mdl">
-        <div class="zhdl">
+        <!--<div class="zhdl">
           <span style="margin-left:38% ;font-size:20px;color: white;">账户登陆</span>
-        </div>
+        </div>-->
         <div id="inputvalue" style="width: 100%">
           <div class="inputgroup">
             <div style="width: 100%;  display: flex;justify-content: left;align-items: center;margin-top: 5%;margin-left: 22%">
@@ -105,8 +105,6 @@
 
   .mdl {
     height: 320px;
-    width: 300px;
-    background: white;
     margin:0 auto;
     position: relative;
     top:22%;

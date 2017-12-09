@@ -1,8 +1,8 @@
 <template>
   <div class="main">
-    <img src="../../assets/img/first.png" style="margin-left: 25% ; margin-top: 51px">
+    <img src="../../assets/img/first.png" style="margin-left: 20% ; margin-top: 51px">
     <br>
-    <div style="margin-left: 35%; margin-top: 5%">
+    <div style="margin-left: 28%; margin-top: 5%">
       <div class="inputzu2" style="margin-top: 10px">
         <span class="spa2" slot="prepend">姓名</span><input type="text" readonly="readonly" class="inp2"
                                                           v-model="name" />
@@ -20,7 +20,7 @@
         </Input>
 
       </div>
-      <Button type="ghost" @click='tj2' style="margin-left:10%; width: 20% ; margin-top: 5%">提交</Button>
+      <Button type="info" @click='tj2' style="font-size: 17px;width: 40% ; margin-top: 1%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交</Button>
     </div>
 
 
@@ -61,6 +61,7 @@
   }
 
   .inputzu2 {
+    background: #ffffff;
     width: 40%;
     heigth: 50px;
     margin-top: 10%;

@@ -2,7 +2,10 @@
     <div class="recommend-common">
         <div class="container_12">
             <div class="recommend-content">
-              <div class="title">{{recommendTilele}}</div>
+              <div class="title">
+                <span>{{recommendTilele}}</span>
+                <Page  v-if="showpage" :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
+              </div>
               <div class="bookContent">
                 <div v-for="book in bookinfo" class="book-info-content">
                   <div class="botton-content">
@@ -27,7 +30,7 @@
 import './recommendCommon.scss'
 import bookManageApi from '../../api/bookManage'
     export default{
-        props:['recommendTilele','bookinfo'],
+        props:['recommendTilele','bookinfo','showpage','index','total','pageSize'],
         data(){
             return {
                 imgurl:IMGURL,
@@ -39,6 +42,9 @@ import bookManageApi from '../../api/bookManage'
         mounted(){
         },
         methods: {
+          changepage(val){
+              this.$emit('changepage',(parseInt(val)-1))
+          },
           getDetailInfo(id){
             this.$router.push({ path: '/book_detail', query: { bookid: id }})
           },

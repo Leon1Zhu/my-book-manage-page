@@ -1,8 +1,8 @@
 <template>
     <div class="top-content">
-      <div class="login-content-top" :class="{showLoginContent : showloginflag}">
+      <!--<div class="login-content-top" :class="{showLoginContent : showloginflag}">
         <loginContent @closeLogin="closeLogin"></loginContent>
-      </div>
+      </div>-->
       <div class="header-bar">
           <div class="container_12">
               <div class="grid_6" v-if="!loginStatus"  style="position: relative;float: right;">
@@ -63,12 +63,29 @@
                     <ul>
                       <li  :class="{'active': liActive[0]}"   @click="chooseLi(0,'/')">主页</li>
                       <li :class="{'active': liActive[1]}" @click="chooseLi(1,'/activityCenter')">活动中心</li>
-                      <li :class="{'active': liActive[2]}" @click="chooseLi(2,'/speedReading')">阅读系统
+                      <li :class="{'active': liActive[2]}">阅读系统
                         <div class="extra-content">
-                           加速阅读
+                          <div class="extra-content-li" @click="chooseLi(2,'/speedReading')">
+                            AR阅读知识
+                          </div>
+                          <div class="extra-content-li">
+                            AR书籍查询
+                          </div>
+                          <div class="extra-content-li">
+                            Star&AR系统测试
+                          </div>
+                          <div class="extra-content-li" @click="chooseLi(3,'/leixiReading')">
+                            蓝思阅读知识
+                          </div>
+                          <div class="extra-content-li">
+                            蓝思书籍查询
+                          </div>
+                          <div class="extra-content-li">
+                            Literacy Pro蓝思系统测试
+                          </div>
                         </div>
+
                       </li>
-                      <li :class="{'active': liActive[3]}" @click="chooseLi(3,'/leixiReading')">阅读课程</li>
                       <li :class="{'active': liActive[4]}" @click="chooseLi(4,'/knowlwdgeShare')">知识分享</li>
                       <li :class="{'active': liActive[5]}" @click="chooseLi(5,'/joinUs')">加入我们</li>
                       <li :class="{'active': liActive[6]}" @click="chooseLi(6,'/commonQuestion')">常见问题</li>
@@ -166,10 +183,10 @@ import  api from '../../../api/bookManage'
               that.$router.push({ path: '/book_list', query: { booktype: that.searchBookSelect , searchValue: that.searchBookInput}})
           },
           login(){
-            //this.$router.push({ path: '/login'})
-            this.showloginflag=true
+            this.$router.push({ path: '/login'})
+            /*this.showloginflag=true
             let app =document.getElementById('app')
-             app.style.overflow='hidden'
+             app.style.overflow='hidden'*/
 
           },
           regist(){

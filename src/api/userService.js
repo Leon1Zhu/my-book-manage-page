@@ -37,7 +37,7 @@ export  default {
   },
    changePassword(phone,password){
        var params={
-         phoneno:phoneno,
+         phoneno:phone,
          newpassword:password
        }
        return api.post(changepassword,"",params)

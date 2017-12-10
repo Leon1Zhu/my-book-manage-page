@@ -28,7 +28,7 @@ const partners = resolve => require(['@/components/partners/partners'], resolve)
 
 const newsDetail = resolve => require(['@/components/showNewsPage/showNewsDetail/showNewsDetail'], resolve);
 
-const login = resolve => require(['@/components/signinAndUp/login'], resolve);
+const login = resolve => require(['@/components/signinAndUp/login1'], resolve);
 
 const regist = resolve => require(['@/components/signinAndUp/regist1'], resolve);
 

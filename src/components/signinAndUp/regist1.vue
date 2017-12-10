@@ -87,7 +87,7 @@
       <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr10"  />
     </div>
     <Button type="info" v-on:click="regist"
-            style=" background: #6a4f90; height:40px; color: white; border-color: #6a4f90;margin: 0 auto;margin-top: 10px;margin-left: 467px;width: 300px;font-size: 15px;">
+            style=" background: #6a4f90; height:40px; color: white; border-color: #6a4f90;margin: 0 auto;margin-top: 10px;margin-left: 38%;width: 300px;font-size: 15px;">
       注册
     </Button>
 

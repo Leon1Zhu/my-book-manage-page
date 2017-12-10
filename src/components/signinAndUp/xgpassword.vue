@@ -1,6 +1,14 @@
 <template>
 
-<div class="main">
+<div class="xgmain">
+  <div class="bar" v-on:getbar="onSelectType">
+    <Steps :current="current">
+      <Step title="填写账户名"></Step>
+      <Step title="验证身份"></Step>
+      <Step title="设置新密码"></Step>
+      <Step title="完成"></Step>
+    </Steps>
+  </div>
   <div class="center1">
     <router-view/>
   </div>
@@ -8,12 +16,26 @@
 </template>
 
 <style>
-  .main {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    MARGIN-RIGHT: auto;
-    MARGIN-LEFT: auto;
+  .bar{
+    margin-left: 10%;
   }
 </style>
+<script>
+  export default {
+    data () {
+      return {
+        current: 0,
+        user : '11' ,
+      }
+    },
+    methods: {
+      onSelectType(step) {
+        this.user = "dsada"
+      }
+    } ,
+/*    components:{
+      first
+    }*/
+  }
+</script>
 

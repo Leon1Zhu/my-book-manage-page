@@ -1,73 +1,34 @@
 <template>
   <div class="main">
-    <img src="../../assets/img/first.png" style="margin-left: 20% ; margin-top: 51px">
-    <br>
-    <div style="margin-left: 28%; margin-top: 5%">
-      <div class="inputzu2" style="margin-top: 10px">
-        <span class="spa2" slot="prepend">姓名</span><input type="text" readonly="readonly" class="inp2"
-                                                          v-model="name" />
-      </div>
-      <div class="inputzu2" style="margin-top: 10px">
-        <span class="spa2" slot="prepend">手机</span><input type="text" readonly="readonly" class="inp2"
-                                                         v-model="phone1" value="18752001826"/>
-      </div>
-      <div class="inputzu2" style="margin-top: 10px">
-        <span class="spa2" slot="prepend">验&nbsp证&nbsp码</span>
-        <input type="text" style="width:120px;" v-model="yzm2" class="inp2"
-               placeholder="输入验证码"/>
-        <Button class="btn" type="ghost" style="width:120px" v-model="yzm3" v-bind:disabled="dis1" v-on:click="getyzm1">{{yzm}}
-        </Button>
-        </Input>
-
-      </div>
-      <Button type="info" @click='tj2' style="font-size: 17px;width: 40% ; margin-top: 1%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交</Button>
+    <div class="modify_secondgroup" style="margin-top: 5%">
+        <span class="regist_bq">昵称/姓名</span>&nbsp&nbsp
+        <Input class="modify_secondinp" readonly="readonly"  v-model="name" @on-blur="losephone" @on-focus="getphone" ></Input>
     </div>
-
-
+    <div class="modify_secondgroup">
+      <span class="regist_bq">手&nbsp机&nbsp号</span>&nbsp&nbsp&nbsp&nbsp
+      <Input class="modify_secondinp"  v-model="phone1" @on-blur="losephone" @on-focus="getphone" placeholder="请输入你的手机号码"></Input>
+    </div>
+    <div class="modify_secondgroup">
+      <span class="regist_bq">验&nbsp证&nbsp码</span>&nbsp&nbsp&nbsp&nbsp
+      <Input class="modify_secondinp"  v-model="yzm2" @on-blur="losephone" @on-focus="getphone" placeholder="请输入你的验证码"></Input>
+      <Button class="btn" type="ghost" style="width:120px" v-model="yzm3" v-bind:disabled="dis1" v-on:click="getyzm1">{{yzm}}
+      </Button>
+    </div>
+    <Button type="info" @click='tj2' style="font-size: 17px;margin-left:44% ;width: 200px ; margin-top: 2%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交</Button>
   </div>
 </template>
 <style>
-  .main {
-    width: 1350px;
-    height: 650px;
-    MARGIN-RIGHT: auto;
-    MARGIN-LEFT: auto;
+  .main{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
   }
-
-  .spa2 {
-    font-family: "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
-    font-size: 15px;
-    margin-left: 10px;
-    float: left;
-    margin-top: 13px;
-    width: 50px;
-
+  .modify_secondinp{
+    width: 200px;
   }
-
-  .inp2 {
-    width: 50%;
-    border: none;
-    height: 50px;
-    outline: none;
-    margin-left: 40px;
-
-  }
-
-  .btn {
-    height: 40px;
-    width: 100px;
-    border: none;
-    outline: none;
-  }
-
-  .inputzu2 {
-    background: #ffffff;
-    width: 40%;
-    heigth: 50px;
-    margin-top: 10%;
-    border: 1px solid #f6f6f6;
-    box-shadow: 5px 5px 5px #f6f6f6;
-
+  .modify_secondgroup{
+    margin-left: 40%;
+    margin-top: 2%;
   }
 </style>
 <script>
@@ -77,7 +38,7 @@
         name:null,
         yzm2: '',
         yzm3: '',
-        dis1: false,
+        dis1: true,
         yzm: '获取验证码',
         phone1: null
       }
@@ -89,7 +50,24 @@
       vm.name = vm.$route.query.rName
     },
     methods: {
+      losephone : function () {
+        if (/^1[34578]\d{9}$/.test(this.phone1)===true) {
+          if(this.yzm==="获取验证码"){
+            this.dis1 = false
+          }else{
+            this.dis1=true
+          }
+        } else if (this.phone1.length === 0) {
+          this.dis1 = true
+        } else {
+
+          this.dis1 = true
+          this.$Message.error('请输入正确的手机号')
+
+        }
+      },
       getyzm1: function () {
+
         var a = Math.random()*900000|0+100000;
         this.yzm3 = parseInt(a)
         alert(this.yzm3)

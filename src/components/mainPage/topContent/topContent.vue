@@ -1,4 +1,4 @@
-<template>
+npm<template>
     <div class="top-content">
       <!--<div class="login-content-top" :class="{showLoginContent : showloginflag}">
         <loginContent @closeLogin="closeLogin"></loginContent>

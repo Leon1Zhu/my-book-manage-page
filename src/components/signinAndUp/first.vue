@@ -1,70 +1,39 @@
 <template>
   <div class="main">
-    <img src="../../assets/img/second.png" style="margin-left: 20% ; margin-top: 51px">
-    <br>
-    <div style="margin-left: 28%; margin-top: 5%">
-      <div class="inputzu1" style="margin-top: 10px;background: #ffffff;">
-        <span class="spa1" slot="prepend">用户名</span><input type="text" v-model="username1" class="inp1"
-                                                           placeholder="输入您的注册手机号"/>
-      </div>
-      <div class="inputzu1" style="margin-top: 10px;background: #ffffff;">
-        <span class="spa1" slot="prepend">验证码</span><input type="text" style="width: 110px;" v-model="yzm1"
-                                                           class="inp1"
-                                                           placeholder="输入验证码"/>
-        <Button type="ghost" style="font-size:20px;width:120px;width: 100px;border: none;outline: none;" id="code"
-                @click="createCode"
-                class="verification1">{{checkCode}}
-        </Button>
-      </div>
-      <Button type="info" @click="tj1" style=" font-size: 17px;width: 40% ; margin-top: 1%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
+
+    <div class="modify_firstgroup" style="margin-top: 5%">
+      <span class="regist_bq">手机号</span>&nbsp&nbsp
+      <Input class="modify_firstinp"  v-model="username1" placeholder="请输入你的手机号码"></Input>
+    </div>
+    <div class="modify_firstgroup">
+      <span class="regist_bq">验证码</span>&nbsp&nbsp
+      <Input class="modify_firstinp"  v-model="yzm1"  placeholder="请输入验证码"></Input>
+      <Button type="ghost" style="font-size:20px;width:120px;width: 100px;border: none;outline: none;" id="code"
+              @click="createCode"
+              class="verification1">{{checkCode}}
+      </Button>
+    </div>
+      <Button type="info" @click="tj1" style="margin-left: 44%; font-size: 17px;width:200px ; margin-top: 2%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
       </Button>
 
 
     </div>
-  </div>
 
 
 </template>
 
 <style scoped>
-  .main {
-    width: 1350px;
-    height: 650px;
-    MARGIN-RIGHT: auto;
-    MARGIN-LEFT: auto;
-  }
-
-  .spa1 {
-    font-family: "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
-    font-size: 15px;
-    margin-left: 10px;
-    float: left;
-    margin-top: 13px;
-    width: 50px;
-
-  }
-
-  .inp1 {
-    width: 50%;
-    border: none;
-    height: 50px;
-    outline: none;
-    margin-left: 40px;
-
-  }
-
-  .btn2 {
-    height: 40px;
-
-  }
-
-  .inputzu1 {
-    width: 40%;
-    heigth: 50px;
-    margin-top: 10%;
-    border: 1px solid #f6f6f6;
-    box-shadow: 5px 5px 5px #f6f6f6;
-
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+.modify_firstinp{
+  width:200px ;
+}
+  .modify_firstgroup{
+    margin-left: 40%;
+    margin-top: 2%;
   }
 </style>
 <script>
@@ -74,7 +43,7 @@
       return {
         username1: '',
         checkCode: '',
-        yzm1: ''
+        yzm1: '',
 
       }
     },
@@ -82,6 +51,8 @@
       this.createCode();
     },
     methods: {
+
+
       createCode: function () {
         var code = ''
         var codeLength = 4// 验证码的长度
@@ -95,6 +66,7 @@
         this.checkCode = code// 把code值赋给验证码
       },
       tj1: function () {
+
         let that =this;
         if (isNull(this.username1 ) ) {
           this.$Message.error('用户名不能为空！')
@@ -103,13 +75,16 @@
         if(this.yzm1 != this.checkCode){
           this.$Message.error('验证码错误！')
           return;
+        }else{
+          this.$emit('getbar',1);
         }
-        apiUser.getUserByPhone(this.username1).then((response)=>{
+       /* apiUser.getUserByPhone(this.username1).then((response)=>{
 
           that.$router.push({path: '/xgpassword/second',query : {rName:response.data.rName,phoneNo:response.data.phoneNo}})
+
         }).catch((response)=>{
           that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
-        })
+        })*/
 
       }
     }

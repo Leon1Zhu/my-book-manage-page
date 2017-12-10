@@ -1,65 +1,44 @@
 <template>
   <div class="main">
-    <div style="margin-left: 28%; margin-top: 5%">
-      <div class="inputzu3" style="margin-top: 10px">
-        <span class="spa3" slot="prepend">新密码</span><input type="password" v-model="password2" v-on:blur="losepassword2"
-                                                           v-on:focus="getpassword2" class="inp3"
-                                                           placeholder="请输入新密码"/>
-      </div>
-      <p class="usernamewarning1" v-bind:class="{passwordcolor1:ispasswordcolor1}">{{passwordwarning1}}</p>
-      <div class="inputzu3" style="margin-top: 10px">
-        <span class="spa3" slot="prepend">重复新密码</span><input type="password" v-model="repassword2"
-                                                             v-on:blur="loserepassword3" v-on:focus="getrepassword3"
-                                                             class="inp3"
-                                                             placeholder="请再次新密码"/>
-      </div>
-      <p class="usernamewarning1" v-bind:class="{repasswordcolor1:isrepasswordcolor1}">{{repasswordwarning1}}</p>
-      <Button type="info" @click="tj3" style="font-size: 17px;width: 40% ; margin-top: 1%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交</Button>
-
+    <div class="modify_thirdgroup" style="margin-top: 5%">
+      <span class="regist_bq">新&nbsp&nbsp密&nbsp&nbsp码</span>&nbsp&nbsp&nbsp&nbsp&nbsp
+      <Input class="modify_thirdinp"   type="password" v-model="password2" @on-blur="losepassword2"
+            @on-focus="getpassword2" placeholder="请输入你的手机号码"></Input>
     </div>
+    <p class="usernamewarning1" v-bind:class="{passwordcolor1:ispasswordcolor1}">{{passwordwarning1}}</p>
+    <div class="modify_thirdgroup">
+      <span class="regist_bq">重复新密码</span>&nbsp&nbsp
+      <Input class="modify_thirdinp"  type="password" v-model="repassword2" @on-blur="loserepassword3" @on-focus="getrepassword3" placeholder="请输入验证码"></Input>
+    </div>
+    <p class="usernamewarning1" v-bind:class="{repasswordcolor1:isrepasswordcolor1}">{{repasswordwarning1}}</p>
+
+    <Button type="info" @click="tj3" style="margin-left: 44%; font-size: 17px;width:200px ; margin-top: 2%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
+    </Button>
 
   </div>
 </template>
 <style>
   .main {
-    width: 1350px;
-    height: 650px;
-    MARGIN-RIGHT: auto;
-    MARGIN-LEFT: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
   }
-
-  .spa3 {
-    font-family: "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
-    font-size: 15px;
-    margin-left: 10px;
-    float: left;
-    margin-top: 13px;
-    width: 80px;
-
+  .modify_thirdinp{
+    width: 200px;
   }
-
-  .inp3 {
-    width: 50%;
-    border: none;
-    height: 50px;
-    outline: none;
-    margin-left: 40px;
-
+  .modify_thirdgroup{
+    margin-left: 40%;
+    margin-top: 2%;
   }
-
-  .btn {
-    height: 40px;
-    width: 100px;
-    border: none;
-    outline: none;
-  }
-
   .repasswordcolor1 {
     color: red;
   }
 
   .passwordcolor1 {
     color: red;
+  }
+  .usernamewarning1{
+    margin-left: 40%;
   }
 
   .inputzu3 {

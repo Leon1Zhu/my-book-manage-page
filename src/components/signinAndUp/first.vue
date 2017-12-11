@@ -77,16 +77,15 @@
           this.$Message.error('验证码错误！')
           return;
         }else{
-          alert("11");
           this.$emit('getbar',1);
+          apiUser.getUserByPhone(this.username1).then((response)=>{
+
+            that.$router.push({path: '/xgpassword/second',query : {rName:response.data.rName,phoneNo:response.data.phoneNo}})
+
+          }).catch((response)=>{
+            that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
+          })
         }
-       /* apiUser.getUserByPhone(this.username1).then((response)=>{
-
-          that.$router.push({path: '/xgpassword/second',query : {rName:response.data.rName,phoneNo:response.data.phoneNo}})
-
-        }).catch((response)=>{
-          that.$Notice.error(setNoticConfig(response.message,null,null,"error"));
-        })*/
 
       }
     }

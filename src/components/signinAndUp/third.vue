@@ -121,6 +121,7 @@
       tj3: function () {
         if (this.password2.length > 5 && this.password2.length < 13 && this.password2 === this.repassword2) {
             apiUser.changePassword(this.phone,this.password2).then((response)=>{
+              this.$emit('getbar' , 3)
               this.$router.push({path: '/xgpassword/forth'})
             }).catch((response)=>{
               this.$Message.error(response.data.message)

@@ -69,12 +69,12 @@
         <Poptip class="sign-img-content"  trigger="hover" content="不具有蓝思属性"  v-else>
             <img src="../../assets/lexile2.png">
         </Poptip>
-        <Poptip class="sign-img-content" trigger="hover" content="具有配套音频"  v-if="data.audio===1 || data.audio">
+      <!--  <Poptip class="sign-img-content" trigger="hover" content="具有配套音频"  v-if="data.audio===1 || data.audio">
             <img src="../../assets/audio.jpg">
         </Poptip>
         <Poptip  class="sign-img-content"  trigger="hover" content="不具有配套音频"  v-else>
             <img src="../../assets/audio-no-color.jpg">
-        </Poptip>
+        </Poptip>-->
       </div>
     </div>
 </template>

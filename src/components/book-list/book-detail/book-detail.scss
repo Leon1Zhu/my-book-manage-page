@@ -50,11 +50,16 @@
             text-align: center;
             img{
               width:80px;
+              -webkit-border-radius:10px;
+              -moz-border-radius:10px;
+              border-radius:10px;
             }
           }
         }
         .right-imgT,.left-imgT{
-          text-align: center;
+          /*text-align: center;*/
+          margin-left: 10px;
+
         }
         .sign-img-item{
           width:290px;

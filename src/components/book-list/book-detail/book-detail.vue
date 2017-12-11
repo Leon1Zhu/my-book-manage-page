@@ -61,14 +61,14 @@
                   </Poptip>
                 </div>
 
-                <div class="right-info left-imgT">
-                  <Poptip class="sign-img-content" trigger="hover" content="具有配套音频"  v-if="data.audio===1">
-                    <img src="../../../assets/audio.jpg">
-                  </Poptip>
-                  <Poptip  class="sign-img-content"  trigger="hover" content="不具有配套音频"  v-else>
-                    <img src="../../../assets/audio-no-color.jpg">
-                  </Poptip>
-                </div>
+                <!--<div class="right-info left-imgT">-->
+                  <!--<Poptip class="sign-img-content" trigger="hover" content="具有配套音频"  v-if="data.audio===1">-->
+                    <!--<img src="../../../assets/audio.jpg">-->
+                  <!--</Poptip>-->
+                  <!--<Poptip  class="sign-img-content"  trigger="hover" content="不具有配套音频"  v-else>-->
+                    <!--<img src="../../../assets/audio-no-color.jpg">-->
+                  <!--</Poptip>-->
+                <!--</div>-->
               </div>
 
 

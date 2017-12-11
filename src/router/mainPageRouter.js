@@ -28,7 +28,7 @@ const partners = resolve => require(['@/components/partners/partners'], resolve)
 
 const newsDetail = resolve => require(['@/components/showNewsPage/showNewsDetail/showNewsDetail'], resolve);
 
-const login = resolve => require(['@/components/signinAndUp/login1'], resolve);
+const login = resolve => require(['@/components/signinAndUp/login'], resolve);
 
 const regist = resolve => require(['@/components/signinAndUp/regist1'], resolve);
 
@@ -41,6 +41,9 @@ const second= resolve => require(['@/components/signinAndUp/second'], resolve);
 const third = resolve => require(['@/components/signinAndUp/third'], resolve);
 
 const forth = resolve => require(['@/components/signinAndUp/forth'], resolve);
+
+const personalCenter = resolve => require(['@/components/mainPage/personalCenter/personalCenter.vue'], resolve);
+
 
 
 const mainPageRouter= {
@@ -120,6 +123,11 @@ const mainPageRouter= {
         ]
 
       },
+      {
+        path: '/personalCenter',
+        components: {main:personalCenter},
+        name:"个人中心#2"
+      }
     ]
 }
 

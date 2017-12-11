@@ -20,17 +20,16 @@ npm<template>
             <div class="grid_6" v-if="loginStatus" style="position: relative;float: right;" >
               <div class="login-content" :class="{ 'roateIcon':isActive}" @click="showNav" style="position: absolute;right: 0px;">
                 <i class="iconfont icon-denglutouxiangmoren"></i>
-                <span class="book-login login-in">&nbsp;个人中心&nbsp;</span>
-                <i class="ivu-icon ivu-icon-arrow-down-b "></i>
+                <span class="book-login login-in">&nbsp;欢迎您，{{userinfo.name}}&nbsp;</span>
               </div>
             </div>
           </div>
       </div>
-      <div  v-if="loginStatus"  :class="{ 'globalnav-hidden':!isActive}" class="globalnav">
+      <!--<div  v-if="loginStatus"  :class="{ 'globalnav-hidden':!isActive}" class="globalnav">
         <div class="globalnav-menu container_12">
           <personCenter></personCenter>
         </div>
-      </div>
+      </div>-->
       <div class="top-topcontent">
            <div class="container_12">
              <div class="grid_6 book-info">
@@ -120,7 +119,6 @@ npm<template>
 <script>
 import './topContent.scss'
 import  animatedInteger from '../../../common/animated-integer/animated-integer.vue'
-import personCenter from '../personalCenter/personalCenter.vue'
 import loginContent from '../../signinAndUp/login.vue'
 import  api from '../../../api/bookManage'
     export default{
@@ -132,21 +130,25 @@ import  api from '../../../api/bookManage'
                 tel:null,
                 mainBreadcrumb:MAINBREADCRUMB,
                 liActive:[true,false,false,false,false,false,false,false,false],
-                loginStatus:getLoginStatus(),
+                userinfo:USERINFO,
                 isActive:false,
-                showloginflag:false
+                showloginflag:false,
+                loginStatus:ISLOGIN,
             }
         },
         components: {
             'animatedInteger':animatedInteger,
-            'personCenter':personCenter,
             'loginContent':loginContent
         },
+        computed:{
+        },
         created(){
+            var vm = this;
             this.getWebConfig();
         },
-        mounted(){
-        },
+       mounted(){
+
+       },
         methods: {
           getWebConfig(){
             api.getWebConfig().then((response)=>{
@@ -173,9 +175,7 @@ import  api from '../../../api/bookManage'
 
           },
           showNav(){
-              this.isActive = !this.isActive
-              let statu = this.isActive ? "hidden":"auto";
-            document.getElementById("app").style.overflow=statu;
+            this.$router.push({ path: '/personalCenter'})
           },
           searchList(){
               let that=this;
@@ -192,11 +192,6 @@ import  api from '../../../api/bookManage'
           regist(){
             this.$router.push({ path:'/regist'})
           }
-        },
-        computed:{
-        },
-        watch:{
-
         }
     }
 </script>

@@ -24,7 +24,6 @@ const actions = {
   setLoginStatus ({ commit },flag) {
       commit(types.LOGIN_STATUS,flag)
   }
-
 }
 
 

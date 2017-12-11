@@ -26,6 +26,7 @@ import topContent from './topContent/topContent.vue'
             'topContent':topContent,
         },
         created(){
+           console.log(USERINFO)
         },
         mounted(){
         },

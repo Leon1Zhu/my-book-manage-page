@@ -29,6 +29,9 @@ global.LISTTYPE=sessionStorage.getItem("LISTTYPE") ? sessionStorage.getItem("LIS
 //搜索信息
 global.SEARCHINFO = sessionStorage.getItem("SEARCHINFO") ? sessionStorage.getItem("SEARCHINFO") : null;
 
+//修改密码信息
+global.CURRENTGL = sessionStorage.getItem("currentStep")? sessionStorage.getItem("currentStep") : 0;
+
 if(process.env.NODE_ENV=="production"){
   global.tokenUrl="http://119.23.40.120:9091/getToken"
   global.SERVICEURL="http://121.43.171.195:8090"

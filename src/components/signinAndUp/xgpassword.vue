@@ -2,7 +2,7 @@
 
 <div class="xgmain">
   <div class="bar" >
-    <Steps :current="current" >
+    <Steps :current="current"  style="margin-top: 4%;">
       <Step title="填写账户名"></Step>
       <Step title="验证身份"></Step>
       <Step title="设置新密码"></Step>
@@ -19,6 +19,22 @@
   .bar{
     margin-left: 10%;
   }
+  .xgmain .ivu-steps .ivu-steps-head, .xgmain .ivu-steps-item.ivu-steps-status-process .ivu-steps-title , .xgmain .ivu-steps-item.ivu-steps-status-finish .ivu-steps-title,.xgmain .ivu-steps-item.ivu-steps-status-wait .ivu-steps-title{
+    background: #efefef;
+  }
+
+  .xgmain  .ivu-steps-item.ivu-steps-status-finish .ivu-steps-head-inner span, .ivu-steps-item.ivu-steps-status-finish .ivu-steps-head-inner>.ivu-steps-icon {
+    color: #6a518e;
+  }
+
+  .xgmain  .ivu-steps-item.ivu-steps-status-finish .ivu-steps-head-inner {
+    background-color: #fff;
+    border-color: #6a518e;
+  }
+  .xgmain  .ivu-steps-item.ivu-steps-status-finish .ivu-steps-tail>i:after,.xgmain  .ivu-steps-item.ivu-steps-status-process .ivu-steps-head-inner{
+    background: #6a518e;
+    border-color: #6a518e;
+  }
 </style>
 <script>
   import first from  "./first.vue"
@@ -28,8 +44,8 @@
   export default {
     data () {
       return {
-        current: 0,
-        user : '11' ,
+        current: CURRENTGL,
+        user : '' ,
       }
     },
     components: {
@@ -40,8 +56,8 @@
     },
     methods: {
       onSelectType(step) {
-        console.log(step)
         this.current = step
+        setCurrent(step)
 
       }
     } ,

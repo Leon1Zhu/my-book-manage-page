@@ -161,4 +161,9 @@ global.removeOrderBook = function(val){
   }
 }
 
+global.setCurrent = function(val){
+  sessionStorage.setItem("currentStep",val);
+  CURRENTGL = val;
+}
+
 

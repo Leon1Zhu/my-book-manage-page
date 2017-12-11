@@ -57,7 +57,7 @@
         </div>
       </div>
       <div class="book-sign-img">
-        <Poptip  class="sign-img-content"  trigger="click" content="AR书籍" v-if="data.artag===1 || data.artag">
+        <Poptip  class="sign-img-content"  trigger="hover" content="AR书籍" v-if="data.artag===1 || data.artag">
             <img src="../../assets/ARLogo.png">
         </Poptip>
         <Poptip class="sign-img-content"  trigger="hover" content="不具有AR属性" v-else>

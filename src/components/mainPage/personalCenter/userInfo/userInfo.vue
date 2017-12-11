@@ -3,51 +3,46 @@
       <div class="user-info-content">
         <div class="search-input">
           <div class="search-input-sec">
-            <div class="word">用户名:<span class="user-info-detail">{{userinfo.phoneNo}}</span></div>
-          </div>
-          <div class="search-input-sec">
-            <div class="word">昵称:<span class="user-info-detail">{{userinfo.nickName}}</span></div>
-          </div>
-        </div>
-
-
-        <div class="search-input">
-          <div class="search-input-sec">
-            <div class="word">姓名:<span class="user-info-detail">{{userinfo.rName}}</span></div>
-          </div>
-          <div class="search-input-sec">
-            <div class="word">宝宝姓名:<span class="user-info-detail">{{userinfo.rName}}</span></div>
-          </div>
-        </div>
-
-
-        <div class="search-input">
-          <div class="search-input-sec">
             <div class="word">手机号:<span class="user-info-detail">{{userinfo.phoneNo}}</span></div>
           </div>
           <div class="search-input-sec">
-            <div class="word">联系地址:<span class="user-info-detail">{{userinfo.address}}</span></div>
+            <div class="word">读者昵称:<span class="user-info-detail">{{userinfo.name}}</span></div>
           </div>
         </div>
 
 
         <div class="search-input">
+          <div class="search-input-sec">
+            <Poptip  class="sign-img-content"  trigger="hover" content="快递用户请务必提供准确的收件信息" >
+              <div class="word">真实姓名:<span class="user-info-detail">{{userinfo.rName}}</span></div>
+            </Poptip>
+          </div>
           <div class="search-input-sec">
             <div class="word">邮箱:<span class="user-info-detail">{{userinfo.email}}</span></div>
           </div>
+        </div>
+
+
+        <div class="search-input">
+          <div class="search-input-sec">
+            <Poptip  class="sign-img-content"  trigger="hover" content="快递用户请务必提供准确的收件信息" >
+              <div class="word">手机号:<span class="user-info-detail">{{userinfo.phoneNo}}</span></div>
+            </Poptip>
+          </div>
+          <div class="search-input-sec">
+            <Poptip  class="sign-img-content"  trigger="hover" content="快递用户请务必提供准确的收件信息" >
+              <div class="word">联系地址:<span class="user-info-detail">{{userinfo.address}}</span></div>
+            </Poptip>
+          </div>
+        </div>
+
+
+        <div class="search-input">
           <div class="search-input-sec">
             <div class="word">性别:<span class="user-info-detail">{{userinfo.rSex}}</span></div>
           </div>
-        </div>
-
-
-
-        <div class="search-input">
           <div class="search-input-sec">
-            <div class="word">缴费信息:<span class="user-info-detail">{{userinfo.paidInfo}}</span></div>
-          </div>
-          <div class="search-input-sec">
-            <div class="word">缴费金额:<span class="user-info-detail">{{userinfo.bmoney}}</span></div>
+            <div class="word">押金:<span class="user-info-detail">{{userinfo.address}}</span></div>
           </div>
         </div>
 
@@ -55,30 +50,47 @@
 
         <div class="search-input">
           <div class="search-input-sec">
-            <div class="word">会员开始日期:<span class="user-info-detail">{{userinfo.memStart}}</span></div>
+            <div class="word">阅读总本数:<span class="user-info-detail">{{readBookCount}}</span></div>
           </div>
           <div class="search-input-sec">
-            <div class="word">会员截止日期:<span class="user-info-detail">{{userinfo.memEnd}}</span></div>
+            <div class="word">阅读总字数:<span class="user-info-detail">{{readBookWord}}</span></div>
           </div>
         </div>
-
+        <div class="search-input">
+          <div class="search-input-sec">
+            <div class="word">会员类型:<span class="user-info-detail">{{userinfo.paidInfo}}</span></div>
+          </div>
+        </div>
       </div>
     </div>
 </template>
 
 <script>
 import './userInfo.scss'
+import userApi from '../../../../api/userService'
     export default{
         data(){
             return {
-                userinfo:USERINFO
+                userinfo:USERINFO,
+                readBookCount:null,
+                readBookWord:null,
             }
         },
         components: {},
         created(){
+          this.getUserWord()
         },
         mounted(){
         },
-        methods: {}
+        methods: {
+            getUserWord(){
+                userApi.getUserWord().then((response) => {
+                  this.readBookCount=response.data.readBookCount
+                  this.readBookWord=response.data.readBookWord
+                }).catch((response) => {
+
+                })
+            }
+        }
     }
 </script>

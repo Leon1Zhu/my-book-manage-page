@@ -36,12 +36,15 @@
                 <div class="right-info">蓝思值:{{data.lexileCombined  | filterNull}}</div>
               </div>
               <div class="book-item-info font-content">
-                <div class="left-info">重量:{{data.weight | filterNull}}</div>
+                <div class="left-info">重量:{{data.weight | filterNull}}克</div>
                 <div class="right-info">系列IS:{{data.series  | filterNull}}</div>
               </div>
               <div class="book-item-info font-content">
                 <div class="left-info">尺寸:{{data.diamension  | filterNull}}</div>
                 <div class="right-info">价格:{{data.book_type  | filterNull}}</div>
+              </div>
+              <div class="book-item-info font-content">
+                <div class="left-info">是否有馆藏音频:{{data.audio ===1 ? "是":"否" }}</div>
               </div>
               <div class="book-item-info">
                 <div class="left-info right-imgT">

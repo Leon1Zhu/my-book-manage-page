@@ -4,14 +4,25 @@
 import api from './index'
 
 let bookIndex = '/book';
+
 let loginBook = '/api';
 
 let login = bookIndex+"/userLogin";
+
 let getCode = bookIndex+'/getUserYzNumber'
+
 let regist = bookIndex+'/regist'
+
 let getUByPhone = bookIndex+'/getUserInfoByPhone'
+
 let changepassword = bookIndex+'/changePassword'
+
+let getUserWord = loginBook+'/getUserWord'
+
 export  default {
+  getUserWord(){
+    return api.post(getUserWord,USERINFO,'');
+  },
   login(userphoe,password){
     let params={
       userphone:userphoe,

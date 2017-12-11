@@ -6,7 +6,7 @@ import './globalFun'
 import './setGlobalValue'
 import bookManageApi from './api/bookManage'
 
-var limit = 10;
+var limit = 20;
 
 Vue.prototype.$collectBook = function(data){
   let that = this;

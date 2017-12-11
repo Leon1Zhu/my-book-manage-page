@@ -12,7 +12,7 @@
     </div>
     <p class="usernamewarning1" v-bind:class="{repasswordcolor1:isrepasswordcolor1}">{{repasswordwarning1}}</p>
 
-    <Button type="info" @click="tj3" style="margin-left: 44%; font-size: 17px;width:200px ; margin-top: 2%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
+    <Button type="info" @click="tj3" style="margin-left: 35%; font-size: 17px;width:33.5% ; margin-top:3%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
     </Button>
 
   </div>
@@ -22,13 +22,15 @@
     display: flex;
     flex-direction: column;
     align-items: left;
+    width: 100%;
   }
   .modify_thirdinp{
-    width: 200px;
+    width: 25%;
   }
   .modify_thirdgroup{
-    margin-left: 40%;
+    margin-left: 35%;
     margin-top: 2%;
+    width: 100%;
   }
   .repasswordcolor1 {
     color: red;
@@ -38,7 +40,9 @@
     color: red;
   }
   .usernamewarning1{
-    margin-left: 40%;
+    margin-left: 43.5%;
+    font-size: 10px;
+    margin-top: 0.5%;
   }
 
   .inputzu3 {
@@ -74,15 +78,15 @@
         this.ispasswordcolor1 = false
         this.grtr12 = false
         this.grtr13 = false
-        this.passwordwarning1 = '建议使用数字、字母、符号俩种及以上的组合，6-12个字符'
+        this.passwordwarning1 = '建议使用数字、字母、符号俩种及以上的组合，6-20个字符'
       },
       losepassword2: function () {
-        if (this.password2.length > 5 && this.password2.length < 13) {
+        if (this.password2.length > 5 && this.password2.length < 21) {
           if (this.password2 === this.repassword2) {
             this.repasswordwarning1 = ''
             this.passwordwarning1 = ''
             this.isrepasswordcolor1 = true
-          } else if (this.password2.length > 5 && this.password2.length < 13 && this.repassword2.length === 0) {
+          } else if (this.password2.length > 5 && this.password2.length < 21 && this.repassword2.length === 0) {
             this.repasswordwarning1 = ''
             this.passwordwarning1 = ''
             this.isrepasswordcolor1 = true
@@ -96,7 +100,7 @@
           this.isrepasswordcolor1 = false
         } else {
           this.ispasswordcolor1 = true
-          this.passwordwarning1 = '长度只能在6-12之间'
+          this.passwordwarning1 = '长度只能在6-20之间'
         }
       },
       loserepassword3: function () {

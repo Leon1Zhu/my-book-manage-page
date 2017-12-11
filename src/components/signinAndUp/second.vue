@@ -14,7 +14,7 @@
       <Button class="btn" type="ghost" style="width:120px" v-model="yzm3" v-bind:disabled="dis1" v-on:click="getyzm1">{{yzm}}
       </Button>
     </div>
-    <Button type="info" @click='tj2' style="font-size: 17px;margin-left:44% ;width: 200px ; margin-top: 2%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交</Button>
+    <Button type="info" @click='tj2' style="font-size: 17px;margin-left:35% ;width: 32% ; margin-top: 3%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交</Button>
   </div>
 </template>
 <style>
@@ -24,11 +24,12 @@
     align-items: left;
   }
   .modify_secondinp{
-    width: 200px;
+    width: 25%;
   }
   .modify_secondgroup{
-    margin-left: 40%;
+    margin-left: 35%;
     margin-top: 2%;
+    width: 100%;
   }
 </style>
 <script>

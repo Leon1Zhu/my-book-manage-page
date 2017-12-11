@@ -60,11 +60,17 @@
     </div>
     <p class="regist_warning" v-bind:class="{mailcolor:ismailcolor}">{{mailwarning}}</p>
     <div class="inputgroup">
+      <span class="regist_bq">昵称</span>
+      <Input class="regist_inp" type="text" v-model="neckname"  placeholder="输入你的昵称"></Input>&nbsp&nbsp
+      <img class="greenarrow" src="../../assets/img/greenarrow.png"  v-if="grtr2"   />
+    </div>
+    <div class="inputgroup">
       <span class="regist_bq">密&nbsp&nbsp&nbsp&nbsp&nbsp码</span>
       <Input class="regist_inp" type="password" v-model="password1" @on-blur="losepassword" @on-focus="getpassword" placeholder="输入密码"></Input>&nbsp&nbsp
       <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr1"  />
     </div>
     <p class="regist_warning" v-bind:class="{passwordcolor:ispasswordcolor}">{{passwordwarning}}</p>
+
     <div class="inputgroup">
       <span class="regist_bq">重复密码</span>
       <Input class="regist_inp" type="password" v-model="repassword" @on-blur="loserepassword" @on-focus="getrepassword" placeholder="密码确认"></Input>&nbsp&nbsp

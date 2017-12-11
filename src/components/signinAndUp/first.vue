@@ -13,7 +13,7 @@
               class="verification1">{{checkCode}}
       </Button>
     </div>
-      <Button type="info" @click="tj1" style="margin-left: 44%; font-size: 17px;width:200px ; margin-top: 2%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
+      <Button type="info" @click="tj1" style="margin-left: 35%; font-size: 17px;width:30.5% ; margin-top: 3%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
       </Button>
 
 
@@ -29,10 +29,11 @@
   align-items: left;
 }
 .modify_firstinp{
-  width:200px ;
+  width:25% ;
 }
   .modify_firstgroup{
-    margin-left: 40%;
+    width: 100%;
+    margin-left:35%;
     margin-top: 2%;
   }
 </style>

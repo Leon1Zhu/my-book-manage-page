@@ -30,7 +30,13 @@
     },
     methods: {
       onSelectType(step) {
-        this.user = "dsada"
+       if(step === 1){
+         current = 1 ;
+       }else if(step === 2){
+         current = 2 ;
+       }else if(step === 3){
+         current = 3 ;
+       }
       }
     } ,
 /*    components:{

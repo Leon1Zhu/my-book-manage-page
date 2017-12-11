@@ -1,8 +1,8 @@
 <template>
 
 <div class="xgmain">
-  <div class="bar" v-on:getbar="onSelectType">
-    <Steps :current="current">
+  <div class="bar" >
+    <Steps :current="current" >
       <Step title="填写账户名"></Step>
       <Step title="验证身份"></Step>
       <Step title="设置新密码"></Step>
@@ -10,7 +10,7 @@
     </Steps>
   </div>
   <div class="center1">
-    <router-view/>
+    <router-view v-on:getbar="onSelectType" />
   </div>
 </div>
 </template>
@@ -21,6 +21,10 @@
   }
 </style>
 <script>
+  import first from  "./first.vue"
+  import second from  "./second.vue"
+  import third from  "./third.vue"
+  import forth from  "./forth.vue"
   export default {
     data () {
       return {
@@ -28,15 +32,17 @@
         user : '11' ,
       }
     },
+    components: {
+      'first':first,
+      'second': second,
+      'third' : third ,
+      'forth' : forth
+    },
     methods: {
       onSelectType(step) {
-       if(step === 1){
-         current = 1 ;
-       }else if(step === 2){
-         current = 2 ;
-       }else if(step === 3){
-         current = 3 ;
-       }
+        console.log(step)
+        this.current = step
+
       }
     } ,
 /*    components:{

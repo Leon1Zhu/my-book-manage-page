@@ -2,7 +2,7 @@
   <div class="main">
     <div class="modify_secondgroup" style="margin-top: 5%">
         <span class="regist_bq">昵称/姓名</span>&nbsp&nbsp
-        <Input class="modify_secondinp" readonly="readonly"  v-model="name" @on-blur="losephone" @on-focus="getphone" ></Input>
+        <Input class="modify_secondinp" readonly="readonly"  v-model="name" @on-blur="losephone"  ></Input>
     </div>
     <div class="modify_secondgroup">
       <span class="regist_bq">手&nbsp机&nbsp号</span>&nbsp&nbsp&nbsp&nbsp
@@ -10,7 +10,7 @@
     </div>
     <div class="modify_secondgroup">
       <span class="regist_bq">验&nbsp证&nbsp码</span>&nbsp&nbsp&nbsp&nbsp
-      <Input class="modify_secondinp"  v-model="yzm2" @on-blur="losephone" @on-focus="getphone" placeholder="请输入你的验证码"></Input>
+      <Input class="modify_secondinp"  v-model="yzm2"  placeholder="请输入你的验证码"></Input>
       <Button class="btn" type="ghost" style="width:120px" v-model="yzm3" v-bind:disabled="dis1" v-on:click="getyzm1">{{yzm}}
       </Button>
     </div>
@@ -33,6 +33,7 @@
   }
 </style>
 <script>
+  import div from "./xgpassword.vue"
   export default {
     data () {
       return {
@@ -89,6 +90,7 @@
       },
       tj2: function () {
         if (parseInt(this.yzm2) === this.yzm3 && this.yzm2.length !== 0) {
+          this.$emit('getbar',2);
           this.$router.push({path: '/xgpassword/third',query:{phone:this.phone1}})
         } else if (this.yzm2.length === 0 && this.yzm3.length === 0) {
           this.$Message.error('请先获取验证码')

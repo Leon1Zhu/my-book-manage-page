@@ -2,11 +2,10 @@
   <div class="center">
     <div class="inputgroup">
       <span class="regist_bq">读者姓名</span>
-      <Input class="regist_inp" v-model="name"  @on-blur="losename"  @on-focus="getname" placeholder="请输入姓名或者昵称"/>&nbsp&nbsp
+      <Input class="regist_inp" v-model="name"  @on-blur="losename"  @on-focus="getname" placeholder="请输入姓名"/>&nbsp&nbsp
       <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr3"   />
     </div>
-    <div class=""></div>
-<!--    <p class="regist_warning" v-bind:class="{namecolor:isnamecolor}">{{namewarning}}</p>-->
+    <p class="regist_warning" v-bind:class="{namecolor:isnamecolor}">{{namewarning}}</p>
     <div class="inputgroup">
       <span class="regist_bq" >性&nbsp&nbsp&nbsp&nbsp&nbsp别</span>
       <RadioGroup style="width: 300px ;margin-top: 1.2% " v-model="sex" @on-change="sexchange">
@@ -62,7 +61,7 @@
     <div class="inputgroup">
       <span class="regist_bq">昵称</span>
       <Input class="regist_inp" type="text" v-model="neckname"  placeholder="输入你的昵称"></Input>&nbsp&nbsp
-      <img class="greenarrow" src="../../assets/img/greenarrow.png"  v-if="grtr2"   />
+
     </div>
     <div class="inputgroup">
       <span class="regist_bq">密&nbsp&nbsp&nbsp&nbsp&nbsp码</span>
@@ -135,7 +134,7 @@
     width: 247px;
     font-size: 10px;
     color: gray;
-    margin-left: 41%;
+    margin-left: 42%;
   }
   .usernamecolor {
     color: red;
@@ -240,6 +239,7 @@
         sex: '',
         grtr7: false,
         birthdate: '',
+        neckname: '' ,
         value1: [],
         data: tranData(area) ,
         gradeList:[
@@ -563,7 +563,7 @@
       },
 
       regist: function () {
-
+          alert(this.yzm4)
    /*     alert(this.yzm4) ;*/
        /* alert(this.name+this.birthdate+this.contact+this.grade+this.school+this.phone+this.password+this.yzm3) ;*/
         if (this.phone.length ===0||/^1[34578]\d{9}$/.test(this.phone)===false/*this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
@@ -578,70 +578,72 @@
          */
           else if (this.mail.length === 0 || /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.mail)===true/*&& (this.password1.length === 0
               ||(this.password1.length>5&&this.password1<21))&& (this.repassword===this.password1)  && /^1[34578]\d{9}$/.test(this.phone) === true&&this.inputyzm === this.yzm4*/) {
-            if(this.password1.length === 0 ||this.password1.length>5&&this.password1.length<21){
-              if(this.repassword === this.password1){
-                if (this.birthdate.length !== 0) {
-                  let date=''
-                  let y = this.birthdate.getFullYear()
-                  let m = this.birthdate.getMonth() + 1
-                  m = m < 10 ? ('0' + m) : m
-                  let d = this.birthdate.getDate()
-                  d = d < 10 ? ('0' + d) : d
-                  date = y + '-' + m + '-' + d
-                  alert(date)
-                  let regdata = {
-                    phoneNo: this.phone,
-                    password: this.password1,
-                    rName: this.name,
-                    rSex: this.sex,
-                    rBirthday: date,
-                    name: this.contact,
-                    address: this.value1 + this.detailaddress1,
-                    email: this.mail,
-                    school: this.school,
-                    grade: this.grade,
+            if(this.name.length === 0 ||/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\s]{1,20})$/.test(this.name)) {
+              if (this.password1.length === 0 || this.password1.length > 5 && this.password1.length < 21) {
+                if (this.repassword === this.password1) {
+                  if (this.birthdate.length !== 0) {
+                    let date = ''
+                    let y = this.birthdate.getFullYear()
+                    let m = this.birthdate.getMonth() + 1
+                    m = m < 10 ? ('0' + m) : m
+                    let d = this.birthdate.getDate()
+                    d = d < 10 ? ('0' + d) : d
+                    date = y + '-' + m + '-' + d
+                    alert(date)
+                    let regdata = {
+                      phoneNo: this.phone,
+                      password: this.password1,
+                      rName: this.name,
+                      rSex: this.sex,
+                      rBirthday: date,
+                      name: this.contact,
+                      address: this.value1 + this.detailaddress1,
+                      email: this.mail,
+                      school: this.school,
+                      grade: this.grade,
+                      name: this.neckname
+                    }
+                    var that = this;
+                    userApi.regist(regdata).then((response) => {
+                      this.$Notice.success({title: '注册成功'});
+                      that.$router.push({path: '/login'})
+                    }).catch((response) => {
+                      this.$Message.error(response.message)
+                    })
+                  } else {
+                    let regdata = {
+                      phoneNo: this.phone,
+                      password: this.password1,
+                      rName: this.name,
+                      rSex: this.sex,
+                      rBirthday: this.birthdate,
+                      name: this.contact,
+                      address: this.value1 + this.detailaddress1,
+                      email: this.mail,
+                      school: this.school,
+                      grade: this.grade,
+                    }
+                    var that = this;
+                    userApi.regist(regdata).then((response) => {
+                      this.$Notice.success({title: '注册成功'});
+                      that.$router.push({path: '/login'})
+                    }).catch((response) => {
+                      this.$Message.error(response.message)
+                    })
                   }
-                  var that = this;
-                  userApi.regist(regdata).then((response) => {
-                    this.$Notice.success({title: '注册成功'});
-                    that.$router.push({path: '/login'})
-                  }).catch((response) => {
-                    this.$Message.error(response.message)
-                  })
-                }else{
-                  let regdata = {
-                    phoneNo: this.phone,
-                    password: this.password1,
-                    rName: this.name,
-                    rSex: this.sex,
-                    rBirthday: this.birthdate,
-                    name: this.contact,
-                    address: this.value1 + this.detailaddress1,
-                    email: this.mail,
-                    school: this.school,
-                    grade: this.grade,
-                  }
-                  var that = this;
-                  userApi.regist(regdata).then((response) => {
-                    this.$Notice.success({title: '注册成功'});
-                    that.$router.push({path: '/login'})
-                  }).catch((response) => {
-                    this.$Message.error(response.message)
-                  })
+
+
+                } else {
+                  this.$Notice.error({title: '俩次密码输入不同'});
                 }
 
 
-
-
-              }else{
-                this.$Notice.error({ title: '俩次密码输入不同'}) ;
+              } else {
+                this.$Notice.error({title: '密码设置不符合要求'});
               }
-
-
             }else{
-              this.$Notice.error({ title: '密码设置不符合要求'}) ;
+              this.$Notice.error({title: '请输入正确的姓名'});
             }
-
         }else {
               this.$Notice.error({ title: '邮箱输入错误'}) ;
             }

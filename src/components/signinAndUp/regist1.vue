@@ -563,7 +563,6 @@
       },
 
       regist: function () {
-          alert(this.yzm4)
    /*     alert(this.yzm4) ;*/
        /* alert(this.name+this.birthdate+this.contact+this.grade+this.school+this.phone+this.password+this.yzm3) ;*/
         if (this.phone.length ===0||/^1[34578]\d{9}$/.test(this.phone)===false/*this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
@@ -589,7 +588,6 @@
                     let d = this.birthdate.getDate()
                     d = d < 10 ? ('0' + d) : d
                     date = y + '-' + m + '-' + d
-                    alert(date)
                     let regdata = {
                       phoneNo: this.phone,
                       password: this.password1,

@@ -19,6 +19,7 @@ let changepassword = bookIndex+'/changePassword'
 
 let getUserWord = loginBook+'/getUserWord'
 
+
 export  default {
   getUserWord(){
     return api.post(getUserWord,USERINFO,'');

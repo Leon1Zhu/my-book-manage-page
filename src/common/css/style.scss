@@ -23,17 +23,23 @@ html,body,#app{
     width:976px
   }
 }
-.ivu-select.ivu-select-visible.ivu-select-single {
-  border-color: #6a4f90;
-  box-shadow: 0 0 0 2px rgba(95,70,133,.2);
-}
+
 .ivu-select-item-selected, .ivu-select-item-selected:hover,ivu-select-selection:hover,ivu-breadcrumb a:hover {
   background: #6a4f90;
+}
+
+.ivu-select.ivu-select-visible.ivu-select-single .ivu-select-selection,.ivu-select.ivu-select-single:hover .ivu-select-selection{
+  border-color: transparent;
 }
 .ivu-input:focus, .ivu-select-selection:focus{
   box-shadow: 0px 0px 0px #bdbdbd;
   border-color: #6a4190;
 }
+.search-input .ivu-select-visible .ivu-select-selection,.search-input .ivu-select.ivu-select-visible.ivu-select-single,.search-input .ivu-select-selection:hover{
+  border-color: #745c97!important;
+  box-shadow: none;
+}
+
 .ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab-active{
   color: #6a4190;
 }

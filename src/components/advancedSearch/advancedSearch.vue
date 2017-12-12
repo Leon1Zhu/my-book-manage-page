@@ -20,9 +20,31 @@
                 </Select>
               </div>
 
-          <div class="search-input after-br">
+          <div class="search-input ">
             <div class="word">文档类型</div>
             <Select v-model="basicSearch.docType"   placeholder="请选择搜索的书籍文档类型">
+              <Option v-for="item in docType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </div>
+
+          <div class="search-input">
+            <div class="word double">适读年龄:</div>
+            <Select v-model="basicSearch.ageStrat"  placeholder="请选择适读年龄">
+              <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="(basicSearch.ageEnd && item.value <= basicSearch.ageEnd) || (!basicSearch.ageEnd)"  >{{ item.label }}</Option>
+            </Select>
+            <span class="tilde">~</span>
+            <Select v-model="basicSearch.ageEnd"   placeholder="">
+              <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="(basicSearch.ageStart && item.value >= basicSearch.ageEnd) || (!basicSearch.ageStart)">{{ item.label }}</Option>
+            </Select>
+          </div>
+
+          <div class="search-input after-br">
+            <div class="word double">适读年级:</div>
+            <Select v-model="basicSearch.docType"   placeholder="请选择适读年级">
+              <Option v-for="item in docType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+            <span class="tilde">~</span>
+            <Select v-model="basicSearch.docType"   placeholder="">
               <Option v-for="item in docType" :value="item.value" :key="item.value">{{ item.label }}</Option>
             </Select>
           </div>
@@ -110,6 +132,7 @@ import  searchApi from '../../api/advancedSearch'
         data(){
             return {
               publisher:null,
+              AGE:[{value:3,label:'3岁'},{value:4,label:'4岁'},{value:5,label:'5岁'},{value:6,label:'6岁'},{value:7,label:'7岁'},{value:8,label:'8岁'},{value:9,label:'9岁'},{value:10,label:'10岁'},{value:11,label:'11岁'},{value:12,label:'12岁'},{value:13,label:'13岁'},{value:14,label:'14岁'},{value:15,label:'15岁'},{value:16,label:'16岁'},{value:17,label:'17岁'},{value:18,label:'19岁'}],
               docType:[{value:1,label:"Fiction and Nonfiction"},{value:2,label:"Fiction"},{value:3,label:"Nonfiction"}],
               bookType:[{value:1,label:"精装版本"},{value:2,label:"平装版本"},{value:3,label:"图书馆版本"},{value:4,label:"纸版书"}],
               quizType:[{value:1,label:"Any Quiz Type"},{value:2,label:"Reading Practice"},{value:3,label:"Recorded Voice"},{value:4,label:"Vocabulary Practice"},{value:5,label:"Literacy Skills"}],
@@ -127,6 +150,8 @@ import  searchApi from '../../api/advancedSearch'
                   musflag:null,
                   arflag:null,
                   lsflag:null,
+                  ageStrat:null,
+                  ageEnd:null,
                 },
                 ARSearch:{
                   inLev:null,
@@ -172,6 +197,8 @@ import  searchApi from '../../api/advancedSearch'
                musflag:false,
                arflag:false,
                lsflag:false,
+               ageStrat:null,
+               ageEnd:null,
              }
             this.ARSearch={
               inLev:'',

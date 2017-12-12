@@ -6,7 +6,7 @@
     </div>
     <div class="modify_secondgroup">
       <span class="regist_bq">手&nbsp机&nbsp号</span>&nbsp&nbsp&nbsp&nbsp
-      <Input class="modify_secondinp"  v-model="phone1" @on-blur="losephone" @on-focus="getphone" placeholder="请输入你的手机号码"></Input>
+      <Input class="modify_secondinp"  v-model="phone1" @on-blur="losephone"  placeholder="请输入你的手机号码"></Input>
     </div>
     <div class="modify_secondgroup">
       <span class="regist_bq">验&nbsp证&nbsp码</span>&nbsp&nbsp&nbsp&nbsp
@@ -34,6 +34,7 @@
 </style>
 <script>
   import div from "./xgpassword.vue"
+  import userApi from '../../api/userService'
   export default {
     data () {
       return {
@@ -47,7 +48,6 @@
     },
     created(){
        let vm = this;
-
        vm.phone1 = vm.$route.query.phoneNo
       vm.name = vm.$route.query.rName
     },
@@ -69,12 +69,11 @@
         }
       },
       getyzm1: function () {
-
         var a = Math.random()*900000|0+100000;
         this.yzm3 = parseInt(a)
-        alert(this.yzm3)
         var num = 60
         let $vm = this
+        this.sendCode();
         var timer = setInterval(function () {
           num--
           if (num === 0) {
@@ -87,6 +86,13 @@
           }
         }, 1000)
         /*this.$http.post('' , phone1 , yzm3)*/
+      },
+      sendCode(){
+        userApi.sendCode(this.phone1,this.yzm3).then((response) =>{
+
+        }).catch((response) => {
+
+        })
       },
       tj2: function () {
         if (parseInt(this.yzm2) === this.yzm3 && this.yzm2.length !== 0) {

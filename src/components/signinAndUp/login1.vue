@@ -44,6 +44,11 @@
         password: ''
       }
     },
+    created(){
+        if(ISLOGIN){
+          this.$router.push( {path:'/'} )
+        }
+    },
     methods: {
       closeLoginContent(){
         this.$emit("closeLogin");
@@ -59,7 +64,7 @@
           setLoginStatus(true);
           setUserInfo( response.data.userInfo,response.data.userInfo.orderInfo,response.data.userInfo.saveInfos)
           setRAHBook(response.data.bookInfo)
-          that.$router.push( {path:'/'} )
+          that.$router.go(0)
         }).catch((response)=>{
           this.$Notice.error(setNoticConfig(response.message,null,null,"error"));
         })

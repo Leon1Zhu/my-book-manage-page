@@ -39,7 +39,6 @@
         <div class="book-item-info">
           <div class="right-info">AR测试号:{{data.quizNo  | filterNull}}</div>
           <div class="right-info">价格:{{data.book_type  | filterNull}}</div>
-
         </div>
         <div class="book-item-info">
           <div class="left-info" v-if="list_type!='reserve' && list_type!='reading'">

@@ -73,11 +73,11 @@ const mainPageRouter= {
       }, {
         path: 'leixiReading',
         components: {main:leixiReading},
-        name:"蓝思阅读#2"
+        name:"蓝思阅读知识#2"
       }, {
         path: 'speedReading',
         components:{ main:speedReading},
-        name:"加速阅读#2"
+        name:"AR阅读知识#2"
       }, {
         path: 'partners',
         components: {main:partners},

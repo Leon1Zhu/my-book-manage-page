@@ -15,8 +15,8 @@
               </div>
               <div class="search-input">
                 <div class="word">书籍类型</div>
-                <Select v-model="basicSearch.docType"   placeholder="请选择搜索的书籍类型">
-                  <Option v-for="item in docType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <Select v-model="basicSearch.bookType"   placeholder="请选择搜索的书籍类型">
+                  <Option v-for="item in bookType" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </div>
 
@@ -29,25 +29,24 @@
 
           <div class="search-input">
             <div class="word double">适读年龄:</div>
-            <Select v-model="basicSearch.ageStrat"  placeholder="请选择适读年龄">
+            <Select v-model="basicSearch.start"  placeholder="请选择读年龄">
               <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="!((basicSearch.ageEnd && item.value <= basicSearch.ageEnd) || (!basicSearch.ageEnd))"  >{{ item.label }}</Option>
             </Select>
             <span class="tilde">~</span>
-            {{basicSearch.ageStart}}
 
             <Select v-model="basicSearch.ageEnd"   placeholder="">
-              <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="!((basicSearch.ageStart && item.value >= basicSearch.ageStart) || (!basicSearch.ageStart))" >{{ item.label }}</Option>
+              <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="!((basicSearch.start && item.value >= basicSearch.start) || (!basicSearch.start))" >{{ item.label }}</Option>
             </Select>
           </div>
 
           <div class="search-input after-br">
             <div class="word double">适读年级:</div>
-            <Select v-model="basicSearch.docType"   placeholder="请选择适读年级">
-              <Option v-for="item in docType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            <Select v-model="basicSearch.gradeStart"   placeholder="请选择适读年级">
+              <Option v-for="item in grade" :value="item.value" :key="item.value" :disabled="!((basicSearch.gradeEnd && item.value <= basicSearch.gradeEnd) || (!basicSearch.gradeEnd))" >{{ item.label }}</Option>
             </Select>
             <span class="tilde">~</span>
-            <Select v-model="basicSearch.docType"   placeholder="">
-              <Option v-for="item in docType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            <Select v-model="basicSearch.gradeEnd"   placeholder="">
+              <Option v-for="item in grade" :value="item.value" :key="item.value"  :disabled="!((basicSearch.gradeStart && item.value >= basicSearch.gradeStart) || (!basicSearch.gradeStart))">{{ item.label }}</Option>
             </Select>
           </div>
 
@@ -134,6 +133,7 @@ import  searchApi from '../../api/advancedSearch'
         data(){
             return {
               publisher:null,
+              grade:GRADELIST,
               AGE:[{value:3,label:'3岁'},{value:4,label:'4岁'},{value:5,label:'5岁'},{value:6,label:'6岁'},{value:7,label:'7岁'},{value:8,label:'8岁'},{value:9,label:'9岁'},{value:10,label:'10岁'},{value:11,label:'11岁'},{value:12,label:'12岁'},{value:13,label:'13岁'},{value:14,label:'14岁'},{value:15,label:'15岁'},{value:16,label:'16岁'},{value:17,label:'17岁'},{value:18,label:'19岁'}],
               docType:[{value:1,label:"Fiction and Nonfiction"},{value:2,label:"Fiction"},{value:3,label:"Nonfiction"}],
               bookType:[{value:1,label:"精装版本"},{value:2,label:"平装版本"},{value:3,label:"图书馆版本"},{value:4,label:"纸版书"}],
@@ -152,8 +152,10 @@ import  searchApi from '../../api/advancedSearch'
                   musflag:null,
                   arflag:null,
                   lsflag:null,
-                  ageStrat:null,
-                  ageEnd:null,
+                  ageEnd:'',
+                  start:'',
+                  gradeStart:'',
+                  gradeEnd:'',
                 },
                 ARSearch:{
                   inLev:null,
@@ -170,13 +172,22 @@ import  searchApi from '../../api/advancedSearch'
                   LLV:null,
                   LLVT:null,
                   sort:null,
-                }
+                },
+
             }
         },
         components: {},
         created(){
             this.getBookSeries()
         },
+      watch:{
+        'basicSearch.ageStrat'(v1,v2){
+          console.log(v1)
+        },
+        'basicSearch.ageEnd'(v1,v2){
+          console.log(v1)
+        }
+      },
         mounted(){
         },
         methods: {
@@ -199,8 +210,10 @@ import  searchApi from '../../api/advancedSearch'
                musflag:false,
                arflag:false,
                lsflag:false,
-               ageStrat:null,
-               ageEnd:null,
+               start:'',
+               ageEnd:'',
+               gradeStart:'',
+               gradeEnd:'',
              }
             this.ARSearch={
               inLev:'',

@@ -36,7 +36,7 @@ export  default {
       userPhone:userPhone,
       userCode:userCode
     }
-    return api.post(getCode,"",params);
+    return api.get(getCode,params);
   },
   regist(userInfo){
 

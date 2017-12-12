@@ -15,7 +15,7 @@ Vue.prototype.$collectBook = function(data){
     return;
   }
   this.$Modal.confirm({
-    title: '书籍预定确认',
+    title: '书籍收藏确认',
     content: '确认收藏书籍['+data.name+']吗？',
     onOk: () => {
         bookManageApi.collectBook(USERINFO.id,data.id).then((response)=>{
@@ -35,7 +35,7 @@ Vue.prototype.$reserveBook = function(data){
     return ;
   };
   this.$Modal.confirm({
-    title: '书籍收藏确认',
+    title: '书籍预定确认',
     content: '确认预定书籍['+data.name+']吗？',
     onOk: () => {
 

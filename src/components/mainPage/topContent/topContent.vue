@@ -20,7 +20,7 @@ npm<template>
             <div class="grid_6" v-if="loginStatus" style="position: relative;float: right;" >
               <div class="login-content" :class="{ 'roateIcon':isActive}" @click="showNav" style="position: absolute;right: 0px;">
                 <i class="iconfont icon-denglutouxiangmoren"></i>
-                <span class="book-login login-in">&nbsp;欢迎您，{{userinfo.name}}&nbsp;</span>
+                <span class="book-login login-in">&nbsp;欢迎您！{{userinfo.name}}&nbsp;</span>
               </div>
             </div>
           </div>

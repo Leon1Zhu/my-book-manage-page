@@ -32,7 +32,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 
 Vue.filter( 'filterNull' , function(value) {
   if(value==="" || value===null || value==="NULL" || value==="null")
-    return "";
+    return '无';
   else{
     return value
   }

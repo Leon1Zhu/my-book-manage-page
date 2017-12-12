@@ -30,11 +30,13 @@
           <div class="search-input">
             <div class="word double">适读年龄:</div>
             <Select v-model="basicSearch.ageStrat"  placeholder="请选择适读年龄">
-              <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="(basicSearch.ageEnd && item.value <= basicSearch.ageEnd) || (!basicSearch.ageEnd)"  >{{ item.label }}</Option>
+              <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="!((basicSearch.ageEnd && item.value <= basicSearch.ageEnd) || (!basicSearch.ageEnd))"  >{{ item.label }}</Option>
             </Select>
             <span class="tilde">~</span>
+            {{basicSearch.ageStart}}
+
             <Select v-model="basicSearch.ageEnd"   placeholder="">
-              <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="(basicSearch.ageStart && item.value >= basicSearch.ageEnd) || (!basicSearch.ageStart)">{{ item.label }}</Option>
+              <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="!((basicSearch.ageStart && item.value >= basicSearch.ageStart) || (!basicSearch.ageStart))" >{{ item.label }}</Option>
             </Select>
           </div>
 

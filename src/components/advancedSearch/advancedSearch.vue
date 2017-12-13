@@ -1,5 +1,5 @@
 <template>
-    <div id="advanced-search">
+    <div class="advanced-search">
       <div class="container_12 search-content">
         <div class="grid_12">
           <!--<Tabs type="card">

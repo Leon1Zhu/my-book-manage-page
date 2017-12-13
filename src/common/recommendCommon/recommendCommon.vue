@@ -9,7 +9,7 @@
               <div class="bookContent">
                 <div v-for="book in bookinfo" class="book-info-content">
                   <div class="botton-content">
-                    <Poptip class="sign-img-content book-poptip"  trigger="hover" content="点击封面查看详情"  >
+                    <Poptip class="sign-img-content book-poptip"  trigger="hover" content="点击图片显示书籍详情"  >
                       <img @click="getDetailInfo(book.id)" v-if="book.iSBN13" :src="imgurl+book.iSBN13+'.jpg'">
                       <img @click="getDetailInfo(book.id)" v-if="book.iSBN10 && !book.iSBN13" :src="imgurl+book.iSBN10+'.jpg'">
                     </Poptip>

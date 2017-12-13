@@ -19,6 +19,12 @@
                 <div class="left-info">ISBN13:{{data.iSBN13  | filterNull}}</div>
                 <div class="right-info">兴趣值:{{data.il  | filterNull}}</div>
               </div>
+
+              <div class="book-item-info font-content">
+                <div class="left-info">适读年龄:{{data.ageStart  | filterAge}} ~ {{data.ageStop  | filterAge}}</div>
+                <div class="right-info">适读年级:{{data.gradeStart  | filterGrade(data.gradeStop)}}</div>
+              </div>
+
               <div class="book-item-info font-content" >
                 <div class="left-info">ISBN10:{{data.iSBN10  | filterNull}}</div>
                 <div class="right-info">积分点:{{data.arpoints  | filterNull}}</div>

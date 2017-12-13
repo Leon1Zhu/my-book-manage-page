@@ -37,3 +37,15 @@ Vue.filter( 'filterNull' , function(value) {
     return value
   }
 });
+
+Vue.filter('filterAge',function(value){
+  if(value==="" || value===null || value==="NULL" || value==="null")
+    return 0+'岁';
+  else{
+    return value+'岁'
+  }
+})
+Vue.filter('filterGrade',function(start,end){
+    console.log(start)
+  console.log(end)
+})

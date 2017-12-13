@@ -80,13 +80,9 @@ global.setUserInfo = function(userinfo,orderInfo,saveInfo){
   }
   global.USERINFO.saveInfos = null;
   global.USERINFO.orderInfo = null;
-  sessionStorage.setItem("USERINFO",JSON.stringify(userinfo));
-  if(!isNull(orderInfo)){
-    sessionStorage.setItem("ORDERINFO",JSON.stringify(orderInfo));
-  }
-  if(!isNull(saveInfo)){
-    sessionStorage.setItem("SAVEINFO",JSON.stringify(saveInfo));
-  }
+  sessionStorage.setItem("USERINFO",JSON.stringify(USERINFO));
+    sessionStorage.setItem("ORDERINFO",JSON.stringify(ORDERINFO));
+    sessionStorage.setItem("SAVEINFO",JSON.stringify(SAVEINFO));
 
 }
 

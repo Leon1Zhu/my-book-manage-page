@@ -48,7 +48,9 @@ import book_list from '../../book-list/book-list.vue'
         },
         methods: {
           changeVal(val){
-              console.log(val)
+              if(val==='collect'){
+                  console.log(SAVEINFO)
+              }
           }
         }
     }

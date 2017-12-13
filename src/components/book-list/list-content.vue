@@ -4,7 +4,7 @@
     <div class="temp_class" >
       <div class="book-img">
         <div class="bottom-content">
-          <Poptip class="sign-img-content book-poptip"  trigger="hover" content="点击封面查看详情"  >
+          <Poptip class="sign-img-content book-poptip"  trigger="hover" content="点击图片显示书籍详情"  >
             <img  @click="getDetailInfo" v-if="data.iSBN13" :src="imgUrl+  data.iSBN13+'.jpg'">
             <img  @click="getDetailInfo" v-if="data.iSBN10 && !data.iSBN13" :src="imgUrl+data.iSBN10+'.jpg'">
           </Poptip>
@@ -14,11 +14,11 @@
         <div class="book-name">{{data.name | filterNull}}</div>
         <div class="book-item-info">
           <div class="left-info">作者:{{data.author  | filterNull}}</div>
-          <div class="left-info">版本:{{data.bookType  | filterNull}}</div>
+          <div class="left-info">书籍类型:{{data.bookType  | filterNull}}</div>
         </div>
         <div class="book-item-info">
           <div class="right-info">蓝思值:{{data.lexileCombined  | filterNull}}</div>
-          <div class="left-info">书籍类型:{{data.docType  | filterNull}}</div>
+          <div class="left-info">文档类型:{{data.docType  | filterNull}}</div>
         </div>
         <div class="book-item-info">
           <div class="right-info">BL值:{{data.bl  | filterNull}}</div>
@@ -29,7 +29,7 @@
           <div class="left-info">页数:{{data.pages  | filterNull}}</div>
         </div>
         <div class="book-item-info">
-          <div class="right-info">AR积分点:{{data.arpoints  | filterNull}}</div>
+          <div class="right-info">AR积分值:{{data.arpoints  | filterNull}}</div>
           <div class="left-info">重量:{{data.weight | filterNull}}</div>
         </div>
         <div class="book-item-info">

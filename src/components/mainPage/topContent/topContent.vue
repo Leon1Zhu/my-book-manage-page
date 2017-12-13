@@ -36,7 +36,7 @@ npm<template>
                <div class="img-logo"></div>
                <div class="all-book-content">
                  <animatedInteger class="" :value="value"></animatedInteger>
-                 <div class="all-book-item">书籍总库存数</div>
+                 <div class="all-book-item">书籍库存总数</div>
                </div>
              </div>
              <div class="grid_6 select-info">

@@ -8,7 +8,7 @@
               <div class="search-input"><div class="word">作者</div><Input v-model="basicSearch.author" placeholder="请输入搜索的作者" style=""></Input></div>
               <div class="search-input"><div class="word">书号</div><Input v-model="basicSearch.ISBN" placeholder="请输入搜索书籍的ISBN编号" style=""></Input></div>
               <div class="search-input">
-                <div class="word">系列图书</div>
+                <div class="word">图书系列</div>
                 <Select v-model="basicSearch.publisher"   placeholder="请选择搜索的图书系列">
                   <Option v-for="item in publisher" :value="item.series" :key="item.series">{{ item.series }}</Option>
                 </Select>
@@ -16,14 +16,14 @@
               <div class="search-input">
                 <div class="word">书籍类型</div>
                 <Select v-model="basicSearch.bookType"   placeholder="请选择搜索的书籍类型">
-                  <Option v-for="item in bookType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                  <Option v-for="item in bookType" :value="item.label" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </div>
 
           <div class="search-input ">
             <div class="word">文档类型</div>
             <Select v-model="basicSearch.docType"   placeholder="请选择搜索的书籍文档类型">
-              <Option v-for="item in docType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+              <Option v-for="item in docType" :value="item.label" :key="item.value">{{ item.label }}</Option>
             </Select>
           </div>
 

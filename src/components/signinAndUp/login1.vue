@@ -11,7 +11,7 @@
     <div class="login_group">
       <router-link to="/xgpassword/first"  style="margin-top: 5% ; padding-left:37%">忘记密码</router-link>
     </div>
-    <Button type="info" @click="login" class="btn1" id="dl" style="margin-left:35% ;margin-top: 3% ; font-size: 17px;width:30% ;background: #6a4f90;border-color: #6a4f90;height:40px;">登录
+    <Button type="info" @click="login" class="btn1" id="dl" style="margin-left:35% ;margin-top: 2% ; font-size: 17px;width:30% ;background: #6a4f90;border-color: #6a4f90;height:40px;">登录
     </Button>
   </div>
 </template>

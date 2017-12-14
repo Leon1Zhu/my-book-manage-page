@@ -125,7 +125,7 @@
               this.$emit('getbar' , 3)
               this.$router.push({path: '/xgpassword/forth'})
             }).catch((response)=>{
-              this.$Message.error(response.data.message)
+              this.$Message.error(response.message)
             })
 
         } else if (this.password2.length < 6 || this.password2.length > 12) {

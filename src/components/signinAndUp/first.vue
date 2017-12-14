@@ -50,6 +50,7 @@
     },
     created () {
       this.createCode();
+      this.$emit('getbar',0);
     },
     methods: {
 

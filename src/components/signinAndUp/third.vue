@@ -72,6 +72,7 @@
     created(){
         let vm = this;
         vm.phone = this.$route.query.phone
+      this.$emit('getbar',2);
     },
     methods: {
       getpassword2: function () {

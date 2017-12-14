@@ -50,6 +50,7 @@
        let vm = this;
        vm.phone1 = vm.$route.query.phoneNo
       vm.name = vm.$route.query.rName
+      this.$emit('getbar',1);
     },
     methods: {
       losephone : function () {

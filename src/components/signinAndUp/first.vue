@@ -77,9 +77,9 @@
           this.$Message.error('验证码错误！')
           return;
         }else{
-          this.$emit('getbar',1);
-          apiUser.getUserByPhone(this.username1).then((response)=>{
 
+          apiUser.getUserByPhone(this.username1).then((response)=>{
+            this.$emit('getbar',1);
             that.$router.push({path: '/xgpassword/second',query : {rName:response.data.rName,phoneNo:response.data.phoneNo}})
 
           }).catch((response)=>{

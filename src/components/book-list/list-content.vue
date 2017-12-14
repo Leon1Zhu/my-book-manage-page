@@ -5,8 +5,10 @@
       <div class="book-img">
         <div class="bottom-content">
           <Poptip class="sign-img-content book-poptip"  trigger="hover" content="点击图片显示书籍详情"  >
+            <div class="img-content">
             <img  @click="getDetailInfo" v-if="data.iSBN13" :src="imgUrl+  data.iSBN13+'.jpg'">
             <img  @click="getDetailInfo" v-if="data.iSBN10 && !data.iSBN13" :src="imgUrl+data.iSBN10+'.jpg'">
+            </div>
           </Poptip>
       </div></div>
 

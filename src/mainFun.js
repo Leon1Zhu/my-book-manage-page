@@ -34,6 +34,7 @@ Vue.prototype.$reserveBook = function(data){
     that.$Notice.error(setNoticConfig("请先登录再进行该操作！",null,null,"error"));
     return ;
   };
+  console.log(data)
   this.$Modal.confirm({
     title: '书籍预定确认',
     content: '确认预定书籍['+data.name+']吗？',

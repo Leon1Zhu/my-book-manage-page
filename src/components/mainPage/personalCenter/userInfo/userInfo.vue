@@ -39,7 +39,7 @@
 
         <div class="search-input">
           <div class="search-input-sec">
-            <div class="word">押金:<span class="user-info-detail">{{userinfo.address}}</span></div>
+            <div class="word">押金:<span class="user-info-detail"></span></div>
           </div>
           <div class="search-input-sec">
             <div class="word">会员类型:<span class="user-info-detail">{{userinfo.paidInfo}}</span></div>

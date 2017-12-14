@@ -21,7 +21,7 @@
               <div class="no-book-class" v-if="list_type=='reserve' && orderInfo.length==1">
                 暂无对应数据结果!
               </div>
-              <Page  v-if="list_type==''" :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
+              <Page :current="index+1"  v-if="list_type==''" :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
             </div>
             <div class="book-item" v-for="data in saveInfo" v-if="list_type=='collect'  && saveInfo.length>1">
             <list_content v-if="data.id!=-1"  @reservBook="reservBookP" :data="data.saveBookInfo" :list_type="list_type"></list_content>
@@ -71,11 +71,15 @@ import list_content from './list-content.vue'
         watch:{
           '$route.query.searchValue'(v1,v2){
               if(this.list_type == ""){
+                  this.index = 0 ;
+                  this.total = 0;
                   this.searchBook();
               }
           },
           '$route.query.booktype'(v1,v2){
             if(this.list_type == ""){
+              this.index = 0 ;
+              this.total = 0;
               this.searchBook();
             }
           }

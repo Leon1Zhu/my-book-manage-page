@@ -4,32 +4,32 @@
         <div class="grid_12">
           <!--<Tabs type="card">
             <TabPane label="基础信息查书">-->
-              <div class="search-input"><div class="word">书名</div><Input v-model="basicSearch.title" placeholder="请输入搜索书名" style=""></Input></div>
-              <div class="search-input"><div class="word">作者</div><Input v-model="basicSearch.author" placeholder="请输入搜索的作者" style=""></Input></div>
-              <div class="search-input"><div class="word">书号</div><Input v-model="basicSearch.ISBN" placeholder="请输入搜索书籍的ISBN编号" style=""></Input></div>
+              <div class="search-input"><div class="word">书名</div><Input v-model="basicSearch.title" placeholder="请输入书名" style=""></Input></div>
+              <div class="search-input"><div class="word">作者</div><Input v-model="basicSearch.author" placeholder="请输入作者名称" style=""></Input></div>
+              <div class="search-input"><div class="word">书号</div><Input v-model="basicSearch.ISBN" placeholder="请输入书籍的ISBN编号" style=""></Input></div>
               <div class="search-input">
                 <div class="word">图书系列</div>
-                <Select v-model="basicSearch.publisher"   placeholder="请选择搜索的图书系列">
+                <Select v-model="basicSearch.publisher"   placeholder="请选择图书系列">
                   <Option v-for="item in publisher" :value="item.series" :key="item.series">{{ item.series }}</Option>
                 </Select>
               </div>
               <div class="search-input">
                 <div class="word">书籍类型</div>
-                <Select v-model="basicSearch.bookType"   placeholder="请选择搜索的书籍类型">
+                <Select v-model="basicSearch.bookType"   placeholder="请选择书籍类型">
                   <Option v-for="item in bookType" :value="item.label" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </div>
 
           <div class="search-input ">
             <div class="word">文档类型</div>
-            <Select v-model="basicSearch.docType"   placeholder="请选择搜索的书籍文档类型">
+            <Select v-model="basicSearch.docType"   placeholder="请选择书籍文档类型">
               <Option v-for="item in docType" :value="item.label" :key="item.value">{{ item.label }}</Option>
             </Select>
           </div>
 
           <div class="search-input">
             <div class="word double">适读年龄:</div>
-            <Select v-model="basicSearch.start"  placeholder="请选择读年龄">
+            <Select v-model="basicSearch.start"  placeholder="请选择适读年龄">
               <Option v-for="item in AGE" :value="item.value" :key="item.value"  :disabled="!((basicSearch.ageEnd && item.value <= basicSearch.ageEnd) || (!basicSearch.ageEnd))"  >{{ item.label }}</Option>
             </Select>
             <span class="tilde">~</span>
@@ -139,7 +139,7 @@ import  searchApi from '../../api/advancedSearch'
               bookType:[{value:1,label:"精装版本"},{value:2,label:"平装版本"},{value:3,label:"图书馆版本"},{value:4,label:"纸版书"}],
               quizType:[{value:1,label:"Any Quiz Type"},{value:2,label:"Reading Practice"},{value:3,label:"Recorded Voice"},{value:4,label:"Vocabulary Practice"},{value:5,label:"Literacy Skills"}],
               interestLevel:[{value:'LG',label:"Lower Grades(LG K-3)"},{value:'MG',label:"Middle Grades(MG 4-8)"},{value:'MG+',label:"Middle Grades Plus(MG+ 6 and up)"},{value:'UG',label:"Upper Grades(UG 9-12)"}],
-              sort:[{value:'name',label:"书名(缺省)"},{value:'author',label:"作者"},{value:'bl',label:"BL值(ATOS)阅读范围"},{value:'il',label:"AR兴趣等级"},{value:'lexile_value',label:"蓝思值阅读范围"},{value:'recommend_index',label:"推荐等级"}],
+              sort:[{value:'name',label:"书名(缺省)"},{value:'author',label:"作者"},{value:'bl',label:"BL等级(ATOS)阅读范围"},{value:'il',label:"AR兴趣等级"},{value:'lexile_value',label:"蓝思值阅读范围"},{value:'recommend_index',label:"推荐等级"}],
               basicSearch:{
                   type:null,
                   title:null,

@@ -34,7 +34,7 @@
       <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr15"   />
     </div>
     <div class="inputgroup">
-      <span class="regist_bq">所属年级</span>
+      <span class="regist_bq">所在年级</span>
       <Select v-model="grade" @on-change="gradechange"   style="width:300px">
       <Option   v-for="item in gradeList"   :value="item.value" :key="item.value">{{ item.label }}</Option>
       </Select>&nbsp&nbsp
@@ -131,10 +131,11 @@
     margin-top: 0.5%;
   }
   .regist_warning{
-    width: 247px;
+    width: 280px;
     font-size: 10px;
     color: gray;
-    margin-left: 42%;
+    margin-top: 0.5%;
+    margin-left: 42.5%;
   }
   .usernamecolor {
     color: red;
@@ -390,7 +391,7 @@
             this.grtr1 = true
             this.grtr2 = false
             this.isrepasswordcolor = true
-            this.repasswordwarning = '俩次密码输入不一致'
+            this.repasswordwarning = '两次密码输入不一致'
           }
         } else if (this.password1.length === 0) {
           this.passwordwarning = ''
@@ -413,7 +414,7 @@
         } else {
           this.isrepasswordcolor = true
           this.grtr2 = false
-          this.repasswordwarning = '俩次密码输入不一致'
+          this.repasswordwarning = '两次密码输入不一致'
         }
       },
       getrepassword: function () {
@@ -495,21 +496,25 @@
       regist: function () {
    /*     alert(this.yzm4) ;*/
        /* alert(this.name+this.birthdate+this.contact+this.grade+this.school+this.phone+this.password+this.yzm3) ;*/
-        if (this.phone.length ===0||/^1[34578]\d{9}$/.test(this.phone)===false/*this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
+        if (this.phone.length ===0||this.neckname.length ===0||this.password1.length ===0||this.repassword.length === 0/*this.name.length === 0 || this.sex.length === 0 || this.birthdate.length === 0 || this.value1.length === 0
           || this.detailaddress1.length === 0 || this.mail.length === 0 || this.password1.length === 0
           || this.repassword.length === 0 || this.phone.length === 0 || this.inputyzm.length === 0|| this.school.length === 0 || this.grade.length === 0*/) {
-          this.$Notice.error({ title: '手机号为必填项，是否有误'}) ;
+          this.$Notice.error({ title: '昵称、密码、重复密码、手机号为必填项'}) ;
         }else if(this.inputyzm.length===0){
           this.$Notice.error({ title: '手机验证码不能为空'}) ;
         } else if((parseInt(this.inputyzm)) !== this.yzm4){
           this.$Notice.error({ title: '验证码输入错误'}) ;
+        }else if(/^1[34578]\d{9}$/.test(this.phone)===false){
+          this.$Notice.error({ title: '手机号是否有误'}) ;
+        }else if(this.password1.length<5&&this.password1.length>21){
+          this.$Notice.error({ title: '密码长度不在6-20范围内'}) ;
+        }else if(this.repassword !== this.password1){
+          this.$Notice.error({ title: '两次密码不同'}) ;
         }/*else {
          */
           else if (this.mail.length === 0 || /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.mail)===true/*&& (this.password1.length === 0
               ||(this.password1.length>5&&this.password1<21))&& (this.repassword===this.password1)  && /^1[34578]\d{9}$/.test(this.phone) === true&&this.inputyzm === this.yzm4*/) {
             if(this.name.length === 0 ||/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\s]{1,20})$/.test(this.name)) {
-              if (this.password1.length === 0 || this.password1.length > 5 && this.password1.length < 21) {
-                if (this.repassword === this.password1) {
                   if (this.birthdate.length !== 0) {
                     let date = ''
                     let y = this.birthdate.getFullYear()
@@ -536,7 +541,7 @@
                       this.$Notice.success({title: '注册成功'});
                       that.$router.push({path: '/login'})
                     }).catch((response) => {
-                      this.$Message.error(response.message)
+                      this.$Notice.error({ title: response.message}) ;
                     })
                   } else {
                     let regdata = {
@@ -554,21 +559,15 @@
                     var that = this;
                     userApi.regist(regdata).then((response) => {
                       this.$Notice.success({title: '注册成功'});
-                      that.$router.push({path: '/login'})
+                      that.$router.push({path: '/login1'})
                     }).catch((response) => {
-                      this.$Message.error(response.message)
+                      this.$Notice.error({ title: response.message}) ;
                     })
                   }
 
 
-                } else {
-                  this.$Notice.error({title: '俩次密码输入不同'});
-                }
 
 
-              } else {
-                this.$Notice.error({title: '密码设置不符合要求'});
-              }
             }else{
               this.$Notice.error({title: '请输入正确的姓名'});
             }

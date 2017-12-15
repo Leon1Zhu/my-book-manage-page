@@ -6,7 +6,7 @@
     </div>
     <div class="modify_secondgroup">
       <span class="regist_bq">手&nbsp机&nbsp号</span>&nbsp&nbsp&nbsp&nbsp
-      <Input class="modify_secondinp"  v-model="phone1" @on-blur="losephone"  placeholder="请输入你的手机号码"></Input>
+      <Input class="modify_secondinp" readonly="readonly"  v-model="phone1"   placeholder="请输入你的手机号码"></Input>
     </div>
     <div class="modify_secondgroup">
       <span class="regist_bq">验&nbsp证&nbsp码</span>&nbsp&nbsp&nbsp&nbsp
@@ -14,7 +14,7 @@
       <Button class="btn" type="ghost" style="width:120px" v-model="yzm3" v-bind:disabled="dis1" v-on:click="getyzm1">{{yzm}}
       </Button>
     </div>
-    <Button type="info" @click='tj2' style="font-size: 17px;margin-left:35% ;width: 32% ; margin-top: 3%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交</Button>
+    <Button type="info" @click='tj2' style="font-size: 17px;margin-left:39% ;width: 25% ; margin-top: 3%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交</Button>
   </div>
 </template>
 <style>
@@ -41,7 +41,7 @@
         name:null,
         yzm2: '',
         yzm3: '',
-        dis1: true,
+        dis1: false,
         yzm: '获取验证码',
         phone1: null
       }
@@ -53,23 +53,8 @@
       this.$emit('getbar',1);
     },
     methods: {
-      losephone : function () {
-        if (/^1[34578]\d{9}$/.test(this.phone1)===true) {
-          if(this.yzm==="获取验证码"){
-            this.dis1 = false
-          }else{
-            this.dis1=true
-          }
-        } else if (this.phone1.length === 0) {
-          this.dis1 = true
-        } else {
-
-          this.dis1 = true
-          this.$Message.error('请输入正确的手机号')
-
-        }
-      },
       getyzm1: function () {
+        alert(this.yzm3)
         var a = Math.random()*900000|0+100000;
         this.yzm3 = parseInt(a)
         var num = 60
@@ -89,7 +74,7 @@
         /*this.$http.post('' , phone1 , yzm3)*/
       },
       sendCode(){
-        userApi.sendCode(this.phone1,this.yzm3).then((response) =>{
+       userApi.sendCode(this.phone1,this.yzm3).then((response) =>{
 
         }).catch((response) => {
 
@@ -98,11 +83,12 @@
       tj2: function () {
         if (parseInt(this.yzm2) === this.yzm3 && this.yzm2.length !== 0) {
           this.$emit('getbar',2);
+
           this.$router.push({path: '/xgpassword/third',query:{phone:this.phone1}})
         } else if (this.yzm2.length === 0 && this.yzm3.length === 0) {
-          this.$Message.error('请先获取验证码')
+          this.$Notice.error({ title: '请先获取验证码'})
         } else {
-          this.$Message.error('验证码输入错误')
+          this.$Notice.error({ title: '验证码输入错误'})
         }
       }
 

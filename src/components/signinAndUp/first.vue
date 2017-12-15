@@ -13,7 +13,7 @@
               class="verification1">{{checkCode}}
       </Button>
     </div>
-      <Button type="info" @click="tj1" style="margin-left: 35%; font-size: 17px;width:30.5% ; margin-top: 3%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
+      <Button type="info" @click="tj1" style="margin-left: 38%; font-size: 17px;width:25% ; margin-top: 3%;background: #6a4f90;border-color: #6a4f90;height:40px;">提交
       </Button>
 
 
@@ -71,11 +71,11 @@
 
         let that =this;
         if (isNull(this.username1 ) ) {
-          this.$Message.error('用户名不能为空！')
+          this.$Notice.error({ title: '用户名不能为空！'})
           return;
         }
         if(this.yzm1 != this.checkCode){
-          this.$Message.error('验证码错误！')
+          this.$Notice.error({ title: '验证码错误！'})
           return;
         }else{
 

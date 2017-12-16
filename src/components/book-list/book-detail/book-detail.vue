@@ -54,7 +54,7 @@
               </div>
               <div class="book-item-info">
                 <div class="left-info right-imgT">
-                  <Poptip  class="sign-img-content"  trigger="hover" content="AR书籍" v-if="data.artag===1">
+                  <Poptip  class="sign-img-content"  trigger="hover" content="AR书籍" v-if="data.artag===1 || data.artag">
                       <img src="../../../assets/ARLogo.png">
                   </Poptip>
                   <Poptip class="sign-img-content"  trigger="hover" content="不具有AR属性" v-else>
@@ -62,7 +62,7 @@
                   </Poptip>
                 </div>
                 <div class="right-info left-imgT">
-                  <Poptip class="sign-img-content" trigger="hover" content="蓝思书籍"  v-if="data.lexileTag===1">
+                  <Poptip class="sign-img-content" trigger="hover" content="蓝思书籍"  v-if="data.lexileTag===1 || data.lexileTag">
                     <img src="../../../assets/lexile.png">
                   </Poptip>
                   <Poptip class="sign-img-content"  trigger="hover" content="不具有蓝思属性"  v-else>

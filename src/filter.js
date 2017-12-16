@@ -46,6 +46,15 @@ Vue.filter('filterAge',function(value){
   }
 })
 Vue.filter('filterGrade',function(start,end){
-    console.log(start)
-  console.log(end)
+  if(isNull(start) && isNull(end)){
+    return "没有相关数据"
+  }
+  if(isNull(start)){
+    return GRADELIST[parseInt(end,10)-1]['label']+'以下学生';
+  }
+  if(isNull(end)){
+    return GRADELIST[parseInt(start,10)-1]['label']+'以上学生';
+  }else{
+    return GRADELIST[parseInt(start,10)-1]['label']+'~' +GRADELIST[parseInt(end,10)-1]['label'];
+  }
 })

@@ -15,7 +15,7 @@ global.setNoticConfig= function(title,desc,duration,key,onClose){
 }
 
 global.isNull =function (val){
-  if(val===null || val === undefined || val ==="" || val.length===0)return true;
+  if(val===null || val === undefined || val ==="" || val.length===0 || val === '0' || val === 0)return true;
   else return false;
 }
 axios.interceptors.request.use(

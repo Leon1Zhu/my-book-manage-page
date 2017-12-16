@@ -44,8 +44,11 @@ const forth = resolve => require(['@/components/signinAndUp/forth'], resolve);
 
 const personalCenter = resolve => require(['@/components/mainPage/personalCenter/personalCenter.vue'], resolve);
 
+const ARSearch = resolve => require(['@/components/advancedSearch/ARSearch/ARSearch.vue'], resolve);
 
+const lexilSearch = resolve => require(['@/components/advancedSearch/lexilSearch/lexilSearch.vue'], resolve);
 
+const SearchResult = resolve => require(['@/components/advancedSearch/SearchResult/SearchResult.vue'], resolve);
 const mainPageRouter= {
     path: '/',
     component:index,
@@ -63,6 +66,18 @@ const mainPageRouter= {
         components: {main:commonQuestion},
         name:"常见问题#2"
       }, {
+        path: 'ARSearch',
+        components: {main:ARSearch},
+        name:"AR书籍查询#2"
+      },{
+        path: 'lexilSearch',
+        components: {main:lexilSearch},
+        name:"蓝思书籍查询#2"
+      },  {
+        path: 'SearchResult',
+        components: {main:SearchResult},
+        name:"搜索结果#3"
+      },{
         path: 'joinUs',
         components: {main:joinUs},
         name:"加入我们#2"

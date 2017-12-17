@@ -385,7 +385,7 @@
             this.isrepasswordcolor = true
             this.grtr1 = true
             this.grtr2 = true
-          } else {
+          } else if( this.repassword.length !==0 ){
             this.repasswordwarning = ''
             this.passwordwarning = ''
             this.grtr1 = true

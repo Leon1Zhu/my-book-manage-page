@@ -54,7 +54,6 @@
     },
     methods: {
       getyzm1: function () {
-        alert(this.yzm3)
         var a = Math.random()*900000|0+100000;
         this.yzm3 = parseInt(a)
         var num = 60

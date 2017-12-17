@@ -21,7 +21,7 @@
               <div class="no-book-class" v-if="list_type=='reserve' && orderInfo.length==1">
                 暂无对应数据结果!
               </div>
-              <Page :current="index+1"  v-if="list_type==''" :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
+              <Page class="page page-top" :current="index+1"  v-if="list_type==''" :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
             </div>
             <div class="book-item" v-for="data in saveInfo" v-if="list_type=='collect'  && saveInfo.length>1">
             <list_content v-if="data.id!=-1"  @reservBook="reservBookP" :data="data.saveBookInfo" :list_type="list_type"></list_content>
@@ -32,7 +32,11 @@
             <div class="book-item" v-for="data in content" v-if=" list_type!='reserve' && list_type!='collect'">
               <list_content :data="data" :list_type="list_type"></list_content>
             </div>
+            <div class="page-relative">
+              <Page v-if="total>0 && list_type==''" :current="index+1" class="page page-bottom"   :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
+            </div>
           </div>
+
         </div>
     </div>
 </template>

@@ -41,7 +41,7 @@ npm<template>
              </div>
              <div class="grid_6 select-info">
                <div class="select-input">
-                   <Input v-model="searchBookInput" size="large" placeholder="输入书名，作者，ISBN">
+                   <Input v-model="searchBookInput" size="large" placeholder="输入书名，作者，ISBN" autocomplete="off">
                    <Select v-model="searchBookSelect" slot="prepend" style="width: 80px">
                      <Option value="all">所有书籍</Option>
                      <Option value="ar">AR书籍</Option>
@@ -67,7 +67,7 @@ npm<template>
                           <div class="extra-content-li" @click="chooseLi(2,'/speedReading')">
                             AR阅读知识
                           </div>
-                          <div class="extra-content-li">
+                          <div class="extra-content-li"  @click="chooseLi(2,'/ARSearch')">
                             AR书籍查询
                           </div>
                           <div class="extra-content-li">
@@ -76,7 +76,7 @@ npm<template>
                           <div class="extra-content-li" @click="chooseLi(3,'/leixiReading')">
                             蓝思阅读知识
                           </div>
-                          <div class="extra-content-li">
+                          <div class="extra-content-li" @click="chooseLi(3,'/lexilSearch')">
                             蓝思书籍查询
                           </div>
                           <div class="extra-content-li">

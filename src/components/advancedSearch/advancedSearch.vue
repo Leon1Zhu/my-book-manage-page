@@ -134,11 +134,11 @@ import  searchApi from '../../api/advancedSearch'
             return {
               publisher:null,
               grade:GRADELIST,
-              AGE:[{value:3,label:'3岁'},{value:4,label:'4岁'},{value:5,label:'5岁'},{value:6,label:'6岁'},{value:7,label:'7岁'},{value:8,label:'8岁'},{value:9,label:'9岁'},{value:10,label:'10岁'},{value:11,label:'11岁'},{value:12,label:'12岁'},{value:13,label:'13岁'},{value:14,label:'14岁'},{value:15,label:'15岁'},{value:16,label:'16岁'},{value:17,label:'17岁'},{value:18,label:'19岁'}],
-              docType:[{value:1,label:"Fiction and Nonfiction"},{value:2,label:"Fiction"},{value:3,label:"Nonfiction"}],
+              AGE:[{value:3,label:'3岁'},{value:4,label:'4岁'},{value:5,label:'5岁'},{value:6,label:'6岁'},{value:7,label:'7岁'},{value:8,label:'8岁'},{value:9,label:'9岁'},{value:10,label:'10岁'},{value:11,label:'11岁'},{value:12,label:'12岁'},{value:13,label:'13岁'},{value:14,label:'14岁'},{value:15,label:'15岁'},{value:16,label:'16岁'},{value:17,label:'17岁'},{value:18,label:'18岁'},{value:19,label:'19岁'}],
+              docType:DOCTYPE,
               bookType:[{value:1,label:"精装版本"},{value:2,label:"平装版本"},{value:3,label:"图书馆版本"},{value:4,label:"纸版书"}],
               quizType:[{value:1,label:"Any Quiz Type"},{value:2,label:"Reading Practice"},{value:3,label:"Recorded Voice"},{value:4,label:"Vocabulary Practice"},{value:5,label:"Literacy Skills"}],
-              interestLevel:[{value:'LG',label:"Lower Grades(LG K-3)"},{value:'MG',label:"Middle Grades(MG 4-8)"},{value:'MG+',label:"Middle Grades Plus(MG+ 6 and up)"},{value:'UG',label:"Upper Grades(UG 9-12)"}],
+              interestLevel:INTERESTLEVEL,
               sort:[{value:'name',label:"书名(缺省)"},{value:'author',label:"作者"},{value:'bl',label:"BL等级(ATOS)阅读范围"},{value:'il',label:"AR兴趣等级"},{value:'lexile_value',label:"蓝思值阅读范围"},{value:'recommend_index',label:"推荐等级"}],
               basicSearch:{
                   type:null,

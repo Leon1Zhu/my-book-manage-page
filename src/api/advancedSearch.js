@@ -6,6 +6,10 @@ import api from './index'
 
 var getCollectsByUserId = "/api/alinews-collects";
 let getBookSeries = '/book/getBookSeries'
+
+let SearchArBookList = '/book/listArBookSearch'
+
+let SearchLexBookList = '/book/listLexBookSearch'
 export default {
   getBookSeries(){
     return api.get(getBookSeries,null)
@@ -15,5 +19,17 @@ export default {
       userid:userid
     }
     return api.get(getCollectsByUserId,params)
-  }
+  },
+  arBookSearchList : function(searchContet){
+    var params = {
+      searchData:searchContet
+    }
+    return api.get(SearchArBookList,params)
+  },
+  lexBookSearchList : function(searchContet){
+    var params = {
+      searchData:searchContet
+    }
+    return api.get(SearchLexBookList,params)
+  },
 }

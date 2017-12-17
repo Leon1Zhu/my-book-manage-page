@@ -49,6 +49,8 @@ const ARSearch = resolve => require(['@/components/advancedSearch/ARSearch/ARSea
 const lexilSearch = resolve => require(['@/components/advancedSearch/lexilSearch/lexilSearch.vue'], resolve);
 
 const SearchResult = resolve => require(['@/components/advancedSearch/SearchResult/SearchResult.vue'], resolve);
+ ;
+const regist_sec = resolve => require(['@/components/signinAndUp/regist_sec.vue'],resolve) ;
 const mainPageRouter= {
     path: '/',
     component:index,
@@ -101,6 +103,11 @@ const mainPageRouter= {
         path: 'newsDetail',
         components: {main:newsDetail},
         name:"新闻详情#3"
+      },
+      {
+        path: '/regist_sec',
+        components: {main:regist_sec},
+        name:"用户注册#2"
       },
       {
         path: '/login',

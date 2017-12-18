@@ -319,10 +319,17 @@
             let d = this.birthdate.getDate()
             d = d < 10 ? ('0' + d) : d
             date = y + '-' + m + '-' + d
+            let sex = '' ;
+            if(this.sex === '男'){
+               sex = 0 ;
+            }else if(this.sex ==='女'){
+               sex = 1 ;
+            }
+            alert(sex)
             let regdata1 = {
               neckname: this.neckname,
               name: this.name,
-              sex: this.sex,
+              sex: sex,
               birthdate : date,
               school : this.school,
               grade : this.grade,

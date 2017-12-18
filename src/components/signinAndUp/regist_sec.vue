@@ -325,7 +325,6 @@
             }else if(this.sex ==='女'){
                sex = 1 ;
             }
-            alert(sex)
             let regdata1 = {
               neckname: this.neckname,
               name: this.name,

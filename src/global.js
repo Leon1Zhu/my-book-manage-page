@@ -2,9 +2,9 @@
  * Created by zhuliang on 2017/4/6.
  */
 global.MAINBREADCRUMB= JSON.parse(sessionStorage.getItem("MAINBREADCRUMB")) ?  JSON.parse(sessionStorage.getItem("MAINBREADCRUMB")): [{name:'首页',url:'/',level:1,query:null}]
-global.SERVICEURL="http://localhost:8090";
+//global.SERVICEURL="http://localhost:8090";
 global.HomePageSwiperImgUrlHost='http://121.43.171.195:8080/dummyPath/';
-//global.SERVICEURL="http://121.43.171.195:8090"
+global.SERVICEURL="http://121.43.171.195:8090"
 /*global.tokenUrl="http://localhost:8090/getToken"
 global.TOKENTIME=new Date();
 global.TOKEN="";*/

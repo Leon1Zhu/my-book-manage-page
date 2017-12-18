@@ -158,10 +158,10 @@
         loseneckname: function () {
           if(this.neckname.length === 0){
             this.usernamewarning = ''
-          }else if(this.neckname.length<4||this.neckname.length>12){
-            this.usernamewarning = '昵称长度不在4-12范围内'
+          }else if(this.neckname.length<2||this.neckname.length>12){
+            this.usernamewarning = '昵称长度不在2-12范围内'
             this.isusernamecolor = true
-          }else if(this.neckname.length>3&&this.neckname.length<13){
+          }else if(this.neckname.length>1&&this.neckname.length<13){
             this.grtr = true ;
             this.isusernamecolor = false
             this.usernamewarning=''
@@ -171,7 +171,7 @@
         getneckname: function () {
           this.isusernamecolor = false
           this.grtr = false
-          this.usernamewarning = '支持中文、字母、数字、"-"、"_"的组合，4-12个字符'
+          this.usernamewarning = '支持中文、字母、数字、"-"、"_"的组合，2-12个字符'
         },
         losename: function () {
           if (/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.name)) {
@@ -289,7 +289,7 @@
         info_wc : function() {
           if(this.neckname.length===0){
             this.$Notice.error({title: '昵称不能为空'});
-          }else if(this.neckname.length<4||this.neckname.length>12){
+          }else if(this.neckname.length<2||this.neckname.length>12){
             this.$Notice.error({title: '昵称长度不在4-12范围内'});
           } else if (this.name.length === 0) {
             this.$Notice.error({title: '姓名不能为空'});

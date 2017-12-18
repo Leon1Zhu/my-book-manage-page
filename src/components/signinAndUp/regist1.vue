@@ -191,10 +191,10 @@
       loseneckname: function () {
         if(this.neckname.length === 0){
           this.usernamewarning = ''
-        }else if(this.neckname.length<4||this.neckname.length>12){
-          this.usernamewarning = '昵称长度不在4-12范围内'
+        }else if(this.neckname.length<2||this.neckname.length>12){
+          this.usernamewarning = '昵称长度不在2-12范围内'
           this.isusernamecolor = true
-        }else if(this.neckname.length>3&&this.neckname.length<13){
+        }else if(this.neckname.length>1&&this.neckname.length<13){
           this.grtr = true ;
           this.isusernamecolor = false
           this.usernamewarning=''
@@ -204,7 +204,7 @@
       getneckname: function () {
         this.isusernamecolor = false
         this.grtr = false
-        this.usernamewarning = '支持中文、字母、数字、"-"、"_"的组合，4-12个字符'
+        this.usernamewarning = '支持中文、字母、数字、"-"、"_"的组合，2-12个字符'
       },
       getpassword: function () {
         this.ispasswordcolor = false
@@ -326,8 +326,8 @@
           || this.detailaddress1.length === 0 || this.mail.length === 0 || this.password1.length === 0
           || this.repassword.length === 0 || this.phone.length === 0 || this.inputyzm.length === 0|| this.school.length === 0 || this.grade.length === 0*/) {
           this.$Notice.error({ title: '查看是否有数据未填写'}) ;
-        }else if(this.neckname.length<4||this.neckname.length>12){
-          this.$Notice.error({ title: '昵称长度不在4-12范围内'}) ;
+        }else if(this.neckname.length<2||this.neckname.length>12){
+          this.$Notice.error({ title: '昵称长度不在2-12范围内'}) ;
         }else if(this.inputyzm.length===0){
           this.$Notice.error({ title: '手机验证码不能为空'}) ;
         } else if((parseInt(this.inputyzm)) !== this.yzm4){

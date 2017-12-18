@@ -5,6 +5,9 @@
           <TabPane name="userInfo" label="我的信息" icon="ios-person-outline">
             <userIfno></userIfno>
           </TabPane>
+          <TabPane  name="history" label="信息完善" icon="clipboard">
+            <prefectInfo></prefectInfo>
+          </TabPane>
           <TabPane  name="collect" label="我的收藏" icon="star">
             <book_list list_type="collect"></book_list>
           </TabPane>
@@ -17,6 +20,7 @@
           <TabPane  name="history" label="借阅历史" icon="android-time">
             <book_list list_type="history"></book_list>
           </TabPane>
+
         </Tabs>
       </div>
       <div>
@@ -28,6 +32,7 @@
 import './personalCenter.scss'
 import userIfno from './userInfo/userInfo.vue'
 import book_list from '../../book-list/book-list.vue'
+import prefectInfo from '../../signinAndUp/regist_sec.vue'
     export default{
         data(){
             return {
@@ -39,6 +44,7 @@ import book_list from '../../book-list/book-list.vue'
         components: {
             'userIfno':userIfno,
             'book_list': book_list,
+            'prefectInfo':prefectInfo,
         },
         created(){
         },

@@ -48,13 +48,14 @@ Vue.filter('filterAge',function(value){
 Vue.filter('filterGrade',function(start,end){
   if(isNull(start) && isNull(end)){
     return "没有相关数据"
-  }
-  if(isNull(start)){
+  } else if( ( parseInt(start,10) <0 || 19 <  parseInt(start,10)) ||  (19 < parseInt(end,10) || parseInt(end,10)<0  ) ){
+    return '年级信息错误！';
+  }else if(isNull(start)){
     return GRADELIST[parseInt(end,10)-1]['label']+'以下学生';
-  }
-  if(isNull(end)){
+  }else if(isNull(end)){
     return GRADELIST[parseInt(start,10)-1]['label']+'以上学生';
-  }else{
+  }
+  else{
     return GRADELIST[parseInt(start,10)-1]['label']+'~' +GRADELIST[parseInt(end,10)-1]['label'];
   }
 })

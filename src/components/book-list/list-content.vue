@@ -32,7 +32,7 @@
         </div>
         <div class="book-item-info">
           <div class="right-info">AR积分值:{{data.arpoints  | filterNull}}</div>
-          <div class="left-info">重量:{{data.weight | filterNull}}</div>
+          <div class="left-info">重量:{{data.weight | filterNull}}克</div>
         </div>
         <div class="book-item-info">
           <div class="right-info">AR推荐值:{{data.arrating  | filterNull}}</div>

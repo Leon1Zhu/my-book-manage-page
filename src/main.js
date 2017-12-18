@@ -30,6 +30,7 @@ Vue.prototype.$this = app;
 
 
 router.beforeEach((to, from, next) => {
+  console.log(to)
   if(to.name.indexOf("login") > -1 || to.name.indexOf("首页") > -1 ){
     for(let i=0;i<MAINBREADCRUMB.length;i++){
         MAINBREADCRUMB.splice(i,1);

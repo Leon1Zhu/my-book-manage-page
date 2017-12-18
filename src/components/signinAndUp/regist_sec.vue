@@ -12,7 +12,7 @@
       </div>
 
       <div class="inputgroup">
-        <span class="regist_bq">读者姓名</span>
+        <span class="regist_bq">真实姓名</span>
         <Input class="regist_inp" v-model="name"  @on-blur="losename"  @on-focus="getname" placeholder="请输入姓名"/>&nbsp&nbsp
         <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr3"   />
       </div>
@@ -27,7 +27,7 @@
       </div>
       <div class="inputgroup">
         <span class="regist_bq">生&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp日</span>
-        <DatePicker format="yyyy年MM月dd" class="regist_spe" value="new data()" @on-clear="cleardate " v-model="birthdate" @on-change="datechange"
+        <DatePicker format="yyyy年MM月dd" class="regist_spe" :value="birthdate" @on-clear="cleardate " v-model="birthdate"  @on-change="datechange"
                     type="date"
                     placeholder="选择日期"></DatePicker>&nbsp&nbsp
         <!--      <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr6"   />-->
@@ -103,6 +103,7 @@
         name: "regist_sec" ,
       data () {
         return {
+          phone2:'',
           phonewarning: '',
           usernamewarning: '',
           passwordwarning: '',
@@ -153,6 +154,18 @@
           data: tranData(area) ,
           gradeList:GRADELIST,
         }
+      },
+      created(){
+        this.neckname = USERINFO.name
+        this.name = USERINFO.rName
+        this.sex = USERINFO.rSex === '1' ? '女':'男';
+        this.birthdate = new Date(USERINFO.rBirthday).Format('yyyy-MM-dd');
+        this.school = USERINFO.shool
+        this.value1 = USERINFO.address.split(',')
+        this.detailaddress1 = USERINFO.detailaddress1
+        this.mail = USERINFO.email;
+        this.phone2 = USERINFO.phoneNo
+        this.grade = USERINFO.grade
       },
       methods: {
         loseneckname: function () {
@@ -326,14 +339,14 @@
                sex = 1 ;
             }
             let regdata1 = {
-              neckname: this.neckname,
-              name: this.name,
-              sex: sex,
-              birthdate : date,
+              name: this.neckname,
+              rName: this.name,
+              rSex: sex,
+              rBirthday : date,
               school : this.school,
               grade : this.grade,
               address: this.value1,
-              detailaddress1: this.detailaddress1,
+              detailAdressint: this.detailaddress1,
               mail : this.mail
             }
 

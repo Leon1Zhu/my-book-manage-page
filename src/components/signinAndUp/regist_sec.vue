@@ -3,7 +3,7 @@
         <div class="inputgroup">
           <span class="regist_bq">昵称</span>
           <Input class="regist_inp" v-model="neckname"  @on-blur="loseneckname"  @on-focus="getneckname" />&nbsp&nbsp
-          <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr"   />
+<!--          <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr"   />-->
         </div>
       <p class="regist_warning" v-bind:class="{usernamecolor:isusernamecolor}">{{usernamewarning}}</p>
       <div class="inputgroup">
@@ -14,7 +14,7 @@
       <div class="inputgroup">
         <span class="regist_bq">真实姓名</span>
         <Input class="regist_inp" v-model="name"  @on-blur="losename"  @on-focus="getname" placeholder="请输入姓名"/>&nbsp&nbsp
-        <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr3"   />
+<!--        <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr3"   />-->
       </div>
       <p class="regist_warning" v-bind:class="{namecolor:isnamecolor}">{{namewarning}}</p>
       <div class="inputgroup">
@@ -42,7 +42,7 @@
       <div class="inputgroup">
         <span class="regist_bq">学&nbsp&nbsp&nbsp&nbsp&nbsp校</span>
         <Input class="regist_inp" v-model="school"  @on-blur="loseschool" @on-focus="getschool"  placeholder="输入你所在学校"></Input>&nbsp&nbsp
-        <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr15"   />
+<!--        <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr15"   />-->
       </div>
       <div class="inputgroup">
         <span class="regist_bq">所在年级</span>
@@ -61,12 +61,12 @@
       <div class="inputgroup">
         <span class="regist_bq">详细地址</span>
         <Input class="regist_inp" v-model="detailaddress1" @on-blur="losedetailaddress" @on-focus="getdetailaddress" placeholder="请输入详细地址"></Input>&nbsp&nbsp
-        <img class="greenarrow" src="../../assets/img/greenarrow.png"  v-if="grtr9" />
+<!--        <img class="greenarrow" src="../../assets/img/greenarrow.png"  v-if="grtr9" />-->
       </div>
       <div class="inputgroup">
         <span class="regist_bq">邮箱地址</span>
         <Input class="regist_inp"  v-model="mail"  @on-blur="losemail" @on-focus="getmail" placeholder="请输入邮箱地址"></Input>&nbsp&nbsp
-        <img class="greenarrow" src="../../assets/img/greenarrow.png"   v-if="grtr5"/>
+<!--        <img class="greenarrow" src="../../assets/img/greenarrow.png"   v-if="grtr5"/>-->
       </div>
       <p class="regist_warning" v-bind:class="{mailcolor:ismailcolor}">{{mailwarning}}</p>
       <Button type="info" v-on:click="info_wc"
@@ -175,7 +175,7 @@
             this.usernamewarning = '昵称长度不在2-12范围内'
             this.isusernamecolor = true
           }else if(this.neckname.length>1&&this.neckname.length<13){
-            this.grtr = true ;
+/*            this.grtr = true ;*/
             this.isusernamecolor = false
             this.usernamewarning=''
 
@@ -183,49 +183,49 @@
         },
         getneckname: function () {
           this.isusernamecolor = false
-          this.grtr = false
+/*          this.grtr = false*/
           this.usernamewarning = '支持中文、字母、数字、"-"、"_"的组合，2-12个字符'
         },
         losename: function () {
           if (/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\\s]{1,20})$/.test(this.name)) {
-            this.grtr3 = true
+/*            this.grtr3 = true*/
             this.namewarning = ''
           } else if (this.name.length === 0) {
             this.namewarning = ''
-            this.grtr3 = false
+/*            this.grtr3 = false*/
           } else {
-            this.grtr3 = false
+/*            this.grtr3 = false*/
             this.isnamecolor = true
             this.namewarning = '请输入正确的姓名'
           }
         },
         getname: function () {
           this.namewarning = ''
-          this.grtr3 = false
+/*          this.grtr3 = false*/
         },
         sexchange: function () {
           if (this.sex === '男' || this.sex === '女') {
-            this.grtr7 = true
+/*            this.grtr7 = true*/
           } else {
-            this.grtr7 = false
+/*            this.grtr7 = false*/
           }
         },
         datechange: function () {
           if (this.birthdate === "") {
-            this.grtr6 = false
+/*            this.grtr6 = false*/
           } else {
-            this.grtr6 = true
+/*            this.grtr6 = true*/
           }
         },
         addresschange: function () {
           if (this.value1 === "") {
-            this.grtr11 = false
+/*            this.grtr11 = false*/
           } else {
-            this.grtr11 = true
+/*            this.grtr11 = true*/
           }
         },
         addresschanged: function () {
-          this.grtr11 = true;
+/*          this.grtr11 = true;*/
         },
 
         /* gradechanged: function () {
@@ -233,30 +233,30 @@
          } ,*/
         gradechange: function () {
           if (this.grade === "") {
-            this.grtr16 = false
+/*            this.grtr16 = false*/
           } else {
-            this.grtr16 = true
+/*            this.grtr16 = true*/
           }
         },
         cleardate: function () {
-          this.grtr6 = false;
+/*          this.grtr6 = false;*/
         },
         getcontact: function () {
           this.contactwarning = ''
-          this.grtr4 = false
+/*          this.grtr4 = false*/
         },
 
         losecontact: function () {
           if (/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\s]{1,20})$/.test(this.contact)) {
-            this.grtr4 = true
+/*            this.grtr4 = true*/
             this.contactwarning = ''
           } else if (this.contact.length === 0) {
             this.contactwarning = ''
-            this.grtr4 = false
+/*            this.grtr4 = false*/
           } else {
             this.iscontactcolor = true
             this.contactwarning = '输入正确的联系人名字'
-            this.grtr4 = false
+/*            this.grtr4 = false*/
           }
         },
 

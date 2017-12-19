@@ -169,7 +169,6 @@
         grtr9: false,
         grtr10: false,
         grtr11: false,
-        grtr15: false,
         grtr16:false,
         inputyzm: '',
         val: '获取验证码',

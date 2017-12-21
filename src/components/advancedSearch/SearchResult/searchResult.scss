@@ -1,0 +1,16 @@
+.ExtraSearchResult{
+  .book-introduce-content{
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 150%;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-bottom: 0px;
+    .book-name,.book-item-info{
+      flex: 1 1 33%;
+    }
+  }
+  .book-introduce-content:last-child{
+    border-bottom: 1px solid #ccc;
+  }
+}

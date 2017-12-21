@@ -19,8 +19,13 @@ let changepassword = bookIndex+'/changePassword'
 
 let getUserWord = loginBook+'/getUserWord'
 
+let ChangeInfo = loginBook+'/changeUserInfo'
+
 
 export  default {
+  ChangeInfo(userinfo){
+    return api.post(ChangeInfo,userinfo,'');
+  },
   getUserWord(){
     return api.post(getUserWord,USERINFO,'');
   },

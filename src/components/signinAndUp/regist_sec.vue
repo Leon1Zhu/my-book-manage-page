@@ -160,9 +160,9 @@
         this.name = USERINFO.rName
         this.sex = USERINFO.rSex === '1' ? '女':'男';
         this.birthdate = new Date(USERINFO.rBirthday).Format('yyyy-MM-dd');
-        this.school = USERINFO.shool
+        this.school = USERINFO.school
         this.value1 = USERINFO.address.split(',')
-        this.detailaddress1 = USERINFO.detailaddress1
+        this.detailaddress1 = USERINFO.detailAdressint
         this.mail = USERINFO.email;
         this.phone2 = USERINFO.phoneNo
         this.grade = USERINFO.grade
@@ -325,13 +325,14 @@
           } else if (/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.mail) === false) {
             this.$Notice.error({title: '邮箱地址填写错误'});
           }else{
-            let date = ''
+        /*    let date = ''
+            console.log(this.birthdate)
             let y = this.birthdate.getFullYear()
             let m = this.birthdate.getMonth() + 1
             m = m < 10 ? ('0' + m) : m
             let d = this.birthdate.getDate()
             d = d < 10 ? ('0' + d) : d
-            date = y + '-' + m + '-' + d
+            date = y + '-' + m + '-' + d*/
             let sex = '' ;
             if(this.sex === '男'){
                sex = 0 ;
@@ -339,17 +340,23 @@
                sex = 1 ;
             }
             let regdata1 = {
+              id:USERINFO.id,
               name: this.neckname,
               rName: this.name,
               rSex: sex,
-              rBirthday : date,
+              rBirthday : this.birthdate,
               school : this.school,
               grade : this.grade,
-              address: this.value1,
+              address: this.value1.join(','),
               detailAdressint: this.detailaddress1,
-              mail : this.mail
+              email : this.mail,
+              phoneNo:this.phone2,
             }
+            userApi.ChangeInfo(regdata1).then((response) =>{
 
+            }).catch((response) =>{
+
+            })
           }
         }
       }

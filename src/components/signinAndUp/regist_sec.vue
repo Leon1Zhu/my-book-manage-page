@@ -353,7 +353,11 @@
               phoneNo:this.phone2,
             }
             userApi.ChangeInfo(regdata1).then((response) =>{
-
+              this.$Notice.success({title: '修改成功！'});
+              this.$router.push({path: '/'})
+              response.data.password=null;
+              setUserInfo( response.data,response.data.orderInfo,response.data.saveInfos)
+              setRAHBook(response.data)
             }).catch((response) =>{
 
             })

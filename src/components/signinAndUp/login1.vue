@@ -1,6 +1,7 @@
 <template>
   <div class="main_login">
-    <div class="login_group" style="margin-top: 7%">
+    <div  class="login_ts"><p>用户登陆</p></div>
+    <div class="login_group" style="margin-top: 3%">
       <Icon class="ivu-icon ivu-icon-person" size="25"></Icon>&nbsp&nbsp&nbsp&nbsp
       <Input type="text"  class="inputtext"  v-model="username" id="username" placeholder="手机号"/>
     </div>
@@ -32,6 +33,12 @@
     margin-top: 2%;
     width: 100%;
     padding-left: 35%;
+  }
+  .login_ts{
+    margin-left: 47%;
+    margin-top:2%;
+    font-size:20px;
+    font-family:"微软雅黑"
   }
 </style>
 <script>

@@ -1,5 +1,6 @@
 <template>
     <div class="regist_sec_main">
+
         <div class="inputgroup">
           <span class="regist_bq">昵称</span>
           <Input class="regist_inp" v-model="neckname"  @on-blur="loseneckname"  @on-focus="getneckname" />&nbsp&nbsp
@@ -73,6 +74,7 @@
               style=" background: #6a4f90; height:40px; color: white; border-color: #6a4f90;margin: 0 auto;margin-top: 2%;margin-left: 38%;width: 300px;font-size: 15px;">
         提交
       </Button>
+      <p style="font-size: 12px ;margin-left: 39% ;margin-top:1%; color: grey" >说明：昵称、生日和所在年纪为必填项，其他为选填</p>
     </div>
 </template>
 
@@ -304,25 +306,25 @@
             this.$Notice.error({title: '昵称不能为空'});
           }else if(this.neckname.length<2||this.neckname.length>12){
             this.$Notice.error({title: '昵称长度不在4-12范围内'});
-          } else if (this.name.length === 0) {
+          } /*else if (this.name.length === 0) {
             this.$Notice.error({title: '姓名不能为空'});
-          } else if (/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\s]{1,20})$/.test(this.name) === false) {
+          } */else if (this.name.length !== 0 && /^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\s]{1,20})$/.test(this.name) === false) {
             this.$Notice.error({title: '请填写正确的姓名'});
-          } else if (this.sex === "") {
+          } /*else if (this.sex === "") {
             this.$Notice.error({title: '性别不能为空'});
-          } else if (this.birthdate === "") {
+          } */else if (this.birthdate === "") {
             this.$Notice.error({title: '出生日期不能为空'});
-          } else if (this.school.length === 0) {
+          } /*else if (this.school.length === 0) {
             this.$Notice.error({title: '学校不能为空'});
-          } else if (this.grade === "") {
+          } */else if (this.grade === "") {
             this.$Notice.error({title: '所在年级不能为空'});
-          } else if (this.value1 === "") {
+          } /*else if (this.value1 === "") {
             this.$Notice.error({title: '联系地址不能为空'});
-          } else if (this.detailaddress1 === "") {
+          } *//*else if (this.detailaddress1 === "") {
             this.$Notice.error({title: '详细地址不能为空'});
           } else if (this.mail.length === 0) {
             this.$Notice.error({title: '邮箱地址不能为空'});
-          } else if (/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.mail) === false) {
+          } */else if (this.mail.length !== 0 && /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.mail) === false) {
             this.$Notice.error({title: '邮箱地址填写错误'});
           }else{
         /*    let date = ''

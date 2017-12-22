@@ -2,7 +2,7 @@
   <div class="center">
     <div class="inputgroup" style="margin-top: 7%">
       <span class="regist_bq">昵称</span>
-      <Input class="regist_inp" type="text" v-model="neckname" @on-focus="getneckname" @on-blur="loseneckname" placeholder="输入你的昵称"></Input>&nbsp&nbsp
+      <Input class="regist_inp" type="text"  v-model="neckname" @on-focus="getneckname" @on-blur="loseneckname" placeholder="输入你的昵称"></Input>&nbsp&nbsp
       <img class="greenarrow" src="../../assets/img/greenarrow.png" v-if="grtr"  />
     </div>
     <p class="regist_warning" v-bind:class="{usernamecolor:isusernamecolor}">{{usernamewarning}}</p>
@@ -68,10 +68,13 @@
   .regist_spe{
     width:300px ;
   }
+  .center .ivu-input{
+    font-size: 13.5px;
+  }
   .greenarrow{
     width:20px ;
     height: 20px ;
-    margin-top: 0.5%;
+    margin-top: 2.5%;
   }
   .regist_warning{
     width: 280px;

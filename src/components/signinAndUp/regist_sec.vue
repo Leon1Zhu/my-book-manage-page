@@ -159,9 +159,9 @@
         this.neckname = USERINFO.name
         this.name = USERINFO.rName
         this.sex = USERINFO.rSex === '1' ? '女':'男';
-        this.birthdate = new Date(USERINFO.rBirthday).Format('yyyy-MM-dd');
+        this.birthdate = USERINFO.rBirthday ? new Date(USERINFO.rBirthday).Format('yyyy-MM-dd') : '';
         this.school = USERINFO.school
-        this.value1 = USERINFO.address.split(',')
+        this.value1 = USERINFO.address ?  USERINFO.address.split(',') : '',
         this.detailaddress1 = USERINFO.detailAdressint
         this.mail = USERINFO.email;
         this.phone2 = USERINFO.phoneNo

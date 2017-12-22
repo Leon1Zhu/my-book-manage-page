@@ -5,7 +5,7 @@
           <TabPane name="userInfo" label="我的信息" icon="ios-person-outline">
             <userIfno></userIfno>
           </TabPane>
-          <TabPane  name="history" label="信息完善" icon="clipboard">
+          <TabPane  name="userinfochange" label="信息完善" icon="clipboard">
             <prefectInfo></prefectInfo>
           </TabPane>
           <TabPane  name="collect" label="我的收藏" icon="star">

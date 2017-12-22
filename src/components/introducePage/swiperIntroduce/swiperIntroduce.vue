@@ -13,7 +13,7 @@
         <div class="swiper-pagination"  slot="pagination"></div>
       </swiper>
         <div class="ifream-content">
-           <!--<iframe width="250" height="375" src="http://widgets1.renlearn.com/content/htmlwidget/widget.html?widgetId=RDSVZT&widgetHost=http://widgets1.renlearn.com/" frameborder="0"></iframe>-->
+           <iframe width="250" height="375" src="http://widgets1.renlearn.com/content/htmlwidget/widget.html?widgetId=RDSVZT&widgetHost=http://widgets1.renlearn.com/" frameborder="0"></iframe>
         </div>
       </div>
     </div>

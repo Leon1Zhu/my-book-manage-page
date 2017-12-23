@@ -59,3 +59,5 @@ Vue.filter('filterGrade',function(start,end){
     return GRADELIST[parseInt(start,10)-1]['label']+'~' +GRADELIST[parseInt(end,10)-1]['label'];
   }
 })
+
+

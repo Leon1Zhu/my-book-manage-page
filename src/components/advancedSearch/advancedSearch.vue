@@ -70,8 +70,8 @@
               </div>
               <div class="search-input">
                 <div class="word">AR测试类型</div>
-                <Select v-model="basicSearch.quizType"  placeholder="Any Quiz Type"  :disabled="!basicSearch.arflag">
-                  <Option v-for="item in quizType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <Select v-model="ARSearch.quizType"   :disabled="!basicSearch.arflag">
+                  <Option v-for="item in quizType" :value="item.label" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </div>
 
@@ -104,15 +104,6 @@
                 <Checkbox v-model="basicSearch.hasstock" >尚有库存</Checkbox>
                 <Checkbox v-model="basicSearch.musflag" >馆藏音频</Checkbox>
               </div>
-       <!--     </TabPane>
-            <TabPane label="加速阅读(AR)查书">
-
-
-            </TabPane>
-            <TabPane label="蓝思阅读(Lexile)查书">
-
-            </TabPane>
-          </Tabs>-->
           <div  class="basics-search-button-group">
             <div class="search-btn">
               <Button type="info" @click="getSearchInfo">搜索</Button>
@@ -147,7 +138,7 @@ import  searchApi from '../../api/advancedSearch'
                   ISBN:null,
                   publisher:null,
                   bookType:null,
-                  docType:null,
+                  docType:'Fiction and Nonfiction',
                   hasstock:null,
                   musflag:null,
                   arflag:null,
@@ -158,14 +149,12 @@ import  searchApi from '../../api/advancedSearch'
                   gradeEnd:'',
                 },
                 ARSearch:{
-                  inLev:null,
                   ABLev:null,
                   ABLevT:null,
                   ARP:null,
                   ARPT:null,
                   QN:null,
-                  QT:null,
-                  quizType:1,
+                  quizType:'Any Quiz Type',
                   interestLevel:null,
                 },
                 LLSearch:{
@@ -205,7 +194,7 @@ import  searchApi from '../../api/advancedSearch'
                author:'',
                ISBN:'',
                publisher:'',
-               docType:'',
+               docType:'Fiction and Nonfiction',
                hasstock:false,
                musflag:false,
                arflag:false,
@@ -216,14 +205,12 @@ import  searchApi from '../../api/advancedSearch'
                gradeEnd:'',
              }
             this.ARSearch={
-              inLev:'',
               ABLev:'',
               ABLevT:'',
               ARP:'',
               ARPT:'',
               QN:null,
-              QT:'',
-              quizType:1,
+              quizType:'Any Quiz Type',
               interestLevel:null,
             }
             this.LLSearch={

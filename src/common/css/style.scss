@@ -6,6 +6,7 @@ html,body,#app{
   min-width:996px;
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
+
 .container_12 {
   margin-left: auto;
   margin-right: auto;
@@ -23,8 +24,24 @@ html,body,#app{
     width:976px
   }
 }
+.book-info button,.book-item-info button{
+  font-size: 16px;
+}
+.ivu-breadcrumb-item-separator{
+  position: relative;
+  top: -2px;
+}
+.ivu-breadcrumb-item-link{
+  font-size:16px;
+}
 
+.ivu-radio-checked .ivu-radio-inner{
+  border-color: #6a4f90;
 
+}
+.ivu-radio-inner:after{
+  background: #6a4f90;
+}
 .ivu-select-item-selected, .ivu-select-item-selected:hover,ivu-select-selection:hover,ivu-breadcrumb a:hover {
   background: #6a4f90;
 }

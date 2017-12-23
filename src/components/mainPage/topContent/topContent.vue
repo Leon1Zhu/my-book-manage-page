@@ -1,4 +1,4 @@
-npm<template>
+<template>
     <div class="top-content">
       <!--<div class="login-content-top" :class="{showLoginContent : showloginflag}">
         <loginContent @closeLogin="closeLogin"></loginContent>
@@ -35,8 +35,8 @@ npm<template>
              <div class="grid_6 book-info">
                <div class="img-logo"></div>
                <div class="all-book-content">
-                 <animatedInteger class="" :value="value"></animatedInteger>
-                 <div class="all-book-item">书籍库存总数</div>
+                 <animatedInteger  class="" :value="value"></animatedInteger>
+                 <div class="all-book-item">书籍库存数</div>
                </div>
              </div>
              <div class="grid_6 select-info">
@@ -62,30 +62,30 @@ npm<template>
                     <ul>
                       <li  :class="{'active': liActive[0]}"   @click="chooseLi(0,'/')">主页</li>
                       <li :class="{'active': liActive[1]}" @click="chooseLi(1,'/activityCenter')">活动中心</li>
-                      <li :class="{'active': liActive[2]}">阅读系统
-                        <div class="extra-content">
-                          <div class="extra-content-li" @click="chooseLi(2,'/speedReading')">
+                      <li :class="{'active': liActive[2]}" @click="showExtra = !showExtra">阅读系统
+                        <div class="extra-content" :class="{'show' : showExtra}">
+                          <div class="extra-content-li" @click="chooseLi(2,'/speedReading')"  >
                             AR阅读知识
                           </div>
-                          <div class="extra-content-li"  @click="chooseLi(2,'/ARSearch')">
+                          <div class="extra-content-li"  @click="chooseLi(2,'/ARSearch')" >
                             AR书籍查询
                           </div>
                           <div class="extra-content-li">
                             Star&AR系统测试
                           </div>
-                          <div class="extra-content-li" @click="chooseLi(3,'/leixiReading')">
+                          <div class="extra-content-li" @click="chooseLi(2,'/leixiReading')"  >
                             蓝思阅读知识
                           </div>
-                          <div class="extra-content-li" @click="chooseLi(3,'/lexilSearch')">
+                          <div class="extra-content-li" @click="chooseLi(2,'/lexilSearch')"  >
                             蓝思书籍查询
                           </div>
-                          <div class="extra-content-li">
+                          <div class="extra-content-li"  @click="showExtra = !showExtra">
                             Literacy Pro蓝思系统测试
                           </div>
                         </div>
 
                       </li>
-                      <li :class="{'active': liActive[4]}" @click="chooseLi(4,'/knowlwdgeShare')">知识分享</li>
+                      <li :class="{'active': liActive[4]}" @click="chooseLi(4,'/knowlwdgeShare')">阅读课程</li>
                       <li :class="{'active': liActive[5]}" @click="chooseLi(5,'/joinUs')">加入我们</li>
                       <li :class="{'active': liActive[6]}" @click="chooseLi(6,'/commonQuestion')">常见问题</li>
                       <li :class="{'active': liActive[7]}" @click="chooseLi(7,'/partners')">合作伙伴</li>
@@ -126,7 +126,7 @@ import  api from '../../../api/bookManage'
             return {
                 searchBookSelect:'all',
                 searchBookInput:"",
-                value:null,
+                value:0,
                 tel:null,
                 mainBreadcrumb:MAINBREADCRUMB,
                 liActive:[true,false,false,false,false,false,false,false,false],
@@ -134,6 +134,7 @@ import  api from '../../../api/bookManage'
                 isActive:false,
                 showloginflag:false,
                 loginStatus:ISLOGIN,
+                showExtra:false,
             }
         },
         components: {

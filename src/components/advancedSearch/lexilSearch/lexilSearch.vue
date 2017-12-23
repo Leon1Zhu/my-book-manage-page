@@ -90,7 +90,7 @@
         }
       },
       getLEXSearchInfo(){
-        this.$router.push({path : '/SearchResult',query: {searchContent:JSON.stringify(this.LEXSearch),type:'LEX'}});
+        this.$router.push({path : '/LEXSearchResult',query: {searchContent:JSON.stringify(this.LEXSearch),type:'LEX'}});
       },
     }
   }

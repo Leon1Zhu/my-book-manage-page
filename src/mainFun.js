@@ -51,5 +51,16 @@ Vue.prototype.$reserveBook = function(data){
   });
 }
 
+Vue.prototype.$filterDocType = function(val){
+  if(val === "N"){
+    return "Nonfiction";
+  }
+  if(val === "F"){
+    return "Fiction";
+  }else{
+    return "Fiction and Nonfiction";
+  }
+}
+
 
 

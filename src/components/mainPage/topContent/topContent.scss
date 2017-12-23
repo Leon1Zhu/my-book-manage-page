@@ -227,10 +227,8 @@
           li:hover,.extra-content-li:hover{
             background: #5c4280;
           }
-          li:nth-child(3):hover{
-            .extra-content{
-              height:600%;
-            }
+          .extra-content.show{
+            height:600%;
           }
         }
       }

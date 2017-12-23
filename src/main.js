@@ -25,7 +25,7 @@ const app = new Vue({
   template: '<App/>',
   components: { App }
 })
-
+console.log(app)
 Vue.prototype.$this = app;
 
 

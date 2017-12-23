@@ -51,6 +51,8 @@ const lexilSearch = resolve => require(['@/components/advancedSearch/lexilSearch
 const SearchResult = resolve => require(['@/components/advancedSearch/SearchResult/SearchResult.vue'], resolve);
 
 const regist_sec = resolve => require(['@/components/signinAndUp/regist_sec.vue'],resolve) ;
+
+const LEXSearchResult = resolve => require(['@/components/advancedSearch/SearchResult/LEXSearchResult.vue'],resolve) ;
 const mainPageRouter= {
     path: '/',
     component:index,
@@ -79,6 +81,10 @@ const mainPageRouter= {
         path: 'SearchResult',
         components: {main:SearchResult},
         name:"搜索结果#3"
+      }, {
+        path: 'LEXSearchResult',
+        components: {main:LEXSearchResult},
+        name:"搜索结果#3"
       },{
         path: 'joinUs',
         components: {main:joinUs},
@@ -86,7 +92,7 @@ const mainPageRouter= {
       }, {
         path: 'knowlwdgeShare',
         components: {main:knowlwdgeShare},
-        name:"知识分享#2"
+        name:"阅读课程#2"
       }, {
         path: 'leixiReading',
         components: {main:leixiReading},

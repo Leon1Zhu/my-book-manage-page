@@ -158,16 +158,16 @@
         }
       },
       created(){
-        this.neckname = USERINFO.name
-        this.name = USERINFO.rName
+        this.neckname = USERINFO.name ? USERINFO.name : ''
+        this.name = USERINFO.rName ? USERINFO.rName : ''
         this.sex = USERINFO.rSex === '1' ? '女':'男';
         this.birthdate = USERINFO.rBirthday ? new Date(USERINFO.rBirthday).Format('yyyy-MM-dd') : '';
-        this.school = USERINFO.school
+        this.school = USERINFO.school ? USERINFO.school : ''
         this.value1 = USERINFO.address ?  USERINFO.address.split(',') : '',
-        this.detailaddress1 = USERINFO.detailAdressint
-        this.mail = USERINFO.email;
+        this.detailaddress1 = USERINFO.detailAdressint ? USERINFO.detailAdressint : ''
+        this.mail = USERINFO.email ? USERINFO.email : '';
         this.phone2 = USERINFO.phoneNo
-        this.grade = USERINFO.grade
+        this.grade = USERINFO.grade? USERINFO.grade : ''
       },
       methods: {
         loseneckname: function () {
@@ -349,7 +349,7 @@
               rBirthday : this.birthdate,
               school : this.school,
               grade : this.grade,
-              address: this.value1.join(','),
+              address: this.value1 ? this.value1.join(','):'',
               detailAdressint: this.detailaddress1,
               email : this.mail,
               phoneNo:this.phone2,

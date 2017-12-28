@@ -3,7 +3,7 @@
       <div class="user-info-content">
         <div class="search-input">
           <div class="search-input-sec">
-            <div class="word">读者昵称:<span class="user-info-detail">{{userinfo.name}}</span></div>
+            <div class="word">昵称:<span class="user-info-detail">{{userinfo.name}}</span></div>
           </div>
           <div class="search-input-sec">
             <Poptip  class="sign-img-content"  trigger="hover" content="快递用户请务必提供准确的收件信息" >
@@ -27,7 +27,7 @@
 
         <div class="search-input">
           <div class="search-input-sec">
-            <div class="word">性别:<span class="user-info-detail">{{userinfo.rSex}}</span></div>
+            <div class="word">性别:<span class="user-info-detail">{{userinfo.rSex | filterSex }}</span></div>
           </div>
           <div class="search-input-sec">
             <Poptip  class="sign-img-content"  trigger="hover" content="快递用户请务必提供准确的收件信息" >

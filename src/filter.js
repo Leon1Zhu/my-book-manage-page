@@ -60,4 +60,15 @@ Vue.filter('filterGrade',function(start,end){
   }
 })
 
+Vue.filter('filterSex',function(value){
+  if(value === '1'){
+    return '女'
+  }else if(value === '0'){
+    return '男'
+  }else{
+     return '';
+  }
+})
+
+
 

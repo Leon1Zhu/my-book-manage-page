@@ -100,7 +100,7 @@ import searchApi from '../../../api/advancedSearch'
         },
         methods: {
           getBookSeries(){
-            searchApi.getBookSeries().then((response)=>{
+            searchApi.getARBookSeries().then((response)=>{
               this.publisher = response.data
             }).catch((response)=>{
 

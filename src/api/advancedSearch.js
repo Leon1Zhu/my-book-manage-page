@@ -7,12 +7,17 @@ import api from './index'
 var getCollectsByUserId = "/api/alinews-collects";
 let getBookSeries = '/book/getBookSeries'
 
+let getARBookSeries = '/book/getARBookSeries'
+
 let SearchArBookList = '/book/listArBookSearch'
 
 let SearchLexBookList = '/book/listLexBookSearch'
 export default {
   getBookSeries(){
     return api.get(getBookSeries,null)
+  },
+  getARBookSeries(){
+    return api.get(getARBookSeries,null)
   },
   advancedSearch : function(userid){
     var params = {

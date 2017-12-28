@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App'
 require("es6-promise").polyfill();
-import './mainFun'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';    // 使用 CSS
 import router from './router'
@@ -10,7 +9,7 @@ import './filter'
 import './common/css/style.scss'
 import './common/css/iconFont.css'
 import './common/css/function.scss'
-
+import './mainFun'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import './common/css/swiper-3.4.2.min.css'
 Vue.config.productionTip = false
@@ -61,6 +60,7 @@ router.beforeEach((to, from, next) => {
   sessionStorage.setItem("MAINBREADCRUMB", JSON.stringify(MAINBREADCRUMB));
   next()
 })
+
 
 
 

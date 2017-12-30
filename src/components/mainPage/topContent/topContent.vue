@@ -33,7 +33,8 @@
       <div class="top-topcontent">
            <div class="container_12">
              <div class="grid_6 book-info">
-               <div class="img-logo"></div>
+               <div class="img-logo" @click="openMaagePage">
+               </div>
                <div class="all-book-content">
                  <animatedInteger  class="" :value="value"></animatedInteger>
                  <div class="all-book-item">书籍库存数</div>
@@ -151,6 +152,9 @@ import  api from '../../../api/bookManage'
 
        },
         methods: {
+          openMaagePage(){
+            window.location.href = 'http://121.43.171.195:8080/meiyuan-html1.0/app/login.html'
+          },
           getWebConfig(){
             api.getWebConfig().then((response)=>{
               this.value = parseInt(response.data.bookCount,10)

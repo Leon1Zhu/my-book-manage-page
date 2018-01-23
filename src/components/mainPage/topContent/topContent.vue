@@ -72,7 +72,7 @@
                             AR书籍查询
                           </div>
                           <div class="extra-content-li">
-                            Star&AR系统测试
+                            <a href="https://hosted401.renlearn.com/6237789/" target="view_window">Star&AR系统测试</a>
                           </div>
                           <div class="extra-content-li" @click="chooseLi(2,'/leixiReading')"  >
                             蓝思阅读知识
@@ -87,10 +87,10 @@
 
                       </li>
                       <li :class="{'active': liActive[4]}" @click="chooseLi(4,'/knowlwdgeShare')">阅读课程</li>
-                      <li :class="{'active': liActive[5]}" @click="chooseLi(5,'/joinUs')">加入我们</li>
                       <li :class="{'active': liActive[6]}" @click="chooseLi(6,'/commonQuestion')">常见问题</li>
                       <li :class="{'active': liActive[7]}" @click="chooseLi(7,'/partners')">合作伙伴</li>
-                      <li :class="{'active': liActive[8]}" @click="chooseLi(8,'/about')">关于我们</li>
+                      <li :class="{'active': liActive[5]}" @click="chooseLi(5,'/joinUs')">加入我们</li>
+                    <!--  <li :class="{'active': liActive[8]}" @click="chooseLi(8,'/about')">关于我们</li>-->
                     </ul>
                 </div>
             </div>

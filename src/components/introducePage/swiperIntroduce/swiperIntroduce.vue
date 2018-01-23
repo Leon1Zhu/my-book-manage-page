@@ -4,11 +4,8 @@
         <div  class="grid_12">
       <swiper class="swiper-content animateClass" :options="swiperOption" ref="mySwiper">
         <!-- slides -->
-        <swiper-slide>
-          <img src="../../../assets/1.png">
-        </swiper-slide>
-        <swiper-slide>
-          <img src="../../../assets/2.png">
+        <swiper-slide v-for="item in imgInfo">
+          <img :src="imgUrl+item.sysImageUrl" @click="chooseLi('/'+item.newsUrl)">
         </swiper-slide>
         <!-- Optional controls -->
         <div class="swiper-pagination"  slot="pagination"></div>
@@ -23,6 +20,7 @@
 
 <script>
 import './swiperIntroduce.scss'
+import api from '../../../api/bookManage'
     export default{
         data(){
             return {
@@ -31,7 +29,6 @@ import './swiperIntroduce.scss'
                 // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
                 notNextTick: true,
                 // swiper configs 所有的配置同swiper官方api配置
-                freeMode : true,
                 autoplay: 3000,
                 /*slidesPerGroup : 3,*/
                 /*slidesOffsetBefore : -180,*/
@@ -47,6 +44,8 @@ import './swiperIntroduce.scss'
 
                 paginationClickable :true,
               },
+              imgUrl:HomePageSwiperImgUrlHost,
+              imgInfo:[],
             }
         },
         components: {
@@ -57,6 +56,7 @@ import './swiperIntroduce.scss'
           }
         },
         created(){
+            this.getImg()
         },
         mounted(){
           window.onresize = () => {
@@ -65,6 +65,27 @@ import './swiperIntroduce.scss'
             })()
           }
         },
-        methods: {}
+        methods: {
+            getImg(){
+                api.listImageInformation().then((response) => {
+                    this.imgInfo = response.data
+                  this.$nextTick(() => {
+                        console.log(this.swiper)
+                    let that = this;
+                    setTimeout(function(){
+                      that.swiper.update();
+                    },300)
+
+                  })
+                    console.log(response)
+                }).catch((response) => {
+
+                })
+            },
+          chooseLi(path){
+            this.$router.push({ path: path })
+
+          },
+        }
     }
 </script>

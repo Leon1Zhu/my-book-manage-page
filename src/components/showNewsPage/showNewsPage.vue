@@ -54,6 +54,7 @@
                   that.$Notice.error(setNoticConfig("获取消息列表出错！",null,null,"error"));
                 })*/
                 axios.get('/book/getAllBookNews',{params:{newsType:this.newsType}}).then((response)=>{
+                    this.newsArr = response.data
                 })
 
             }

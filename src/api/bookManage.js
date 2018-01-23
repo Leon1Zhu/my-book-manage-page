@@ -19,8 +19,13 @@ let getWebConfig = bookIndex+'/getWebConfigInfo'
 
 let getBorrowRecommend = bookIndex+'/getBorrowRecommendBook'
 
+let listImageInformation = bookIndex+'/listImageInformation'
+
 
 export default {
+  listImageInformation(){
+    return api.get(listImageInformation,{});
+  },
   getBorrowRecomend(index,length){
     let params={
       index:index,

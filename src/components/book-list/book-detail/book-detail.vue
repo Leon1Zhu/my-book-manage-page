@@ -5,8 +5,8 @@
           <div class="book-info-content">
             <div class="left-img">
                <div class="bottom-content">
-                 <img v-if="data.iSBN13" :src="imgUrl+data.iSBN13+'.jpg'">
-                 <img v-if="data.iSBN10 && !data.iSBN13" :src="imgUrl+data.iSBN10+'.jpg'">
+                 <img v-if="data.iSBN13" :src="imgUrl+data.iSBN13+'.jpg'" onerror="this.src='http://121.43.171.195:8080/dummyPath/BookImage/9788694300910.jpg'">
+                 <img v-if="data.iSBN10 && !data.iSBN13" :src="imgUrl+data.iSBN10+'.jpg'" onerror="this.src='http://121.43.171.195:8080/dummyPath/BookImage/9788694300910.jpg'">
                </div>
             </div>
             <div class="book-introduce-content ">

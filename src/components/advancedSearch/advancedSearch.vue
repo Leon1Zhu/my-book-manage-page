@@ -65,7 +65,7 @@
                 </Select>
               </div>
 
-              <div class="search-input" >
+          <div class="search-input" >
                 <div class="word">AR测试号</div><InputNumber :disabled="!basicSearch.arflag"  v-model="ARSearch.QN" placeholder="请输入搜索的测试号" style="width: 100%;"></InputNumber>
               </div>
               <div class="search-input">

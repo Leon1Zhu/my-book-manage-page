@@ -15,25 +15,25 @@
               <div class="no-book-class"  v-if="total==0 && list_type!='collect' && list_type!='reserve' ">
                 暂无对应数据结果!
               </div>
-              <div  class="no-book-class" v-if="list_type=='collect' && saveInfo.length==1">
+              <div  class="no-book-class" v-if="list_type=='collect' && saveInfo.length===0">
                 暂无对应数据结果!
               </div>
-              <div class="no-book-class" v-if="list_type=='reserve' && orderInfo.length==1">
+              <div class="no-book-class" v-if="list_type=='reserve' && orderInfo.length===0">
                 暂无对应数据结果!
               </div>
               <Page class="page page-top" :current="index+1"  v-if="list_type==''" :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
             </div>
-            <div class="book-item" v-for="data in saveInfo" v-if="list_type=='collect'  && saveInfo.length>1">
+            <div class="book-item" v-for="data in saveInfo" v-if="list_type=='collect'  && saveInfo.length>0">
             <list_content v-if="data.id!=-1"  @reservBook="reservBookP" :data="data.saveBookInfo" :list_type="list_type"></list_content>
           </div>
-            <div class="book-item" v-for="data in orderInfo" v-if="list_type=='reserve'  && orderInfo.length>1">
+            <div class="book-item" v-for="data in orderInfo" v-if="list_type=='reserve'  && orderInfo.length>0">
               <list_content v-if="data.id!=-1" @collectBook="collectBookP" :data="data.orderBookInfo" :list_type="list_type"></list_content>
             </div>
             <div class="book-item" v-for="data in content" v-if=" list_type!='reserve' && list_type!='collect'">
               <list_content :data="data" :list_type="list_type"></list_content>
             </div>
-            <div class="page-relative">
-              <Page v-if="total>0 && list_type==''" :current="index+1" class="page page-bottom"   :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
+            <div class="page-relative" v-if="total>0 && list_type==''">
+              <Page  :current="index+1" class="page page-bottom"   :total="total" size="small" show-total :page-size="pageSize" @on-change="changepage"></Page>
             </div>
           </div>
 
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
 import './book-list.scss'
 import bookManageApi from '../../api/bookManage'
 import list_content from './list-content.vue'
@@ -58,12 +59,14 @@ import list_content from './list-content.vue'
               pageSize:5,
               content:[],
               booklimit:10,
-              saveInfo:SAVEINFO,
-              orderInfo:ORDERINFO,
               searchValue:this.$route.query.searchValue,
             }
         },
       computed:{
+        ...mapGetters({
+          saveInfo:'getSaveInfo',
+          orderInfo: 'getOrderInfo',
+        })
       },
         components: {
             'list_content':list_content,
@@ -89,6 +92,8 @@ import list_content from './list-content.vue'
           }
         },
         mounted(){
+            console.log(this.total)
+          console.log(this.list_type)
         },
         methods: {
           reservBookP(val){
@@ -157,8 +162,8 @@ import list_content from './list-content.vue'
             }
           },
           getHARBook(val){
-              if(!isNull(RAHBOOK)){
-                  this.content = RAHBOOK[''+val+'']
+              if(!isNull(this.$store.getters.getRahBook)){
+                  this.content = this.$store.getters.getRahBook[''+val+'']
                   this.total =  this.content.length
               }
           },

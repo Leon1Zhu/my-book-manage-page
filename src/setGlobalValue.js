@@ -57,18 +57,18 @@ global.unSetSearchInfo = function(){
   sessionStorage.setItem("LISTTYPE",null);
 }
 
-global.setLoginStatus = function(loginVaule){
+/*global.setLoginStatus = function(loginVaule){
   if(typeof loginVaule == "boolean"){
     global.ISLOGIN = loginVaule;
     sessionStorage.setItem("LOGINSTATUS",loginVaule);
   }
-}
-global.getLoginStatus=function(){
+}*/
+/*global.getLoginStatus=function(){
   return ISLOGIN;
-}
+}*/
 
 
-global.setUserInfo = function(userinfo,orderInfo,saveInfo){
+/*global.setUserInfo = function(userinfo,orderInfo,saveInfo){
   global.USERINFO = userinfo
   global.ORDERINFO = [{id:-1}]
   for(let i=0;i<orderInfo.length;i++){
@@ -84,11 +84,11 @@ global.setUserInfo = function(userinfo,orderInfo,saveInfo){
     sessionStorage.setItem("ORDERINFO",JSON.stringify(ORDERINFO));
     sessionStorage.setItem("SAVEINFO",JSON.stringify(SAVEINFO));
 
-}
+}*/
 
 
 
-global.setRAHBook = function(val){
+/*global.setRAHBook = function(val){
   global.RAHBOOK = val
   sessionStorage.setItem("RAHBOOK",JSON.stringify(val));
 }
@@ -100,9 +100,9 @@ global.LoginOut = function(){
   sessionStorage.setItem("USERINFO",null);
   sessionStorage.setItem("LOGINSTATUS", false);
   sessionStorage.setItem("RAHBOOK", null);
-}
+}*/
 
-global.orderNewBook = function(val){
+/*global.orderNewBook = function(val){
   if(isNull(ORDERINFO))ORDERINFO = [];
   let temp = ORDERINFO;
   temp.push(val);
@@ -130,18 +130,18 @@ global.removeSaveBook = function(val){
     sessionStorage.setItem("SAVEINFO",JSON.stringify(SAVEINFO) );
   }
 
-}
+}*/
 
 
-global.isLoginFun=function(){
+/*global.isLoginFun=function(){
   if(!ISLOGIN){
     return false;
   }else{
     return true;
   }
-}
+}*/
 
-
+/*
 global.removeOrderBook = function(val){
   var temp = ORDERINFO;
   for(let i =1;i< temp.length;i++){
@@ -155,7 +155,7 @@ global.removeOrderBook = function(val){
   }else{
     sessionStorage.setItem("ORDERINFO",JSON.stringify(ORDERINFO) );
   }
-}
+}*/
 
 global.setCurrent = function(val){
   sessionStorage.setItem("currentStep",val);

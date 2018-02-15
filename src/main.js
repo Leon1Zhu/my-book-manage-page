@@ -4,6 +4,7 @@ require("es6-promise").polyfill();
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';    // 使用 CSS
 import router from './router'
+import store from './store/index'
 import './common/css/reset.css'
 import './filter'
 import './common/css/style.scss'
@@ -21,6 +22,7 @@ Vue.use(iView);
 const app = new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

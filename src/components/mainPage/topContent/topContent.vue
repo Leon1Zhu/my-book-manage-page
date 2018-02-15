@@ -131,10 +131,8 @@ import  api from '../../../api/bookManage'
                 tel:null,
                 mainBreadcrumb:MAINBREADCRUMB,
                 liActive:[true,false,false,false,false,false,false,false,false],
-                userinfo:USERINFO,
                 isActive:false,
                 showloginflag:false,
-                loginStatus:ISLOGIN,
                 showExtra:false,
             }
         },
@@ -143,6 +141,12 @@ import  api from '../../../api/bookManage'
             'loginContent':loginContent
         },
         computed:{
+            loginStatus(){
+                return this.$store.getters.getLoginStatus
+            },
+            userinfo(){
+               return this.$store.getters.getUserInfo
+            }
         },
         created(){
             var vm = this;

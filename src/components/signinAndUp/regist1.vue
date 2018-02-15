@@ -27,7 +27,7 @@
     <p class="regist_warning" v-bind:class="{phonecolor:isphonecolor}">{{phonewarning}}</p>
     <div class="inputgroup">
       <span class="regist_bq">验&nbsp证&nbsp码</span>
-      <Input class="regist_inp" maxlength=6   style="width:180px;" v-model="inputyzm"  v-on:change="yzmchange" placeholder="验证码"></Input>&nbsp&nbsp
+      <Input class="regist_inp" :maxlength="maxLength"   style="width:180px;" v-model="inputyzm"  v-on:change="yzmchange" placeholder="验证码"></Input>&nbsp&nbsp
       <Button class="yzm_btn" type="ghost"   v-bind:disabled="dis" v-on:click="getyzm">
         {{yzm}}
       </Button>
@@ -141,6 +141,7 @@
     name: 'regist1',
     data () {
       return {
+        maxLength:6,
         phonewarning: '',
         usernamewarning: '',
         passwordwarning: '',
@@ -357,7 +358,7 @@
                     let regdata = {
                       phoneNo: this.phone,
                       password: this.password1,
-                      name: this.neckname
+                      name: this.neckname,
                     }
                     var that = this;
                     userApi.regist(regdata).then((response) => {

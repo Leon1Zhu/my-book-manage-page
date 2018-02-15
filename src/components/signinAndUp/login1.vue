@@ -52,9 +52,9 @@
       }
     },
     created(){
-        if(ISLOGIN){
+        /*if(ISLOGIN){
           this.$router.push( {path:'/'} )
-        }
+        }*/
     },
     methods: {
       closeLoginContent(){
@@ -67,11 +67,14 @@
           return;
         }
         userApi.login(that.username, that.password).then((response)=>{
-          response.data.userInfo.password=null;
-          setLoginStatus(true);
-          setUserInfo( response.data.userInfo,response.data.userInfo.orderInfo,response.data.userInfo.saveInfos)
-          setRAHBook(response.data.bookInfo)
-          that.$router.go(0)
+          //response.data.userInfo.password=null;
+          this.$store.commit('setLoginStatus',true)
+          //setLoginStatus(true);
+          this.$store.commit('setUserInfo',response.data.userInfo)
+          //setUserInfo( response.data.userInfo,response.data.userInfo.orderInfo,response.data.userInfo.saveInfos)
+          this.$store.commit('setRAHBook',response.data.bookInfo)
+          this.$router.push( {path:'/'} )
+
         }).catch((response)=>{
           this.$Notice.error(setNoticConfig(response.message,null,null,"error"));
         })

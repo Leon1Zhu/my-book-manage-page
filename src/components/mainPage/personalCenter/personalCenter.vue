@@ -36,7 +36,6 @@ import prefectInfo from '../../signinAndUp/regist_sec.vue'
     export default{
         data(){
             return {
-                ss:SAVEINFO
             }
         },
         computed:{
@@ -55,7 +54,6 @@ import prefectInfo from '../../signinAndUp/regist_sec.vue'
         methods: {
           changeVal(val){
               if(val==='collect'){
-                  console.log(SAVEINFO)
               }
           }
         }

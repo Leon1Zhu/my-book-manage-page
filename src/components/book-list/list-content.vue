@@ -111,13 +111,13 @@
           },
           deletesave(data){
             let that = this;
-            if(!isLoginFun())return;
+            if(!this.$store.getters.getLoginStatus)return;
             this.$Modal.confirm({
               title: '书记收藏删除确认',
               content: '确认删除对于书籍['+data.name+']的收藏吗？',
               onOk: () => {
-                bookManageApi.deleteSaveBook(USERINFO.id,data.id).then((response)=>{
-                  removeSaveBook(data.id);
+                bookManageApi.deleteSaveBook(this.$store.getters.getUserInfo.id,data.id).then((response)=>{
+                   that.$store.commit('removeSaveBook',data.id) ;
                   /*that.content = that.filterArry(that.content,data.id);*/
                   that.total--;
                   that.$Notice.success(setNoticConfig('删除收藏成功！',null,null,"success"));
@@ -129,13 +129,13 @@
           },
           deleteOrder(data){
             let that = this;
-            if(!isLoginFun())return;
+            if(!this.$store.getters.getLoginStatus)return;
             this.$Modal.confirm({
               title: '书记预定删除确认',
               content: '确认删除对于书籍['+data.name+']的预定吗？',
               onOk: () => {
-                bookManageApi.deleteOrderBook(USERINFO.id,data.id).then((response)=>{
-                  removeOrderBook(data.id);
+                bookManageApi.deleteOrderBook(this.$store.getters.getUserInfo.id,data.id).then((response)=>{
+                  that.$store.commit('removeOrderBook',data.id) ;
                   that.total--;
                   /*that.content = that.filterArry(that.content,data.id);*/
                   that.$Notice.success(setNoticConfig('删除预定成功！',null,null,"success"));

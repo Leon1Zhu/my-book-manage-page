@@ -157,17 +157,22 @@
           gradeList:GRADELIST,
         }
       },
+      computed:{
+            userinfo(){
+                return this.$store.getters.getUserInfo;
+            }
+      },
       created(){
-        this.neckname = USERINFO.name ? USERINFO.name : ''
-        this.name = USERINFO.rName ? USERINFO.rName : ''
-        this.sex = USERINFO.rSex === '1' ? '女':'男';
-        this.birthdate = USERINFO.rBirthday ? new Date(USERINFO.rBirthday).Format('yyyy-MM-dd') : '';
-        this.school = USERINFO.school ? USERINFO.school : ''
-        this.value1 = USERINFO.address ?  USERINFO.address.split(',') : '',
-        this.detailaddress1 = USERINFO.detailAdressint ? USERINFO.detailAdressint : ''
-        this.mail = USERINFO.email ? USERINFO.email : '';
-        this.phone2 = USERINFO.phoneNo
-        this.grade = USERINFO.grade? USERINFO.grade : ''
+        this.neckname = this.userinfo.name ? this.userinfo.name : ''
+        this.name = this.userinfo.rName ? this.userinfo.rName : ''
+        this.sex = this.userinfo.rSex === '1' ? '女':'男';
+        this.birthdate = this.userinfo.rBirthday ? new Date(this.userinfo.rBirthday).Format('yyyy-MM-dd') : '';
+        this.school = this.userinfo.school ? this.userinfo.school : ''
+        this.value1 = this.userinfo.address ?  this.userinfo.address.split(',') : '',
+        this.detailaddress1 = this.userinfo.detailAdressint ? this.userinfo.detailAdressint : ''
+        this.mail = this.userinfo.email ? this.userinfo.email : '';
+        this.phone2 = this.userinfo.phoneNo
+        this.grade = this.userinfo.grade? this.userinfo.grade : ''
       },
       methods: {
         loseneckname: function () {
@@ -342,7 +347,7 @@
                sex = 1 ;
             }
             let regdata1 = {
-              id:USERINFO.id,
+              id:this.userinfo.id,
               name: this.neckname,
               rName: this.name,
               rSex: sex,
@@ -357,9 +362,11 @@
             userApi.ChangeInfo(regdata1).then((response) =>{
               this.$Notice.success({title: '修改成功！'});
               this.$router.push({path: '/'})
-              response.data.password=null;
-              setUserInfo( response.data,response.data.orderInfo,response.data.saveInfos)
-              setRAHBook(response.data)
+              //response.data.password=null;
+              this.$store.commit('setUserInfo',response.data)
+              this.$store.commit('setRAHBook',response.data)
+              //setUserInfo( ,response.data.orderInfo,response.data.saveInfos)
+              //setRAHBook(response.data)
             }).catch((response) =>{
 
             })

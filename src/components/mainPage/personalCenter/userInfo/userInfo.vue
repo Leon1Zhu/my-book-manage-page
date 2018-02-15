@@ -65,13 +65,19 @@ import './userInfo.scss'
 import userApi from '../../../../api/userService'
     export default{
         data(){
-            return {
-                userinfo:USERINFO,
-                readBookCount:null,
-                readBookWord:null,
-            }
+          return {
+            readBookCount: null,
+            readBookWord: null,
+          }
         },
-        components: {},
+        components: {
+
+        },
+        computed:{
+          userinfo(){
+            return this.$store.getters.getUserInfo
+          }
+        },
         created(){
           this.getUserWord()
         },
@@ -79,7 +85,7 @@ import userApi from '../../../../api/userService'
         },
         methods: {
             getUserWord(){
-                userApi.getUserWord().then((response) => {
+                userApi.getUserWord(this.$store.getters.getUserInfo).then((response) => {
                   this.readBookCount=response.data.readBookCount
                   this.readBookWord=response.data.readBookWord
                 }).catch((response) => {

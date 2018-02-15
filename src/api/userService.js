@@ -26,8 +26,8 @@ export  default {
   ChangeInfo(userinfo){
     return api.post(ChangeInfo,userinfo,'');
   },
-  getUserWord(){
-    return api.post(getUserWord,USERINFO,'');
+  getUserWord(userinfo){
+    return api.post(getUserWord,userinfo,'');
   },
   login(userphoe,password){
     let params={

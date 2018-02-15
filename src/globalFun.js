@@ -68,6 +68,7 @@ global.refushToken=function(){
     }
 }
 
+
 /*global.setLoginInfo=function(logininfo,rememberMe){
     USERINFO = logininfo
     ISLOGIN=true;

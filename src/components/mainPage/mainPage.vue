@@ -17,7 +17,7 @@
 <script>
 import './mainPage.scss'
 import topContent from './topContent/topContent.vue'
-
+import userApi from '../../api/userService'
     export default{
         data(){
             return {}
@@ -26,12 +26,21 @@ import topContent from './topContent/topContent.vue'
             'topContent':topContent,
         },
         created(){
-           console.log(USERINFO)
+          this.$store.getters.getLoginStatus && this.login()
         },
         mounted(){
+
         },
         methods: {
-
+          login(){
+            userApi.login(this.$store.getters.getUserInfo.phoneNo, this.$store.getters.getUserInfo.password).then((response)=>{
+              this.$store.commit('setLoginStatus',true)
+              this.$store.commit('setUserInfo',response.data.userInfo)
+              this.$store.commit('setRAHBook',response.data.bookInfo)
+            }).catch((response)=>{
+              this.$Notice.error(setNoticConfig(response.message,null,null,"error"));
+            })
+          }
         }
     }
 </script>

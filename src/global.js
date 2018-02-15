@@ -2,8 +2,9 @@
  * Created by zhuliang on 2017/4/6.
  */
 global.MAINBREADCRUMB= JSON.parse(sessionStorage.getItem("MAINBREADCRUMB")) ?  JSON.parse(sessionStorage.getItem("MAINBREADCRUMB")): [{name:'首页',url:'/',level:1,query:null}]
-/*global.SERVICEURL="http://localhost:8090";*/
+//global.SERVICEURL="http://localhost:8090";
 global.HomePageSwiperImgUrlHost='http://121.43.171.195:8080/dummyPath/';
+
 
 //图书封面url
 global.IMGURL='http://121.43.171.195:8080/dummyPath/BookImage/'
@@ -12,14 +13,14 @@ global.SERVICEURL="http://121.43.171.195:8090"
 global.TOKENTIME=new Date();
 global.TOKEN="";*/
 //登陆状态
-global.ISLOGIN=sessionStorage.getItem("LOGINSTATUS") ? sessionStorage.getItem("LOGINSTATUS") : false;
+//global.ISLOGIN=sessionStorage.getItem("LOGINSTATUS") ? sessionStorage.getItem("LOGINSTATUS") : false;
 //登陆用户信息
-global.USERINFO=sessionStorage.getItem("LOGINSTATUS") ?  JSON.parse(sessionStorage.getItem("USERINFO")) : null;
-global.ORDERINFO = sessionStorage.getItem("ORDERINFO") ?  JSON.parse(sessionStorage.getItem("ORDERINFO")) : [{id:-1}];
-global.SAVEINFO = sessionStorage.getItem("SAVEINFO") ?  JSON.parse(sessionStorage.getItem("SAVEINFO")) : [{id:-1}];
+//global.USERINFO=sessionStorage.getItem("LOGINSTATUS") ?  JSON.parse(sessionStorage.getItem("USERINFO")) : null;
+//global.ORDERINFO = sessionStorage.getItem("ORDERINFO") ?  JSON.parse(sessionStorage.getItem("ORDERINFO")) : [{id:-1}];
+//global.SAVEINFO = sessionStorage.getItem("SAVEINFO") ?  JSON.parse(sessionStorage.getItem("SAVEINFO")) : [{id:-1}];
 
 //登陆用户信息
-global.RAHBOOK=sessionStorage.getItem("LOGINSTATUS") ?  JSON.parse(sessionStorage.getItem("RAHBOOK")) : null;
+//global.RAHBOOK=sessionStorage.getItem("LOGINSTATUS") ?  JSON.parse(sessionStorage.getItem("RAHBOOK")) : null;
 
 //高级搜索的基础信息搜索
 global.BASICSEARCH= JSON.parse(sessionStorage.getItem("BASICSEARCH")) ?  JSON.parse(sessionStorage.getItem("BASICSEARCH")): null;
